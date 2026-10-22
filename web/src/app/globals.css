@@ -1,29 +1,40 @@
 @import "tailwindcss";
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
 
-@layer base {
-  :root {
-    --bg-surface: #FFFFFF;
-    --card-soft: #F6F8FA;
-    --text-primary: #111827;
-    --text-muted: #6B7280;
-    --border-color: #E5E7EB;
-    --teal-primary: #0B8A7E;
-    --teal-dark: #09756B;
-    --teal-light: #F4FFFC;
-    --route-normal: #2563EB;
-    --flood-low: #F5B83D;
-    --flood-mid: #F97316;
-    --flood-high: #DC2626;
-    --patient-pin: #F59E0B;
-  }
+@theme {
+  --font-inter: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-teal-primary: #0B8A7E;
+  --color-teal-dark: #09756B;
+  --color-teal-light: #F4FFFC;
+  --color-route-normal: #2563EB;
+  --color-flood-low: #F5B83D;
+  --color-flood-mid: #F97316;
+  --color-flood-high: #DC2626;
+  --color-patient-pin: #F59E0B;
+}
 
-  body {
-    background-color: #FFFFFF;
-    color: #111827;
-    font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    font-variant-numeric: tabular-nums;
-    -webkit-tap-highlight-color: transparent;
-  }
+:root {
+  --bg-surface: #FFFFFF;
+  --card-soft: #F6F8FA;
+  --text-primary: #111827;
+  --text-muted: #6B7280;
+  --border-color: #E5E7EB;
+  --teal-primary: #0B8A7E;
+  --teal-dark: #09756B;
+  --teal-light: #F4FFFC;
+  --route-normal: #2563EB;
+  --flood-low: #F5B83D;
+  --flood-mid: #F97316;
+  --flood-high: #DC2626;
+  --patient-pin: #F59E0B;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #111827;
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Material Symbols configuration */

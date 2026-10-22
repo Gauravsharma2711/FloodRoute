@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed": "#ffdad6", "inverse-surface": "#293040", "on-primary-container": "#f4fffc", "surface-container": "#e9edff", "surface": "#f9f9ff", "primary": "#00685e", "primary-fixed": "#8ff4e6", "on-primary-fixed": "#00201c", "secondary": "#0051d5", "surface-bright": "#f9f9ff", "outline-variant": "#bdc9c6", "secondary-fixed": "#dbe1ff", "inverse-on-surface": "#edf0ff", "on-tertiary-fixed-variant": "#93000b", "on-secondary": "#ffffff", "background": "#f9f9ff", "on-surface-variant": "#3d4947", "tertiary": "#bb0112", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "on-error": "#ffffff", "on-secondary-container": "#fefcff", "surface-container-low": "#f1f3ff", "outline": "#6d7a77", "on-surface": "#141b2b", "tertiary-fixed-dim": "#ffb4ab", "on-secondary-fixed": "#00174b", "on-tertiary-container": "#fffbff", "primary-container": "#008377", "primary-fixed-dim": "#72d8ca", "on-error-container": "#93000a", "on-primary": "#ffffff", "secondary-fixed-dim": "#b4c5ff", "inverse-primary": "#72d8ca", "on-tertiary": "#ffffff", "surface-container-highest": "#dce2f7", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#003ea8", "surface-dim": "#d3daef", "tertiary-container": "#e02928", "on-background": "#141b2b", "surface-variant": "#dce2f7", "on-primary-fixed-variant": "#005049", "surface-tint": "#006a61", "secondary-container": "#316bf3", "surface-container-high": "#e1e8fd", "on-tertiary-fixed": "#410002" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.5rem", "space-xl": "2rem", "gutter-desktop": "1.5rem", "margin": "1rem", "gutter": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "margin-desktop": "2rem", "space-sm": "0.75rem" }, "fontFamily": { "body-xl": ["Inter"], "body-lg": ["Inter"], "display-callout-mobile": ["Inter"], "display-callout": ["Inter"], "label-md": ["Inter"], "label-lg": ["Inter"], "banner-notice": ["Inter"], "headline-xl": ["Inter"], "headline-md": ["Inter"], "headline-lg": ["Inter"], "body-lg-medium": ["Inter"] }, "fontSize": { "body-xl": ["18px", { "lineHeight": "28px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "display-callout-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "display-callout": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "500" }], "label-lg": ["16px", { "lineHeight": "20px", "fontWeight": "600" }], "banner-notice": ["13px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg-medium": ["16px", { "lineHeight": "24px", "fontWeight": "500" }] } } } };</script><style>@layer base { .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } body { -webkit-tap-highlight-color: transparent; } } ::-webkit-scrollbar { display: none; }</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex flex-col pt-safe pb-safe"><main class="flex-1 w-full bg-surface-container-lowest"><div class="flex flex-col w-full relative select-none">
+<!-- Top Slim Monsoonal Notice Ribbon (24px) -->
+<div class="w-full h-6 bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-between px-space-md z-30">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-banner-notice text-banner-notice tracking-tight">Monsoon Telemetry: Active Warning</span>
+</div>
+<span class="font-banner-notice text-banner-notice opacity-80">Sample design data</span>
+</div>
+<!-- App Header / Tactical Branding -->
+<header class="w-full bg-surface-container-lowest px-space-md py-space-sm flex items-center justify-between shadow-sm z-20">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<span class="font-headline-md text-headline-md tracking-tight text-on-surface block leading-tight">FloodRoute</span>
+<span class="font-banner-notice text-banner-notice text-outline block leading-none">Emergency Transit Dispatch</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Isolated Sector</span>
+</div>
+</header>
+<!-- Map Graphic Area (Mumbai Inundated Sector) -->
+<div class="relative w-full h-[360px] bg-surface-container-low overflow-hidden">
+<!-- Base Vectorized Positron Light Map Representation -->
+<svg class="absolute inset-0 w-full h-full object-cover" fill="none" viewbox="0 0 390 360" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F4F6F9" height="360" width="390"></rect>
+<!-- Urban Base Blocks -->
+<path d="M-20 40 L120 20 L160 110 L20 140 Z" fill="#E8EDF2"></path>
+<path d="M180 30 L320 10 L350 90 L210 120 Z" fill="#E8EDF2"></path>
+<path d="M-10 180 L140 160 L130 290 L-30 310 Z" fill="#E8EDF2"></path>
+<path d="M260 160 L410 140 L420 300 L240 320 Z" fill="#E8EDF2"></path>
+<!-- Minor Clear Local Grids -->
+<path d="M40 0 L40 360" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6"></path>
+<path d="M340 0 L340 360" stroke="#FFFFFF" stroke-linecap="round" stroke-width="6"></path>
+<path d="M0 60 L390 60" stroke="#FFFFFF" stroke-linecap="round" stroke-width="5"></path>
+<path d="M0 310 L390 310" stroke="#FFFFFF" stroke-linecap="round" stroke-width="5"></path>
+<!-- Flooded Arterial Roads (Thick Orange #F97316: Likely to flood) -->
+<!-- Western Express Feeder -->
+<path d="M30 130 C 90 140, 120 190, 195 190" stroke="#F97316" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
+<!-- Kurla Link Outer Branch -->
+<path d="M195 190 C 240 190, 270 240, 310 250" stroke="#F97316" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"></path>
+<!-- Submerged Cut-Off Arterials (Heavy Red #DC2626: Impassable / Crested) -->
+<!-- SV Road Main Cut -->
+<path d="M195 190 L195 65" stroke="#DC2626" stroke-linecap="round" stroke-width="8"></path>
+<!-- Transit Causeway Direct -->
+<path d="M195 190 L70 260" stroke="#DC2626" stroke-linecap="round" stroke-width="8"></path>
+<!-- Eastern Junction Connector -->
+<path d="M195 190 L330 120" stroke="#DC2626" stroke-linecap="round" stroke-width="8"></path>
+<!-- Water Inundation Zones (Ambient Polygon Overlays) -->
+<path d="M160 160 Q 195 140 230 165 T 240 220 T 170 230 Z" fill="#E02928" fill-opacity="0.12"></path>
+<circle cx="195" cy="190" fill="#E02928" fill-opacity="0.08" r="48"></circle>
+<!-- Blockage Barricade Glyphs -->
+<g transform="translate(186, 120)">
+<circle cx="9" cy="9" fill="#BA1A1A" r="10"></circle>
+<path d="M5 9 H13" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5"></path>
+</g>
+<g transform="translate(125, 220)">
+<circle cx="9" cy="9" fill="#BA1A1A" r="10"></circle>
+<path d="M5 9 H13" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5"></path>
+</g>
+<g transform="translate(255, 145)">
+<circle cx="9" cy="9" fill="#BA1A1A" r="10"></circle>
+<path d="M5 9 H13" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5"></path>
+</g>
+<!-- Straight-line Trajectory to Hospital (Dotted) -->
+<line stroke="#00685E" stroke-dasharray="4 4" stroke-opacity="0.7" stroke-width="2" x1="195" x2="310" y1="190" y2="70"></line>
+</svg>
+<!-- Floating Top Water Level Gauge Metric -->
+<div class="absolute top-3 left-4 bg-surface-container-lowest/95 backdrop-blur shadow-md px-3 py-1.5 rounded-full flex items-center gap-2 z-10">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-banner-notice text-banner-notice text-on-surface">Mithi River Basin +0.84m</span>
+</div>
+<!-- Map Compass Control -->
+<button aria-label="Recenter map" class="absolute top-3 right-4 w-9 h-9 bg-surface-container-lowest shadow-md rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+</button>
+<!-- Patient Pin (#F59E0B Amber Anchor in Flood Vortex) -->
+<div class="absolute left-[195px] top-[190px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-10">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-12 h-12 rounded-full bg-[#F59E0B]/30 animate-ping"></span>
+<div class="w-10 h-10 rounded-full bg-[#F59E0B] shadow-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+</div>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded bg-on-surface text-surface-container-lowest font-banner-notice text-banner-notice shadow whitespace-nowrap">
+        Patient (Trapped)
+      </span>
+</div>
+<!-- Hospital Z Destination Pin ('H' in distance) -->
+<div class="absolute left-[310px] top-[70px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest shadow-lg flex items-center justify-center text-on-surface">
+<span class="font-headline-md text-headline-md font-bold leading-none">H</span>
+</div>
+<span class="mt-1 px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-banner-notice text-banner-notice shadow whitespace-nowrap">
+        Hospital Z
+      </span>
+</div>
+<!-- Legend Pill -->
+<div class="absolute bottom-6 left-4 bg-surface-container-lowest/90 backdrop-blur px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-3 z-10">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-banner-notice text-banner-notice text-on-surface-variant">Cut off</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1.5 rounded-full bg-[#F97316]"></span>
+<span class="font-banner-notice text-banner-notice text-on-surface-variant">Likely to flood</span>
+</div>
+</div>
+</div>
+<!-- Bottom Execution Card (Rounded top-3xl, High Whitespace, Inter Typography) -->
+<div class="relative -mt-4 bg-surface-container-lowest rounded-t-[28px] shadow-[0_-8px_30px_rgba(20,27,43,0.08)] p-space-lg flex flex-col justify-between z-20 min-h-[380px]">
+<!-- Top Drawer Handle Indicator -->
+<div class="w-12 h-1 bg-surface-container-highest rounded-full mx-auto mb-4"></div>
+<!-- Piece 1: Contextual Soft Red Alert Banner -->
+<div class="w-full bg-tertiary-fixed/40 rounded-2xl p-space-md flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px] text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">
+          wrong_location
+        </span>
+</div>
+<p class="font-body-lg-medium text-body-lg-medium text-on-tertiary-fixed-variant leading-tight">
+        No safe route. This area may be cut off.
+      </p>
+</div>
+<!-- Piece 2: Core Distance & Predictive Impact Information (High Breathing Room) -->
+<div class="py-space-md">
+<div class="flex items-baseline gap-2">
+<span class="material-symbols-outlined text-primary text-[20px] translate-y-0.5">near_me</span>
+<h2 class="font-body-xl text-body-xl text-on-surface">
+          Nearest hospital: Hospital Z, 2.1 km straight line
+        </h2>
+</div>
+<p class="font-body-lg text-body-lg text-outline mt-2 pl-7">
+        All connecting arterial roads are likely to flood.
+      </p>
+<!-- Secondary Safety Telemetry Tip -->
+<div class="mt-4 pl-7 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Water depth exceeding safe ambulance intake (450mm)</span>
+</div>
+</div>
+<!-- Piece 3: Primary Action Directive -->
+<div class="w-full pt-space-xs">
+<button class="w-full h-14 bg-primary text-on-primary hover:bg-primary-container active:scale-[0.99] transition-all rounded-[14px] font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md" id="relocateActionBtn" type="button">
+<span class="material-symbols-outlined text-[22px]">map</span>
+<span>Choose another location</span>
+</button>
+<button class="w-full h-11 mt-2 bg-transparent text-outline hover:text-on-surface transition-colors font-label-md text-label-md flex items-center justify-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span>Contact Emergency Dispatch</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Simple responsive micro-feedback on action click
+  const relocateBtn = document.getElementById('relocateActionBtn');
+  if (relocateBtn) {
+    relocateBtn.addEventListener('click', () => {
+      relocateBtn.classList.add('opacity-90');
+      relocateBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[22px] animate-spin">progress_activity</span>
+        <span>Opening Safe Zones...</span>
+      `;
+      setTimeout(() => {
+        relocateBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[22px]">map</span>
+          <span>Choose another location</span>
+        `;
+        relocateBtn.classList.remove('opacity-90');
+      }, 1200);
+    });
+  }
+</script></main></body></html>
