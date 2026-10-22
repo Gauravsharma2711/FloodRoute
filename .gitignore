@@ -8,11 +8,8 @@ web/.next/
 web/out/
 web/.env*
 
-# large raw downloads (re-creatable with pipeline/run_all.py)
-data/raw/*.tif
-data/raw/*.graphml
-data/raw/*.osm
-data/raw/cache/
+# raw downloads (re-creatable with pipeline/run_all.py)
+data/raw/
 cache/
 
 .DS_Store

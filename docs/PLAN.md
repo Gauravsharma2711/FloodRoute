@@ -28,15 +28,15 @@ Total build time left: roughly 6–7 hours. Times below are hours from the start
 - [x] Python 3.11 venv, `pip install -r requirements-pipeline.txt` (see docs/SETUP.md)
 - [x] Reachability test: Overpass/OSM, Copernicus tile URL, Open-Meteo archive + forecast
 - [x] Package skeleton: `floodroute/`, `pipeline/`, `app/`, `config.yaml` loads
-- [ ] OSM roads (filtered), hospitals, waterways downloaded and cached; counts printed
+- [x] OSM roads (filtered), hospitals, waterways downloaded and cached; counts printed
 
 *In parallel (teammate, no code):* geocode and review `data/validation/flood_spots.csv` (target 15–20 spots with source URLs).
 
 ### H0:45–1:30 — Flood-proneness map (Checkpoint 1, GO / NO-GO)
-- [ ] Elevation sampled for road nodes (Copernicus HTTP window reads)
-- [ ] Score computed (4 components, rank-normalised, weights from config)
-- [ ] Static map coloured by score renders
-- [ ] Sanity check: the best-known spots (Hindmata, Gandhi Market/Sion, Milan Subway, Chembur Circle, Antop Hill) — where do they rank?
+- [x] Elevation sampled for road nodes (Copernicus HTTP window reads)
+- [x] Score computed (4 components, rank-normalised, weights from config)
+- [x] Static map coloured by score renders
+- [x] Sanity check: the best-known spots (Hindmata, Gandhi Market/Sion, Milan Subway, Chembur Circle, Antop Hill) — where do they rank?
 
 **GO** if the map renders and the known spots are mostly in the upper part of the ranking. **A weak result is still GO** (report it honestly) as long as the pipeline works.
 **NO-GO** if roads or elevation cannot be loaded by H1:30 → fallbacks below.
