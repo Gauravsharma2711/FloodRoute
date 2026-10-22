@@ -204,10 +204,20 @@ export function Map({
           popup
             .setLngLat(e.lngLat)
             .setHTML(
-              `<div class="text-xs">
-                <div class="font-bold text-[#111827] text-sm">${name}</div>
-                <div class="text-[#DC2626] font-semibold text-[11px] mt-0.5">Flood-prone score: ${score} · High Risk</div>
-                <div class="text-[#4B5563] text-[11px] mt-1 bg-[#F3F4F6] p-1.5 rounded">${why}</div>
+              `<div class="p-0.5 text-xs select-none">
+                <div class="font-bold text-[#111827] text-sm tracking-tight flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-[#DC2626]"></span>
+                  <span>${name}</span>
+                </div>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FEE2E2] text-[#991B1B] border border-[#EF4444]/20">
+                    Risk Rank: ${(Number(score) * 100).toFixed(0)}%
+                  </span>
+                  <span class="text-[10px] text-[#6B7280]">Score: ${score}</span>
+                </div>
+                <div class="text-[#374151] text-[11px] mt-1.5 bg-[#F9FAFB] p-2 rounded-lg border border-[#E5E7EB] leading-relaxed">
+                  ${why}
+                </div>
               </div>`
             )
             .addTo(map);

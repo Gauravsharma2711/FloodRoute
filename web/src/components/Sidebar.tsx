@@ -36,6 +36,7 @@ export function Sidebar({
   onChangeShareOverride,
 }: SidebarProps) {
   const [showWhatIf, setShowWhatIf] = useState(false);
+  const [presetCategory, setPresetCategory] = useState<"all" | "basins" | "corridors">("all");
 
   const selectedScenario =
     scenarios.find((s) => s.id === selectedScenarioId) || scenarios[0];
@@ -60,14 +61,24 @@ export function Sidebar({
     return cat.replace("_", " ").toUpperCase();
   };
 
+  const filteredPresets = presets.filter((p) => {
+    if (presetCategory === "basins") {
+      return ["hindmata", "sion", "milan_subway", "kurla"].includes(p.id);
+    }
+    if (presetCategory === "corridors") {
+      return ["chembur", "colaba", "andheri", "bandra"].includes(p.id);
+    }
+    return true;
+  });
+
   return (
-    <aside className="w-[360px] shrink-0 h-full bg-white border-r border-[#E5E7EB] shadow-xs flex flex-col justify-between p-5 overflow-y-auto select-none z-20">
+    <aside className="w-[360px] shrink-0 h-full bg-white/95 backdrop-blur-md border-r border-[#E5E7EB] shadow-xs flex flex-col justify-between p-5 overflow-y-auto select-none z-20 relative bg-[radial-gradient(#f3f4f6_1px,transparent_1px)] [background-size:16px_16px]">
       <div className="flex flex-col gap-6">
         {/* STEP 1: Rain Day */}
         <section>
           <div className="flex items-center justify-between mb-2.5">
             <h2 className="font-bold text-base text-[#111827] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold">
+              <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold shadow-xs">
                 1
               </span>
               Rain day
@@ -78,19 +89,20 @@ export function Sidebar({
           <div className="flex flex-col gap-2">
             {scenarios.map((sc) => {
               const isSelected = sc.id === selectedScenarioId;
+              const rainPct = Math.min(100, Math.round((sc.rain_mm / 250) * 100));
               return (
                 <button
                   key={sc.id}
                   onClick={() => onSelectScenario(sc.id)}
                   type="button"
-                  className={`w-full text-left p-3 rounded-xl border transition-all text-xs ${
+                  className={`w-full text-left p-3 rounded-xl border transition-all text-xs relative overflow-hidden group ${
                     isSelected
-                      ? "bg-[#F0FDF4] border-[#0B8A7E] ring-1 ring-[#0B8A7E] shadow-xs"
-                      : "bg-[#F9FAFB] border-[#E5E7EB] hover:bg-[#F3F4F6]"
+                      ? "bg-[#F0FDF4] border-[#0B8A7E] ring-1 ring-[#0B8A7E] shadow-sm"
+                      : "bg-[#F9FAFB] border-[#E5E7EB] hover:bg-white hover:border-[#D1D5DB] hover:shadow-xs"
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-[#111827] text-sm">
+                    <span className="font-bold text-[#111827] text-sm group-hover:text-[#0B8A7E] transition-colors">
                       {sc.label}
                     </span>
                     <span
@@ -102,10 +114,24 @@ export function Sidebar({
                     </span>
                   </div>
                   <div className="flex items-center justify-between mt-1 text-[#6B7280]">
-                    <span>{sc.rain_mm} mm / day</span>
+                    <span className="font-medium text-[#374151]">{sc.rain_mm} mm / day</span>
                     <span className="text-[11px] opacity-80">
                       {sc.source || "Historical Replay"}
                     </span>
+                  </div>
+
+                  {/* Micro Precipitation Bar Texture */}
+                  <div className="w-full bg-[#E5E7EB] h-1 rounded-full mt-2 overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all duration-300 ${
+                        sc.rain_mm > 200
+                          ? "bg-gradient-to-r from-[#F97316] to-[#DC2626]"
+                          : sc.rain_mm > 100
+                          ? "bg-gradient-to-r from-[#F59E0B] to-[#F97316]"
+                          : "bg-gradient-to-r from-[#0B8A7E] to-[#2563EB]"
+                      }`}
+                      style={{ width: `${rainPct}%` }}
+                    />
                   </div>
                 </button>
               );
@@ -126,17 +152,18 @@ export function Sidebar({
               <button
                 type="button"
                 onClick={() => setShowWhatIf(!showWhatIf)}
-                className="text-[#0B8A7E] font-semibold hover:underline"
+                className="text-[#0B8A7E] font-semibold hover:underline flex items-center gap-0.5"
               >
-                {showWhatIf ? "Hide" : "What if?"}
+                <span>{showWhatIf ? "Hide" : "What if?"}</span>
+                <span className="material-symbols-outlined text-[14px]">tune</span>
               </button>
             </div>
 
             {showWhatIf && (
-              <div className="mt-2.5 p-3 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] text-xs">
+              <div className="mt-2.5 p-3 rounded-xl bg-white border border-[#E5E7EB] shadow-xs text-xs">
                 <div className="flex justify-between font-semibold mb-1">
-                  <span>Simulate Flag Share</span>
-                  <span className="text-[#0B8A7E]">
+                  <span className="text-[#374151]">Simulate Flag Share</span>
+                  <span className="text-[#0B8A7E] font-bold">
                     {(currentFlagShare * 100).toFixed(0)}%
                   </span>
                 </div>
@@ -165,7 +192,7 @@ export function Sidebar({
         <section>
           <div className="flex items-center justify-between mb-2">
             <h2 className="font-bold text-base text-[#111827] flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold">
+              <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold shadow-xs">
                 2
               </span>
               Patient location
@@ -173,24 +200,60 @@ export function Sidebar({
             <span className="text-xs text-[#6B7280]">or click the map</span>
           </div>
 
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-1.5 mb-2.5 text-[11px]">
+            <button
+              onClick={() => setPresetCategory("all")}
+              type="button"
+              className={`px-2 py-0.5 rounded-md font-semibold transition-all ${
+                presetCategory === "all"
+                  ? "bg-[#111827] text-white shadow-xs"
+                  : "bg-[#F3F4F6] text-[#6B7280] hover:bg-[#E5E7EB]"
+              }`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => setPresetCategory("basins")}
+              type="button"
+              className={`px-2 py-0.5 rounded-md font-semibold transition-all ${
+                presetCategory === "basins"
+                  ? "bg-[#DC2626] text-white shadow-xs"
+                  : "bg-[#FEE2E2] text-[#991B1B] hover:bg-[#FCA5A5]/40"
+              }`}
+            >
+              Chronic Basins
+            </button>
+            <button
+              onClick={() => setPresetCategory("corridors")}
+              type="button"
+              className={`px-2 py-0.5 rounded-md font-semibold transition-all ${
+                presetCategory === "corridors"
+                  ? "bg-[#0B8A7E] text-white shadow-xs"
+                  : "bg-[#CCFBF1] text-[#0F766E] hover:bg-[#99F6E4]/40"
+              }`}
+            >
+              Corridors
+            </button>
+          </div>
+
           <div className="grid grid-cols-2 gap-2">
-            {presets.map((p) => {
+            {filteredPresets.map((p) => {
               const isSelected = selectedPresetId === p.id;
               return (
                 <button
                   key={p.id}
                   onClick={() => onSelectPreset(p)}
                   type="button"
-                  className={`h-9 px-3 rounded-xl text-xs font-semibold truncate transition-all text-left flex items-center justify-between border ${
+                  className={`h-9 px-3 rounded-xl text-xs font-semibold flex items-center justify-between border transition-all text-left ${
                     isSelected
-                      ? "bg-[#0B8A7E] text-white border-[#0B8A7E] shadow-xs"
-                      : "bg-[#F9FAFB] text-[#374151] border-[#E5E7EB] hover:bg-[#F3F4F6]"
+                      ? "bg-[#0B8A7E] text-white border-[#0B8A7E] shadow-sm"
+                      : "bg-[#F9FAFB] text-[#1F2937] border-[#E5E7EB] hover:bg-white hover:border-[#D1D5DB]"
                   }`}
-                  title={p.description || p.name}
                 >
-                  <span className="truncate">{p.name.split("/")[0]}</span>
+                  <span className="truncate">{p.name}</span>
                   {isSelected && (
-                    <span className="material-symbols-outlined text-[14px]">
+                    <span className="material-symbols-outlined text-[16px] ml-1 shrink-0">
                       check
                     </span>
                   )}
@@ -200,8 +263,8 @@ export function Sidebar({
           </div>
 
           {patientLocation && (
-            <div className="mt-2 text-[11px] text-[#6B7280] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+            <div className="mt-2 text-[11px] text-[#6B7280] flex items-center gap-1.5 font-medium">
+              <span className="w-2 h-2 rounded-full bg-[#F59E0B] ring-2 ring-[#F59E0B]/20" />
               <span>
                 Coordinates: {patientLocation.lat.toFixed(4)},{" "}
                 {patientLocation.lon.toFixed(4)}
@@ -211,21 +274,19 @@ export function Sidebar({
         </section>
       </div>
 
-      {/* STEP 3: Result Card */}
+      {/* STEP 3: Routing Result */}
       <section className="pt-4 border-t border-[#E5E7EB] mt-4">
         <h2 className="font-bold text-base text-[#111827] flex items-center gap-2 mb-2">
-          <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold">
+          <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold shadow-xs">
             3
           </span>
           Routing result
         </h2>
 
         {isRoutingLoading ? (
-          <div className="p-5 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] flex flex-col items-center justify-center py-8 text-center text-xs text-[#6B7280]">
-            <span className="material-symbols-outlined text-2xl animate-spin text-[#0B8A7E] mb-2">
-              sync
-            </span>
-            <span>Calculating safe ambulance route…</span>
+          <div className="p-6 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] flex flex-col items-center justify-center gap-2 text-xs text-[#6B7280]">
+            <div className="w-5 h-5 border-2 border-[#0B8A7E] border-t-transparent rounded-full animate-spin" />
+            <span>Finding safe hospital route...</span>
           </div>
         ) : !patientLocation ? (
           <div className="p-4 rounded-xl bg-[#F9FAFB] border border-dashed border-[#D1D5DB] text-center text-xs text-[#6B7280]">
@@ -250,7 +311,7 @@ function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
 
   if (status === "outside_area") {
     return (
-      <div className="p-4 rounded-xl bg-[#F3F4F6] border border-[#D1D5DB] text-xs">
+      <div className="p-4 rounded-xl bg-[#F3F4F6] border border-[#D1D5DB] text-xs shadow-xs">
         <div className="flex items-center gap-1.5 text-[#374151] font-bold text-sm">
           <span className="material-symbols-outlined text-[#6B7280]">
             location_off
@@ -304,7 +365,7 @@ function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
           </span>
           <span>Route Unaffected</span>
         </div>
-        <div className="text-xl font-black text-[#166534] mt-1">
+        <div className="text-2xl font-black text-[#166534] mt-1">
           {normal?.minutes.toFixed(0)} min
         </div>
         <div className="text-xs text-[#15803D] font-semibold mt-0.5">
@@ -318,39 +379,59 @@ function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
   }
 
   // Status: OK (with added delay)
+  const normalMin = normal?.minutes || 9;
+  const addedMin = added_minutes || 14;
+  const safeMin = safe?.minutes || 23;
+  const normalBarPct = Math.round((normalMin / safeMin) * 100);
+  const addedBarPct = 100 - normalBarPct;
+
   return (
-    <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] shadow-xs text-xs">
+    <div className="p-4 rounded-xl bg-white border border-[#E5E7EB] shadow-xs text-xs space-y-3">
       <div className="flex items-baseline justify-between">
         <div className="text-3xl font-black text-[#111827] tracking-tight">
           +{added_minutes?.toFixed(0) || "14"} min
         </div>
-        <span className="text-[11px] px-2 py-0.5 rounded-md bg-[#FEF3C7] text-[#92400E] font-bold">
+        <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#FEF3C7] text-[#92400E] font-bold border border-[#F59E0B]/30 shadow-2xs">
           Detour Required
         </span>
       </div>
 
-      <div className="font-bold text-sm text-[#0B8A7E] mt-1 flex items-center gap-1.5">
+      <div className="font-bold text-sm text-[#0B8A7E] flex items-center gap-1.5 bg-[#F0FDF4] p-2 rounded-lg border border-[#0B8A7E]/20">
         <span className="material-symbols-outlined text-base">local_hospital</span>
-        <span>Send to {safe?.hospital || "Hospital Y"}</span>
+        <span className="truncate">Send to {safe?.hospital || "Hospital Y"}</span>
       </div>
 
-      <div className="mt-2 space-y-1 text-[11px] bg-white p-2.5 rounded-lg border border-[#E5E7EB]">
-        <div className="flex justify-between text-[#6B7280]">
-          <span>Normal direct route:</span>
-          <span className="font-medium text-[#111827]">
-            {normal?.minutes.toFixed(0)} min ({normal?.km.toFixed(1)} km)
+      {/* Segmented Detour Progress Visualizer */}
+      <div className="space-y-1.5 bg-[#F9FAFB] p-2.5 rounded-lg border border-[#E5E7EB]">
+        <div className="flex justify-between text-[11px] text-[#6B7280]">
+          <span className="flex items-center gap-1">
+            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+            <span>Direct ({normalMin.toFixed(0)}m)</span>
+          </span>
+          <span className="flex items-center gap-1 text-[#D97706] font-semibold">
+            <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+            <span>Detour (+{addedMin.toFixed(0)}m)</span>
+          </span>
+          <span className="flex items-center gap-1 text-[#065F46] font-bold">
+            <span>Total: {safeMin.toFixed(0)}m</span>
           </span>
         </div>
-        <div className="flex justify-between text-[#065F46] font-semibold">
-          <span>Flood-safe route:</span>
-          <span>
-            {safe?.minutes.toFixed(0)} min ({safe?.km.toFixed(1)} km)
-          </span>
+        <div className="w-full h-2 rounded-full overflow-hidden flex bg-[#E5E7EB]">
+          <div
+            className="h-full bg-[#2563EB] transition-all duration-300"
+            style={{ width: `${normalBarPct}%` }}
+            title={`Direct route: ${normalMin} min`}
+          />
+          <div
+            className="h-full bg-[#F59E0B] transition-all duration-300"
+            style={{ width: `${addedBarPct}%` }}
+            title={`Detour penalty: +${addedMin} min`}
+          />
         </div>
       </div>
 
       {blocked_on_normal && blocked_on_normal.length > 0 && (
-        <div className="mt-2.5 flex items-start gap-1.5 text-[11px] text-[#DC2626] font-medium bg-[#FEF2F2] p-2 rounded-lg border border-[#FCA5A5]/30">
+        <div className="flex items-start gap-1.5 text-[11px] text-[#DC2626] font-medium bg-[#FEF2F2] p-2 rounded-lg border border-[#FCA5A5]/30">
           <span className="material-symbols-outlined text-[15px] shrink-0 mt-0.5">
             warning
           </span>
@@ -362,7 +443,7 @@ function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
       )}
 
       {note && (
-        <p className="mt-2 text-[11px] text-[#4B5563] leading-relaxed italic border-t border-[#F3F4F6] pt-1.5">
+        <p className="text-[11px] text-[#4B5563] leading-relaxed italic border-t border-[#F3F4F6] pt-1.5">
           {note}
         </p>
       )}

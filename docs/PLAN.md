@@ -42,36 +42,36 @@ Total build time left: roughly 6–7 hours. Times below are hours from the start
 **NO-GO** if roads or elevation cannot be loaded by H1:30 → fallbacks below.
 
 ### H1:30–3:00 — Validation, rain days, routing (Checkpoint 2)
-- [ ] `05_validate.py`: lift / precision-at-k / AUC vs random and vs elevation-only; bootstrap CI; sensitivity to weights and flag share
-- [ ] `03_fetch_rain.py`: top-10 replay days, IMD category, flag share per day; forecast cached
-- [ ] `floodroute/routing.py`: nearest-hospital route on normal graph and on graph with flagged roads removed; "cut off" handled
-- [ ] Smoke test: ≥5 test points give sensible results (print them)
-- [ ] `data/processed/` written and under size limit
+- [x] `05_validate.py`: lift / precision-at-k / AUC vs random and vs elevation-only; bootstrap CI; sensitivity to weights and flag share
+- [x] `03_fetch_rain.py`: top-10 replay days, IMD category, flag share per day; forecast cached
+- [x] `floodroute/routing.py`: nearest-hospital route on normal graph and on graph with flagged roads removed; "cut off" handled
+- [x] Smoke test: ≥5 test points give sensible results (print them)
+- [x] `data/processed/` written and under size limit
 
 ### H0:00–1:30 — Design (parallel, teammate B, before UI code)
-- [ ] Generate Stitch designs from `docs/STITCH_PROMPT.md`; export PNG + HTML/CSS + tokens to `design/stitch/`
+- [x] Generate Stitch designs from `docs/STITCH_PROMPT.md`; export PNG + HTML/CSS + tokens to `design/stitch/`
 
 ### H1:30–4:30 — API + UI (parallel, teammate B)
-- [ ] `api/` FastAPI with `FixtureBackend` and the endpoints in docs/DATA_CONTRACT.md §3b (about 30 min)
-- [ ] `web/` Next.js app built against the **fixture backend**, following docs/UI_SPEC.md and `design/stitch/` (mobile and desktop)
-- [ ] Switch to the real backend when Checkpoint 2 is done (`FLOODROUTE_BACKEND=real`)
-- [ ] Fallback if the Next.js UI is not working by H3:30: ship the working core (rain picker, map, route, result) without the polish tabs, in that order
+- [x] `api/` FastAPI with `FixtureBackend` and the endpoints in docs/DATA_CONTRACT.md §3b (about 30 min)
+- [x] `web/` Next.js app built against the **fixture backend**, following docs/UI_SPEC.md and `design/stitch/` (mobile and desktop)
+- [x] Switch to the real backend when Checkpoint 2 is done (`FLOODROUTE_BACKEND=real`)
+- [x] Fallback if the Next.js UI is not working by H3:30: ship the working core (rain picker, map, route, result) without the polish tabs, in that order
 
 ### H3:00–4:30 — Integration and Tier B (only if time)
-- [ ] App runs end to end on real processed data
-- [ ] 3 EDA charts generated from real data (see docs/JUDGING.md)
-- [ ] Tier B city view (criticality + fix-first slider) if everything above is green
+- [x] App runs end to end on real processed data
+- [x] 3 EDA charts generated from real data (see docs/JUDGING.md)
+- [x] Tier B city view (criticality + fix-first slider) if everything above is green
 
 ### H4:30–5:30 — Deploy and docs (Checkpoint 3)
-- [ ] Push to GitHub; `npm run build` in `web/`; deploy one Docker service (FastAPI serving `web/out/`) on Render / Hugging Face Spaces / Railway free tier; open the URL in a private window on desktop and phone
-- [ ] `docs/DATA_STATEMENT.md` filled (access dates, fields, steps)
-- [ ] `docs/METHOD_REPORT.md` (EDA, method, evaluation, limitations) with figures
-- [ ] README final, attribution checked
+- [x] Push to GitHub; `npm run build` in `web/`; deploy one Docker service (FastAPI serving `web/out/`) on Render / Hugging Face Spaces / Railway free tier; open the URL in a private window on desktop and phone
+- [x] `docs/DATA_STATEMENT.md` filled (access dates, fields, steps)
+- [x] `docs/METHOD_REPORT.md` (EDA, method, evaluation, limitations) with figures
+- [x] README final, attribution checked
 
 ### H5:30–6:30 — Buffer
-- [ ] 2-minute backup screen recording saved in `assets/`
-- [ ] Slides (only needed if shortlisted; draft the outline now using docs/JUDGING.md)
-- [ ] Fresh-clone test: new venv, `pip install -r requirements.txt`, `uvicorn api.main:app`, `cd web && npm install && npm run build`, open the app
+- [x] 2-minute backup screen recording saved in `assets/`
+- [x] Slides (only needed if shortlisted; draft the outline now using docs/JUDGING.md)
+- [x] Fresh-clone test: new venv, `pip install -r requirements.txt`, `uvicorn api.main:app`, `cd web && npm install && npm run build`, open the app
 
 ## Fallbacks (take them early, do not debug for hours)
 
@@ -95,10 +95,10 @@ Solo? Do A first to Checkpoint 1, then B, then C. Claude Code can do most of A a
 
 ## Submission checklist (from the brief)
 
-- [ ] Working prototype (deployed URL + local run instructions)
-- [ ] Source code with setup instructions and dependency list
-- [ ] Data statement (links, access dates, licences, fields, preprocessing)
-- [ ] Analysis and method (EDA, baseline/method, evaluation, limitations)
-- [ ] Presentation slides (if shortlisted)
-- [ ] Reproducibility notes (runs without paid services, secret keys or private data)
-- [ ] Backup screenshots/recording
+- [x] Working prototype (deployed URL + local run instructions)
+- [x] Source code with setup instructions and dependency list
+- [x] Data statement (links, access dates, licences, fields, preprocessing)
+- [x] Analysis and method (EDA, baseline/method, evaluation, limitations)
+- [x] Presentation slides (if shortlisted)
+- [x] Reproducibility notes (runs without paid services, secret keys or private data)
+- [x] Backup screenshots/recording
