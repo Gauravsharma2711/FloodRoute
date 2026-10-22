@@ -25,9 +25,9 @@ Total build time left: roughly 6–7 hours. Times below are hours from the start
 ## Timeline
 
 ### H0:00–0:45 — Setup and reachability (Checkpoint 0)
-- [ ] Python 3.11 venv, `pip install -r requirements-pipeline.txt` (see docs/SETUP.md)
-- [ ] Reachability test: Overpass/OSM, Copernicus tile URL, Open-Meteo archive + forecast
-- [ ] Package skeleton: `floodroute/`, `pipeline/`, `app/`, `config.yaml` loads
+- [x] Python 3.11 venv, `pip install -r requirements-pipeline.txt` (see docs/SETUP.md)
+- [x] Reachability test: Overpass/OSM, Copernicus tile URL, Open-Meteo archive + forecast
+- [x] Package skeleton: `floodroute/`, `pipeline/`, `app/`, `config.yaml` loads
 - [ ] OSM roads (filtered), hospitals, waterways downloaded and cached; counts printed
 
 *In parallel (teammate, no code):* geocode and review `data/validation/flood_spots.csv` (target 15–20 spots with source URLs).

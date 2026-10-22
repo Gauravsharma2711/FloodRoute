@@ -34,7 +34,7 @@ water = ox.features_from_bbox(bbox=(west, south, east, north),
 - **Access:** public S3 bucket `copernicus-dem-30m`, no AWS account needed. Registry: https://registry.opendata.aws/copernicus-dem/ · readme: https://copernicus-dem-30m.s3.amazonaws.com/readme.html **[checked]**
 - **Licence:** free for the general public under the Copernicus licence terms (link on the registry page) **[checked]**. Suggested attribution: "Contains modified Copernicus data. Copernicus DEM GLO-30 © DLR e.V. 2010–2014 and © Airbus Defence and Space GmbH 2014–2018 provided under COPERNICUS by the European Union and ESA; all rights reserved." — confirm the wording against the licence **[verify]**.
 - **Tiles needed:** Mumbai spans latitude 18.89–19.14 N, longitude 72.80–72.93 E → two 1°×1° tiles, `N18_00_E072_00` and `N19_00_E072_00`.
-- **URL pattern [verify — confirm against the readme]:**
+- **URL pattern [checked]:**
   `https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N18_00_E072_00_DEM/Copernicus_DSM_COG_10_N18_00_E072_00_DEM.tif`
 - **Do not download whole tiles if you can avoid it:** COGs support reading a window over HTTP.
 
