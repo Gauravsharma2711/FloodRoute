@@ -1,0 +1,18 @@
+id,name,area,evidence_type,year,lat,lon,source_url,source_note,status
+1,Hindmata Junction,Dadar / Parel,bmc_list,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-bmcs-monsoon-remedial-measures-fail-to-hold-water,Named chronic flooding spot in BMC remedial-measures report; flooded again in first heavy spell,sourced
+2,Gandhi Market,Sion,bmc_list,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-bmcs-monsoon-remedial-measures-fail-to-hold-water,Named chronic flooding spot,sourced
+3,Chembur Circle,Chembur,bmc_list,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-bmcs-monsoon-remedial-measures-fail-to-hold-water,Named chronic flooding spot,sourced
+4,Milan Subway,Santacruz,bmc_list,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-bmcs-monsoon-remedial-measures-fail-to-hold-water,Named chronic flooding spot; holding tank built,sourced
+5,Antop Hill fire station area,Antop Hill / Wadala,flood_gauge,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-flood-guages-for-better-monsoon-preparedness,Flood gauge recorded waterlogging on 15 days in first season; peak ~6 inches,sourced
+6,Vidyalankar Institute area,Wadala,flood_gauge,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-flood-guages-for-better-monsoon-preparedness,Flood gauge recorded waterlogging on 4-7 days,sourced
+7,Gurukripa Hotel,Sion,flood_gauge,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-flood-guages-for-better-monsoon-preparedness,Flood gauge recorded waterlogging on 4-7 days,sourced
+8,Guru Nanak School,Sion,flood_gauge,,,,https://www.freepressjournal.in/amp/mumbai/mumbai-flood-guages-for-better-monsoon-preparedness,Flood gauge recorded waterlogging on 4-7 days,sourced
+9,Oval Maidan,South Mumbai,bmc_list,2026,,,https://navbharatlive.com/maharashtra/mumbai/mumbai-flood-risk-bmc-list-south-mumbai-vip-areas-update-1712402.html,Reported as newly added to BMC flood-prone list (Hindi news report); check exact point,sourced
+10,Mantralaya,South Mumbai,bmc_list,2026,,,https://navbharatlive.com/maharashtra/mumbai/mumbai-flood-risk-bmc-list-south-mumbai-vip-areas-update-1712402.html,Reported as newly added to BMC flood-prone list; check exact point,sourced
+11,Kemps Corner,South Mumbai,bmc_list,2026,,,https://navbharatlive.com/maharashtra/mumbai/mumbai-flood-risk-bmc-list-south-mumbai-vip-areas-update-1712402.html,Reported as newly added to BMC flood-prone list; check exact point,sourced
+12,Churchgate,South Mumbai,bmc_list,2026,,,https://navbharatlive.com/maharashtra/mumbai/mumbai-flood-risk-bmc-list-south-mumbai-vip-areas-update-1712402.html,Reported as newly added to BMC flood-prone list; check exact point,sourced
+13,Metro Cinema junction,South Mumbai,bmc_list,2026,,,https://navbharatlive.com/maharashtra/mumbai/mumbai-flood-risk-bmc-list-south-mumbai-vip-areas-update-1712402.html,Reported as newly added to BMC flood-prone list; check exact point,sourced
+14,Hutatma Chowk,South Mumbai,bmc_list,2026,,,https://navbharatlive.com/maharashtra/mumbai/mumbai-flood-risk-bmc-list-south-mumbai-vip-areas-update-1712402.html,Reported as newly added to BMC flood-prone list; check exact point,sourced
+15,Andheri Subway,Andheri,news,,,,,Commonly cited waterlogging point — find a source URL before use,candidate_needs_source
+16,King's Circle,Matunga / Sion,news,,,,,Commonly cited waterlogging point — find a source URL before use,candidate_needs_source
+17,Kurla (LBS Road / station area),Kurla,news,,,,,Candidate — find a source URL before use,candidate_needs_source

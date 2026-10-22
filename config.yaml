@@ -1,0 +1,73 @@
+# FloodRoute — all assumptions in one place. Change here, never in code.
+# Anything marked ASSUMPTION must be shown in the UI and covered by the sensitivity analysis.
+
+city: Mumbai
+
+# Starting guess for island city + suburbs up to Andheri (north) and Kurla/Chembur (east).
+# Check on the first map and adjust (state any change in docs/METHOD_REPORT.md).
+bbox:
+  west: 72.80
+  south: 18.89
+  east: 72.93
+  north: 19.14
+
+# Road classes kept for routing (keeps the graph small and fast).
+road_filter: '["highway"~"motorway|trunk|primary|secondary|tertiary|motorway_link|trunk_link|primary_link|secondary_link|tertiary_link"]'
+
+# Point used for the rainfall time series (central Mumbai) — one point is enough for a city-level rain day.
+rain_point:
+  lat: 19.076
+  lon: 72.8777
+
+rain_archive:
+  start_date: "2005-01-01"
+  end_date: "2025-12-31"      # adjust to the latest complete date available
+  timezone: "Asia/Kolkata"
+  replay_days: 10             # top-N rainiest days offered in the UI
+
+# IMD daily rainfall categories (mm/day). Source: IMD (see docs/DATA_SOURCES.md).
+imd_categories:
+  light:        [2.5, 15.5]
+  moderate:     [15.6, 64.4]
+  heavy:        [64.5, 115.5]
+  very_heavy:   [115.6, 204.4]
+  extremely_heavy: [204.5, 100000]
+
+# ASSUMPTION: share of road segments treated as flooded (top of the flood-proneness ranking) per IMD category.
+# Nobody publishes "at X mm these roads flood". These are starting values; the UI shows them and the
+# sensitivity analysis varies them (x0.5, x1, x1.5, x2).
+flag_share_by_category:
+  light: 0.00
+  moderate: 0.03
+  heavy: 0.08
+  very_heavy: 0.15
+  extremely_heavy: 0.25
+
+# ASSUMPTION: transparent flood-proneness score = weighted sum of rank-normalised (0..1) components.
+# Fixed up front. If weights are changed after seeing validation results, say so in the method report.
+score_weights:
+  relative_low_elevation: 0.45   # node elevation minus median elevation within neighbourhood_radius_m (lower = more prone)
+  absolute_low_elevation: 0.25   # low absolute height above sea level (lower = more prone)
+  near_water: 0.20               # short distance to coast / creek / canal / drain (closer = more prone)
+  underpass: 0.10                # tunnel=yes or layer<0 (underpasses / subways)
+
+neighbourhood_radius_m: 300
+
+# Bridges / flyovers are never flagged (they sit above the flood level).
+never_flag_bridges: true
+
+# Validation
+validation:
+  snap_distance_m: 150           # max distance from a reported spot to the nearest road segment
+  flag_shares_to_evaluate: [0.03, 0.05, 0.08, 0.10, 0.15, 0.25]
+  bootstrap_iterations: 1000
+  random_seed: 42
+
+# Routing
+routing:
+  default_speed_kmh_fallback: 25
+  origin_sample_size: 400        # origins for criticality / city view (Tier B)
+
+# Hospitals: OSM amenity=hospital with a name. Optional emergency=yes used only if tagged.
+hospitals:
+  require_name: true

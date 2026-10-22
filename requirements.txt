@@ -1,0 +1,13 @@
+# API dependencies (light). Used for deployment and by judges. The UI is in web/ (npm).
+# After the first successful run, pin exact versions:  pip freeze > requirements.lock.txt
+fastapi
+uvicorn[standard]
+networkx
+shapely
+pandas
+numpy
+scipy
+pyarrow
+pyyaml
+requests
+matplotlib

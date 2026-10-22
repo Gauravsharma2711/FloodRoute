@@ -1,0 +1,8 @@
+# Full dependencies for rebuilding the data (pipeline + app).
+-r requirements.txt
+osmnx
+geopandas
+pyproj
+rasterio
+scikit-learn
+pytest
