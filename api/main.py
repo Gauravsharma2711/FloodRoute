@@ -40,29 +40,40 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 
 app.add_middleware(SecurityHeadersMiddleware)
 
-# 2. Strict CORS Configuration (no wildcard origins with credentials)
+# 2. CORS Configuration (Allows localhost & Vercel deployments)
 allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "")
 if allowed_origins_env:
     allowed_origins = [orig.strip() for orig in allowed_origins_env.split(",") if orig.strip()]
 else:
-    allowed_origins = [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
-    ]
+    allowed_origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["GET", "OPTIONS"],
     allow_headers=["*"],
 )
 
+@app.get("/health")
 @app.get("/api/health")
 def health():
-    return {"ok": True}
+    return {
+        "status": "healthy",
+        "service": "FloodRoute API",
+        "ok": True
+    }
+
+@app.get("/")
+def root():
+    # If static web build is mounted, Starlette will serve it; otherwise return API info
+    return {
+        "service": "FloodRoute API",
+        "status": "healthy",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "health": "/health"
+    }
 
 @app.get("/api/meta")
 def get_meta():
