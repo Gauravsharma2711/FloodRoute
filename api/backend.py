@@ -48,14 +48,23 @@ import json
 import re
 from pathlib import Path
 from api.fixtures.fixture_backend import FixtureBackend
+from floodroute.config import load_config
+from floodroute.flagging import flagged_edge_keys
+from floodroute.io import load_graph
+from floodroute.routing import find_routes, routable_nodes
 
 class RealBackend:
     """RealBackend connects to data/processed/ pipeline outputs."""
     def __init__(self):
         self._fixture = FixtureBackend()
-        self._processed_dir = Path("data/processed")
+        self._processed_dir = Path(__file__).resolve().parent.parent / "data" / "processed"
         self._edges_df = None
         self._geojson_cache: Dict[Any, Dict[str, Any]] = {}
+        self._flag_cache: Dict[float, Any] = {}
+        self._graph = None
+        self._hospitals: List[Dict[str, Any]] = []
+        self._node_ids = None
+        self._cfg = load_config()
         self._load_data()
 
     def _load_data(self):
@@ -66,6 +75,29 @@ class RealBackend:
                 self._edges_df = pd.read_parquet(parquet_path)
             except Exception:
                 self._edges_df = None
+        graph_path = self._processed_dir / "graph.pkl"
+        hospitals_path = self._processed_dir / "hospitals.json"
+        if graph_path.exists() and hospitals_path.exists():
+            import numpy as np
+            self._graph = load_graph(graph_path)
+            self._node_ids = np.array(routable_nodes(self._graph))
+            self._hospitals = json.loads(hospitals_path.read_text(encoding="utf-8"))
+
+    def _flag_share(self, scenario_id: str, share_override: Optional[float]) -> float:
+        """Flag share from the user's what-if override, else from the scenario's IMD category."""
+        if share_override is not None:
+            return float(share_override)
+        data = self.scenarios()
+        for s in data.get("replay_days", []) + ([data["forecast"]] if data.get("forecast") else []):
+            if s["id"] == scenario_id:
+                return float(s["flag_share"])
+        raise ValueError(f"Unknown scenario_id: {scenario_id}")
+
+    def _flagged_keys(self, share: float):
+        key = round(share, 3)
+        if key not in self._flag_cache:
+            self._flag_cache[key] = flagged_edge_keys(self._graph, share)
+        return self._flag_cache[key]
 
     def meta(self) -> Dict[str, Any]:
         return {
@@ -88,7 +120,12 @@ class RealBackend:
                 "Open-Meteo Historical Reanalysis & Weather API",
                 "BMC / Traffic Police Reported Flood Spots"
             ],
-            "presets": self._fixture.meta()["presets"]
+            "destination_hospitals_count": sum(1 for h in self._hospitals if h.get("ambulance_destination")),
+            # Preset places only (no precomputed results: the route is computed live)
+            "presets": [
+                {**p, "description": str(p.get("description", "")).split(" · Status")[0]}
+                for p in self._fixture.meta()["presets"]
+            ]
         }
 
     def scenarios(self) -> Dict[str, Any]:
@@ -99,17 +136,8 @@ class RealBackend:
         if self._edges_df is None:
             return self._fixture.flagged_geojson(scenario_id, share_override)
 
-        # Determine threshold
-        share = share_override
-        if share is None:
-            cat_map = {"light": 0.0, "moderate": 0.03, "heavy": 0.08, "very_heavy": 0.15, "extremely_heavy": 0.25}
-            scenarios = self.scenarios()
-            flag_share = 0.15
-            for s in scenarios.get("replay_days", []):
-                if s["id"] == scenario_id:
-                    flag_share = s.get("flag_share", 0.15)
-                    break
-            share = flag_share
+        # Same flag share and rule as routing (floodroute.flagging), so map and route agree
+        share = self._flag_share(scenario_id, share_override)
 
         cache_key = (str(scenario_id), round(float(share), 3))
         if cache_key in self._geojson_cache:
@@ -117,11 +145,8 @@ class RealBackend:
 
         # Filter top share% by flood_rank_pct
         cutoff_rank = 1.0 - float(share)
-        flagged = self._edges_df[self._edges_df["flood_rank_pct"] >= cutoff_rank]
-        
-        # Limit to top 500 features for fast geojson transport
-        if len(flagged) > 500:
-            flagged = flagged.nlargest(500, "flood_score")
+        df = self._edges_df
+        flagged = df[(df["flood_rank_pct"] >= cutoff_rank) & (~df["is_bridge"].astype(bool))]
 
         features = []
         for _, row in flagged.iterrows():
@@ -172,10 +197,26 @@ class RealBackend:
         return result
 
     def hospitals(self) -> List[Dict[str, Any]]:
-        return self._fixture.hospitals()
+        """Real OSM hospitals used as ambulance destinations (see pipeline/01b_build_hospitals.py)."""
+        return [
+            {"id": h["id"], "name": h["name"], "lat": h["lat"], "lon": h["lon"], "emergency": h["emergency"]}
+            for h in self._hospitals if h.get("ambulance_destination")
+        ]
 
     def route(self, lat: float, lon: float, scenario_id: str, share_override: Optional[float] = None) -> Dict[str, Any]:
-        return self._fixture.route(lat, lon, scenario_id, share_override)
+        """Real normal vs flood-safe route on the OSM road graph (floodroute.routing)."""
+        share = self._flag_share(scenario_id, share_override)
+        destinations = [h for h in self._hospitals if h.get("ambulance_destination")]
+        return find_routes(
+            self._graph,
+            self._flagged_keys(share),
+            lat,
+            lon,
+            destinations,
+            self._cfg["bbox"],
+            float(self._cfg["routing"]["max_snap_m"]),
+            node_ids=self._node_ids,
+        )
 
     def validation(self) -> Dict[str, Any]:
         val_csv = self._processed_dir / "validation_spots_evaluated.csv"

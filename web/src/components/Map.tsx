@@ -44,6 +44,7 @@ export function Map({
   const patientMarkerRef = useRef<maplibregl.Marker | null>(null);
   const hospitalMarkersRef = useRef<maplibregl.Marker[]>([]);
   const popupRef = useRef<maplibregl.Popup | null>(null);
+  const destinationMarkerRef = useRef<maplibregl.Marker | null>(null);
 
   const [isLocating, setIsLocating] = useState<boolean>(false);
   const [gpsError, setGpsError] = useState<string | null>(null);
@@ -359,6 +360,32 @@ export function Map({
       } else {
         safeSource.setData({ type: "FeatureCollection", features: [] });
       }
+    }
+
+    // Highlight the hospital the ambulance should go to (the flood-safe destination)
+    destinationMarkerRef.current?.remove();
+    destinationMarkerRef.current = null;
+    const dest = routeStatus === "cut_off" ? null : safeRoute ?? normalRoute;
+    if (dest && dest.hospital_lat !== undefined && dest.hospital_lon !== undefined) {
+      const el = document.createElement("div");
+      el.className = "flex flex-col items-center pointer-events-none";
+      el.innerHTML = `
+        <div class="px-2 py-1 mb-1 rounded-md bg-[#0B8A7E] text-white text-[11px] font-semibold shadow-md whitespace-nowrap">Go to: ${escapeHtml(dest.hospital)}</div>
+        <div class="w-8 h-8 rounded-full bg-white border-[3px] border-[#0B8A7E] shadow-lg flex items-center justify-center text-[#0B8A7E] font-extrabold text-[13px]">H</div>`;
+      destinationMarkerRef.current = new maplibregl.Marker({ element: el, anchor: "bottom" })
+        .setLngLat([dest.hospital_lon, dest.hospital_lat])
+        .addTo(map);
+    }
+
+    // Zoom to show the whole trip: patient, both routes and the destination
+    const pts: [number, number][] = [
+      ...(normalRoute?.coords ?? []),
+      ...(safeRoute?.coords ?? []),
+    ];
+    if (pts.length > 1) {
+      const bounds = new maplibregl.LngLatBounds();
+      pts.forEach(([lat, lon]) => bounds.extend([lon, lat]));
+      map.fitBounds(bounds, { padding: { top: 90, bottom: 90, left: 60, right: 60 }, maxZoom: 15.5, duration: 800 });
     }
   }, [normalRoute, safeRoute, routeStatus, mapLoaded]);
 

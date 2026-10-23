@@ -14,13 +14,42 @@ FloodRoute is a hackathon submission for HackAMatch 1.0 (CityPulse: Predict. Exp
 ## Hard rules (never break these)
 
 1. **No fabricated data, metrics or results.** Every number shown in the app, docs or slides must come from code run on real public data. If a result is weak, report it as it is.
-2. **Synthetic data only for UI testing**, only inside `app/fixtures/`, and whenever it is used the app must show a visible ribbon: "SYNTHETIC UI FIXTURE — not real data". The deployed app must use real processed data.
+2. **Synthetic data only for UI testing**, only inside `api/fixtures/` (backend) and `web/src/lib/mock/` (frontend), and whenever it is used the app must show a visible ribbon: "SYNTHETIC UI FIXTURE — not real data". The deployed app must use real processed data. The API must never report `data_mode: real` while returning fixture data for any endpoint.
 3. **No API keys in the repo, no paid services.** The core app and pipeline must run with no keys and no LLM. Optional LLM features read keys from environment variables only and have a template fallback.
 4. **Wording:** always say "flood-prone road proxy" / "likely to flood". Never say "flooded", "flood forecast" or "predicts floods" about the model output.
 5. **The rain → share-of-roads-flagged mapping is an assumption.** It lives in `config.yaml`, is shown in the UI, and has a sensitivity analysis. Do not hide it.
 6. **Validation is reported honestly:** lift/AUC vs random and vs an elevation-only baseline, with sample size and uncertainty. No cherry-picking of weights after seeing validation results; if weights are changed, say so in the method report.
 7. **Respect data terms:** OSM and Copernicus attribution, Open-Meteo fair use, no scraping against terms. Cache downloads to disk; be gentle with Overpass.
 8. **Scope guard:** build Tier A first (see `docs/PLAN.md`). Do not start Tier B/C until Tier A works end to end. Never add features from the "Cut" list.
+
+## Current status and fix backlog (updated 2026-10-24 — keep this section current)
+
+Final round: Saturday, 10 min presentation + 5 min Q&A, live demo optional. The core idea must not change. Deck, script and team checklist are in `presentation/` (`index.html`, `SCRIPT.md`, `TEAM_CHECKLIST.md`). The deck describes the app **after** the P0 fixes below; `TEAM_CHECKLIST.md` §3 lists which slide claims depend on which fix.
+
+**What is real (in code on main; the live site updates once Render/Vercel redeploy):** flagged roads (same rule as routing: bridges excluded, no feature cap), routing (`floodroute/routing.py`), hospitals (`data/processed/hospitals.json`), destination marker + fit-to-route on the map. **Still fixture/hard-coded:** rain scenarios, validation numbers, EDA, city view.
+
+**Product focus (agreed with the user 2026-10-24):** at most two differentiating features. (1) Headline: today's forecast by default → one answer card → "Send to driver" via WhatsApp (`wa.me` prefilled text) and SMS (`sms:` link), opening the phone view with the route; a person taps send (no paid WhatsApp/SMS APIs). (2) If time: "fix first" city view. No chat agent, no LLM in the core; an LLM may only rephrase/translate the briefing with a template fallback and a number check.
+
+**Decisions (2026-10-24):** routes go to the nearest of 28 major hospitals = exact OSM names in `config.yaml` `hospitals.destination_names` (an ASSUMPTION, shown in Limits; KEM and Cooper are not `amenity=hospital` in OSM). Routing uses free-flow times from OSM speeds. The graph has main roads only, so `cut_off` means "no flood-safe main-road route" (~24% of in-area grid points at 15% share). Real demo cases at 15%: Chembur Circle → ok, +2.9 min, K.J. Somaiya → Rajawadi; Colaba Causeway → cut_off; Bandra West → no_change; Hindmata → ok +0.6.
+
+**Real data already on disk (not yet wired into the API):**
+- `data/raw/rain_archive.csv`: Open-Meteo daily rain 2005–2025, 7,670 days, 0 missing. Top day 2016-09-22 = 251.1 mm. 26 Jul 2005 = 69.6 mm in the reanalysis (the gauge reported ~944 mm, so reanalysis understates extremes).
+- `data/raw/hospitals_osm.json`: 569 OSM hospital features in the bbox, 550 named, 34 tagged `emergency=yes` (some are small clinics).
+- `data/processed/graph.pkl` (5,041 nodes, 9,746 edges, OSMnx 2.1.1) and `edges_scored.parquet` (470 bridges, 21 underpasses).
+
+**Real validation result (recomputed 2026-10-23 from `validation_spots_evaluated.csv` + `edges_scored.parquet`):** 13 of 14 spots within 150 m of a road; AUC 0.46 (bootstrap 95% CI 0.32–0.61, 2,000 resamples, seed 42); elevation-only baseline 0.45; random 0.50; 1/13 spots in the top 15% flagged. The numbers hard-coded in `RealBackend.validation()` (AUC 0.632, catch rate 0.286, CI [0.49, 0.76]) do NOT match the data and must be removed. Do not re-tune weights to improve this; if weights change, disclose it.
+
+**P0 backlog (do in this order; tick in `presentation/TEAM_CHECKLIST.md` §2):**
+1. ✅ DONE 2026-10-24 — Real routing in `floodroute/routing.py`: NetworkX shortest path by `travel_time_s` on `graph.pkl` to the nearest hospital; same again with flagged edges removed (`floodroute/flagging.py`); return coords along edge geometry; statuses `ok | cut_off | no_change | outside_area`. Wire into `RealBackend.route`.
+2. Real rain scenarios: `pipeline/03_fetch_rain.py` → `data/processed/scenarios.json` (top-10 replay days + forecast, IMD category and flag share from `config.yaml`). Wire into `RealBackend.scenarios`.
+3. ✅ DONE 2026-10-24 — Real hospitals: named OSM hospitals snapped to graph nodes (`pipeline/01b_build_hospitals.py`) → `data/processed/hospitals.json`. Wire into `RealBackend.hospitals`.
+4. Honest validation: `pipeline/05_validate.py` → `validation_results.json`; `RealBackend.validation` reads it; the reliability page shows n, AUC, CI, baseline and misses.
+5. Honest data mode: fixture-backed endpoints show the fixture ribbon until replaced.
+6. ✅ DONE 2026-10-24 — Map UX: after a click, draw the normal route (dashed blue) and safe route (solid teal) from the patient pin along streets, fit bounds, and highlight the destination hospital.
+7. Backup demo recording at `assets/demo_backup.mp4`.
+8. Feature 1: today's forecast default + answer card + "Send to driver" (WhatsApp/SMS link) + phone view opened by the link.
+
+Local run: `.claude/launch.json` has `api` (uvicorn on :8000) and `web` (Next.js on :3000); `web/.env.local` sets `NEXT_PUBLIC_API_BASE=http://localhost:8000` (git-ignored).
 
 ## Scope tiers (summary)
 

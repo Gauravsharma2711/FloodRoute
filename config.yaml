@@ -67,7 +67,40 @@ validation:
 routing:
   default_speed_kmh_fallback: 25
   origin_sample_size: 400        # origins for criticality / city view (Tier B)
+  max_snap_m: 500                # a clicked point farther than this from any routable road is "outside_area"
 
-# Hospitals: OSM amenity=hospital with a name. Optional emergency=yes used only if tagged.
+# Hospitals: OSM amenity=hospital with a name (pipeline/01b_build_hospitals.py).
 hospitals:
   require_name: true
+  # ASSUMPTION: ambulances are routed to the nearest of these major general hospitals (public + large
+  # private), matched by their exact OpenStreetMap name. Team-curated judgement, not an official list:
+  # shown in the app's Limits, and emergency availability must be confirmed with 108 EMS before real use.
+  # Not in OSM as amenity=hospital in the bbox (so not routable): KEM Hospital, Cooper Hospital.
+  destination_names:
+    - "Sion Hospital"
+    - "L.T.Muncipal Medical College and Sion Hospital"
+    - "BYL Nair hospital"
+    - "J. J. Hospital"
+    - "St George Hospital"
+    - "K B Bhabha Municipal General Hospital"
+    - "Bhabha Hospital"
+    - "Rajawadi Hospital"
+    - "V.N. Desai Hospital"
+    - "Bombay Hospital"
+    - "Hinduja Hospital"
+    - "Lilavati Hospital and Research Centre"
+    - "Nanavati Hospital, Mumbai"
+    - "Jaslok Hospital and Research Centre"
+    - "Saifee Hospital"
+    - "Masina Hospital"
+    - "Holy Family Hospital, Mumbai"
+    - "S.L. Raheja Hospital"
+    - "Guru Nanak Hospital"
+    - "K.J. Somaiya Hospital and Research Centre"
+    - "Dr. L. H. Hiranandani Hospital"
+    - "Kokilaben Dhirubhai Ambani Hospital, Mumbai"
+    - "SevenHills Reliance Foundation Hospital"
+    - "Sir H. N. Hospital & Research Centre;Sir H.N Reliance foundation hospital"
+    - "Gleneagles Hospital Super Speciality and Transplant Center"
+    - "Wockhardt Hospitals, South Mumbai"
+    - "Holy Spirit Hospital"

@@ -133,7 +133,8 @@ export default function Home() {
       .catch((err) => {
         if (err.name !== "AbortError") {
           console.error("Routing error:", err);
-          setRouteError("Unable to reach routing service. Retrying or using cached corridor data...");
+          setRouteData(null);
+          setRouteError(err instanceof Error ? err.message : "Could not calculate a route. Please try again.");
           setIsRoutingLoading(false);
         }
       });

@@ -1,0 +1,5392 @@
+[
+ {
+  "id": "osm-node-346643796",
+  "name": "National Centre for Training and Research into Cerebral Palsy",
+  "lat": 19.051643,
+  "lon": 72.832132,
+  "node": 13508522909,
+  "snap_m": 194.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-860315256",
+  "name": "Saifee Ambulance",
+  "lat": 18.959938,
+  "lon": 72.831496,
+  "node": 13997444808,
+  "snap_m": 189.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-1347550460",
+  "name": "Jevan Vikas Hospital",
+  "lat": 19.11065,
+  "lon": 72.848327,
+  "node": 1344357227,
+  "snap_m": 195.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-1398715651",
+  "name": "JOY Hospital",
+  "lat": 19.055877,
+  "lon": 72.897395,
+  "node": 4357273820,
+  "snap_m": 20.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-1398717565",
+  "name": "Inlaks Hospital",
+  "lat": 19.046613,
+  "lon": 72.896422,
+  "node": 7362076314,
+  "snap_m": 154.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-1640244309",
+  "name": "Dr Maitreyee Parulekar",
+  "lat": 19.096288,
+  "lon": 72.84838,
+  "node": 482278859,
+  "snap_m": 237.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-1787854399",
+  "name": "Sujay Hospital",
+  "lat": 19.116234,
+  "lon": 72.833963,
+  "node": 9137843242,
+  "snap_m": 28.8,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-1855812194",
+  "name": "Powai Hospital",
+  "lat": 19.124088,
+  "lon": 72.916451,
+  "node": 1879817632,
+  "snap_m": 235.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-2186668978",
+  "name": "Dr Manveen Gill",
+  "lat": 19.132483,
+  "lon": 72.827492,
+  "node": 7398098990,
+  "snap_m": 183.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-2238635335",
+  "name": "Ameeta Patil Nursing Home",
+  "lat": 19.062225,
+  "lon": 72.899729,
+  "node": 3376195596,
+  "snap_m": 48.0,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-2930722306",
+  "name": "Dr.zamil",
+  "lat": 19.061578,
+  "lon": 72.928213,
+  "node": 1366795192,
+  "snap_m": 358.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3204211842",
+  "name": "jonsons diagnostics",
+  "lat": 19.050148,
+  "lon": 72.919334,
+  "node": 1366794894,
+  "snap_m": 305.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3205777384",
+  "name": "nidan hospital",
+  "lat": 19.092466,
+  "lon": 72.912173,
+  "node": 3245626610,
+  "snap_m": 23.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3205813953",
+  "name": "bba",
+  "lat": 19.06026,
+  "lon": 72.911334,
+  "node": 13674285913,
+  "snap_m": 222.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3205935610",
+  "name": "mahaveer hospital",
+  "lat": 19.067753,
+  "lon": 72.927593,
+  "node": 1366795254,
+  "snap_m": 645.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3206033563",
+  "name": "maa hospital",
+  "lat": 19.058506,
+  "lon": 72.890405,
+  "node": 1642951891,
+  "snap_m": 50.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3213764477",
+  "name": "sanjeevan hospital",
+  "lat": 19.060871,
+  "lon": 72.924769,
+  "node": 1366795192,
+  "snap_m": 18.2,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3213767187",
+  "name": "Metalife",
+  "lat": 19.066891,
+  "lon": 72.913418,
+  "node": 1665624924,
+  "snap_m": 351.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3215517363",
+  "name": "AMAN",
+  "lat": 19.052455,
+  "lon": 72.918542,
+  "node": 13660755808,
+  "snap_m": 132.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3289580677",
+  "name": "Kurla Nursing Room",
+  "lat": 19.070817,
+  "lon": 72.880679,
+  "node": 1366009054,
+  "snap_m": 315.2,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3403264488",
+  "name": "gr8 smile dental clinic",
+  "lat": 19.106819,
+  "lon": 72.850744,
+  "node": 1913053676,
+  "snap_m": 298.1,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3529547303",
+  "name": "new life hospital",
+  "lat": 19.089761,
+  "lon": 72.905,
+  "node": 2244961593,
+  "snap_m": 128.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3532038985",
+  "name": "muktabai hospital",
+  "lat": 19.094602,
+  "lon": 72.903291,
+  "node": 13717731389,
+  "snap_m": 265.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3532119818",
+  "name": "v care hospital intensive& unit care",
+  "lat": 19.063478,
+  "lon": 72.881788,
+  "node": 13681073487,
+  "snap_m": 27.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3532124714",
+  "name": "arpan nursing home",
+  "lat": 19.069393,
+  "lon": 72.87812,
+  "node": 1366009054,
+  "snap_m": 121.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3532124717",
+  "name": "fauziya hospital",
+  "lat": 19.062758,
+  "lon": 72.873176,
+  "node": 6494896736,
+  "snap_m": 52.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3532126359",
+  "name": "arayan hospital",
+  "lat": 19.06361,
+  "lon": 72.881927,
+  "node": 13681073487,
+  "snap_m": 13.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3587131699",
+  "name": "Anket Nursing Home",
+  "lat": 19.130894,
+  "lon": 72.929905,
+  "node": 6583145396,
+  "snap_m": 328.3,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3767106111",
+  "name": "Bellevue Multispeciality Hospital",
+  "lat": 19.128999,
+  "lon": 72.831676,
+  "node": 7157873784,
+  "snap_m": 112.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3951526714",
+  "name": "Nanavati Hospital, Mumbai",
+  "lat": 19.095968,
+  "lon": 72.840012,
+  "node": 245669557,
+  "snap_m": 492.6,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-3951538079",
+  "name": "Surya Mother And Child Speciality Hospital",
+  "lat": 19.08573,
+  "lon": 72.837734,
+  "node": 13522606638,
+  "snap_m": 179.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3951538080",
+  "name": "Surya Childrens Hospital",
+  "lat": 19.085513,
+  "lon": 72.837945,
+  "node": 245668764,
+  "snap_m": 154.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3979081599",
+  "name": "Nutan Mammography and Sonography Centre",
+  "lat": 19.114084,
+  "lon": 72.84172,
+  "node": 867003219,
+  "snap_m": 37.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4209578999",
+  "name": "Bhatia",
+  "lat": 18.965677,
+  "lon": 72.813509,
+  "node": 13901790649,
+  "snap_m": 54.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4216741290",
+  "name": "Mukund Hospital",
+  "lat": 19.111503,
+  "lon": 72.872393,
+  "node": 1184146819,
+  "snap_m": 128.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4326473789",
+  "name": "Tiwari Hospital",
+  "lat": 19.09722,
+  "lon": 72.888041,
+  "node": 11652543075,
+  "snap_m": 186.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4352387478",
+  "name": "Ramakrishna Mission Hospital, Mumbai",
+  "lat": 19.07502,
+  "lon": 72.835639,
+  "node": 2629418529,
+  "snap_m": 150.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4423695890",
+  "name": "Smt S.R.Mehta and Sir K.P.Cardiac Institute",
+  "lat": 19.032341,
+  "lon": 72.859551,
+  "node": 245662357,
+  "snap_m": 47.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4672225593",
+  "name": "Pikale Hospital",
+  "lat": 19.040152,
+  "lon": 72.844575,
+  "node": 10277719229,
+  "snap_m": 193.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4848773727",
+  "name": "Mata Lachmi Hospital",
+  "lat": 19.035838,
+  "lon": 72.860982,
+  "node": 2247988626,
+  "snap_m": 48.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4996322798",
+  "name": "Kurla Municipal Hospital",
+  "lat": 19.081508,
+  "lon": 72.883116,
+  "node": 1366028009,
+  "snap_m": 258.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-4998848423",
+  "name": "Bharatiya Arogya Nidhi Sheth Kantilal C. Parikh General Hospital",
+  "lat": 19.111784,
+  "lon": 72.828343,
+  "node": 10277666160,
+  "snap_m": 78.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-5090930970",
+  "name": "Peoples Mobile Hospitals",
+  "lat": 19.006653,
+  "lon": 72.817941,
+  "node": 11925633453,
+  "snap_m": 32.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-5099872961",
+  "name": "Gleneagles Hospital Super Speciality and Transplant Center",
+  "lat": 18.999443,
+  "lon": 72.840501,
+  "node": 10883588501,
+  "snap_m": 129.8,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-5496408819",
+  "name": "Marol",
+  "lat": 19.11722,
+  "lon": 72.882342,
+  "node": 13882649330,
+  "snap_m": 42.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-5506320776",
+  "name": "Shivam Nursing Home",
+  "lat": 19.064624,
+  "lon": 72.851022,
+  "node": 12350391112,
+  "snap_m": 38.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-6322310753",
+  "name": "Ashirvaad Heart Hospital",
+  "lat": 19.076379,
+  "lon": 72.90547,
+  "node": 8703487829,
+  "snap_m": 135.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-6801919192",
+  "name": "Nihal Nursing Home & Opthalmologist",
+  "lat": 19.125372,
+  "lon": 72.919086,
+  "node": 1879817632,
+  "snap_m": 174.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-6881057808",
+  "name": "Dr. R. N. Cooper General Hospital Blood Bank",
+  "lat": 19.10785,
+  "lon": 72.835987,
+  "node": 9771116368,
+  "snap_m": 109.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7042871859",
+  "name": "Niramaya General Hospital",
+  "lat": 19.050003,
+  "lon": 72.904471,
+  "node": 245664187,
+  "snap_m": 411.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7042942734",
+  "name": "Dr.Sanjay Sonar Laparoscopy and Scopy Center",
+  "lat": 19.059025,
+  "lon": 72.897313,
+  "node": 1643351856,
+  "snap_m": 121.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7042955283",
+  "name": "Shree Chembur Jain Medical Relief Centre",
+  "lat": 19.056374,
+  "lon": 72.89574,
+  "node": 245665303,
+  "snap_m": 60.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7042963296",
+  "name": "Yash Eye Care and Polyclinic",
+  "lat": 19.060839,
+  "lon": 72.898554,
+  "node": 245665982,
+  "snap_m": 24.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7042999151",
+  "name": "Vatsal Nicu and Childrens Hospital",
+  "lat": 19.082446,
+  "lon": 72.909251,
+  "node": 13719012985,
+  "snap_m": 26.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043001747",
+  "name": "Aditya Health Care Hospital",
+  "lat": 19.057994,
+  "lon": 72.908798,
+  "node": 1366857439,
+  "snap_m": 341.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043029973",
+  "name": "Nayak Medicare - Chembur",
+  "lat": 19.045683,
+  "lon": 72.902501,
+  "node": 9311818784,
+  "snap_m": 186.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043035499",
+  "name": "Dr. Das Hospital - Chembur (Mumbai)",
+  "lat": 19.059699,
+  "lon": 72.899754,
+  "node": 1643264330,
+  "snap_m": 62.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043055857",
+  "name": "Laxmi Maternity and Nursing Home, Mumbai",
+  "lat": 19.057086,
+  "lon": 72.898885,
+  "node": 245665307,
+  "snap_m": 130.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043060180",
+  "name": "Hegde Hospital",
+  "lat": 19.060662,
+  "lon": 72.899714,
+  "node": 13789652001,
+  "snap_m": 34.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043077889",
+  "name": "Dr Nandita Rane's Eye Clinic",
+  "lat": 19.069437,
+  "lon": 72.903854,
+  "node": 1665625040,
+  "snap_m": 87.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043090395",
+  "name": "Genesis Speciality Center (Health-Check Up",
+  "lat": 19.019031,
+  "lon": 72.863967,
+  "node": 7375884906,
+  "snap_m": 70.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043106193",
+  "name": "Patankar's Hand and Limb Reconstruction Clinic",
+  "lat": 19.061003,
+  "lon": 72.898597,
+  "node": 245665982,
+  "snap_m": 43.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043125151",
+  "name": "Icon Hospital and Research Centre",
+  "lat": 19.061819,
+  "lon": 72.898084,
+  "node": 10061003741,
+  "snap_m": 18.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043174029",
+  "name": "Sangita Maternity Surgical and Diagnostic Centre",
+  "lat": 19.11816,
+  "lon": 72.844288,
+  "node": 865063296,
+  "snap_m": 100.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043174030",
+  "name": "Ojas Eye Hospital",
+  "lat": 19.063228,
+  "lon": 72.834439,
+  "node": 1654363420,
+  "snap_m": 54.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043182324",
+  "name": "R. K. Hospital, Mumbai",
+  "lat": 19.080328,
+  "lon": 72.842185,
+  "node": 10081148287,
+  "snap_m": 97.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043188926",
+  "name": "Inlaks General Hospital",
+  "lat": 19.046762,
+  "lon": 72.893417,
+  "node": 12295858288,
+  "snap_m": 9.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043230046",
+  "name": "Prime Orthopedic Speciality Hospital, Mumbai",
+  "lat": 19.128431,
+  "lon": 72.846896,
+  "node": 1936580349,
+  "snap_m": 36.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043233247",
+  "name": "Swastik Hospital and Research Centre, Mumbai",
+  "lat": 19.055218,
+  "lon": 72.88989,
+  "node": 13789930614,
+  "snap_m": 102.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043236781",
+  "name": "Sitla Hospital",
+  "lat": 19.052663,
+  "lon": 72.891166,
+  "node": 2629741753,
+  "snap_m": 187.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043348148",
+  "name": "Nandan Maternity and Surgical Home",
+  "lat": 19.079791,
+  "lon": 72.842705,
+  "node": 245668344,
+  "snap_m": 36.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043376493",
+  "name": "Mumbai Retina Centre",
+  "lat": 19.078491,
+  "lon": 72.838075,
+  "node": 1936355426,
+  "snap_m": 30.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043388690",
+  "name": "Malpani Eye Hospital and Laser Centre",
+  "lat": 19.087944,
+  "lon": 72.837669,
+  "node": 9985506416,
+  "snap_m": 198.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043397403",
+  "name": "S B Nursing Home and Icu",
+  "lat": 19.124205,
+  "lon": 72.890615,
+  "node": 1879817634,
+  "snap_m": 196.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043397404",
+  "name": "Sri Sai Eye Care Centre",
+  "lat": 19.125493,
+  "lon": 72.918184,
+  "node": 1879817632,
+  "snap_m": 84.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043397894",
+  "name": "Kenias Eye Hospital",
+  "lat": 19.089509,
+  "lon": 72.838576,
+  "node": 9985506415,
+  "snap_m": 30.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043397906",
+  "name": "Centre For Sight, Juhu",
+  "lat": 19.112953,
+  "lon": 72.837924,
+  "node": 12310289349,
+  "snap_m": 60.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043448094",
+  "name": "Mangeshikar Access Gynecology and Infertility Center",
+  "lat": 18.960315,
+  "lon": 72.810207,
+  "node": 245656236,
+  "snap_m": 93.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043548005",
+  "name": "Shroff Eye Hospital",
+  "lat": 19.060456,
+  "lon": 72.836935,
+  "node": 7043548004,
+  "snap_m": 25.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043574603",
+  "name": "Vinod Sharma Memorial Medical Centre",
+  "lat": 18.923094,
+  "lon": 72.827607,
+  "node": 12299724446,
+  "snap_m": 86.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043693171",
+  "name": "Noble Hospital, Ghatkopar",
+  "lat": 19.087816,
+  "lon": 72.906932,
+  "node": 12334170884,
+  "snap_m": 87.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043769618",
+  "name": "Excel Ent Hospital",
+  "lat": 19.082457,
+  "lon": 72.909229,
+  "node": 13719012985,
+  "snap_m": 25.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043778826",
+  "name": "Parle Eye Hospital",
+  "lat": 19.101322,
+  "lon": 72.84846,
+  "node": 1913053666,
+  "snap_m": 270.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044064894",
+  "name": "Dr.Vaze Hospital",
+  "lat": 19.024031,
+  "lon": 72.836898,
+  "node": 13552431988,
+  "snap_m": 75.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044071693",
+  "name": "Asha Surgical and Maternity Home",
+  "lat": 19.013534,
+  "lon": 72.828379,
+  "node": 13257206491,
+  "snap_m": 40.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044344099",
+  "name": "Mukund Maternity and Surgical Nursing Home",
+  "lat": 19.11113,
+  "lon": 72.872127,
+  "node": 1184146819,
+  "snap_m": 87.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044376947",
+  "name": "Vikas Nursing Home, Mumbai",
+  "lat": 19.062818,
+  "lon": 72.92074,
+  "node": 3215559553,
+  "snap_m": 208.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044466685",
+  "name": "Dr. Yash Shah Total Eye Care",
+  "lat": 18.957682,
+  "lon": 72.821319,
+  "node": 13904524536,
+  "snap_m": 157.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044553386",
+  "name": "Krishna Cardiac Care Centre, Mumbai",
+  "lat": 19.01966,
+  "lon": 72.848682,
+  "node": 1179257896,
+  "snap_m": 96.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044669600",
+  "name": "Tara Neo Surg Hospital",
+  "lat": 19.075759,
+  "lon": 72.903055,
+  "node": 4264598331,
+  "snap_m": 57.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044692216",
+  "name": "The Eye Super Specialities",
+  "lat": 19.079303,
+  "lon": 72.902154,
+  "node": 10279742511,
+  "snap_m": 200.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044745238",
+  "name": "Advanced Orthopaedic and Super Speciality Center",
+  "lat": 19.079153,
+  "lon": 72.903943,
+  "node": 10279742511,
+  "snap_m": 43.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7044829632",
+  "name": "Sushila Hospital-Icu and Maternity",
+  "lat": 19.082932,
+  "lon": 72.881944,
+  "node": 1366028058,
+  "snap_m": 319.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7045020590",
+  "name": "V Care Hospital and Icu",
+  "lat": 19.062706,
+  "lon": 72.881587,
+  "node": 13681073487,
+  "snap_m": 116.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7045155680",
+  "name": "Universal Eye Clinic and Surgical Centre",
+  "lat": 19.043144,
+  "lon": 72.893694,
+  "node": 13676889444,
+  "snap_m": 36.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7045282445",
+  "name": "Mahima Hospital and Polyclinic",
+  "lat": 19.130595,
+  "lon": 72.81844,
+  "node": 296849532,
+  "snap_m": 132.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7045291440",
+  "name": "Siddivinayak Healthcare Pvt Ltd",
+  "lat": 19.013959,
+  "lon": 72.832586,
+  "node": 13535811790,
+  "snap_m": 110.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7045315311",
+  "name": "Indu Child Care Center",
+  "lat": 19.134409,
+  "lon": 72.824366,
+  "node": 884182590,
+  "snap_m": 60.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7045324038",
+  "name": "Aryan Hospital and Iccu - Kurla-Mumbai",
+  "lat": 19.063008,
+  "lon": 72.882391,
+  "node": 13681073487,
+  "snap_m": 95.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7046326222",
+  "name": "Navjivan Maternity and Surgical Nursing Home",
+  "lat": 19.097283,
+  "lon": 72.84938,
+  "node": 482278859,
+  "snap_m": 114.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7046488275",
+  "name": "Kolekar Hospital & ICCU",
+  "lat": 19.059882,
+  "lon": 72.901129,
+  "node": 10306082438,
+  "snap_m": 50.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7046777602",
+  "name": "Surana Sethia Hospital And Research Centre",
+  "lat": 19.053555,
+  "lon": 72.887006,
+  "node": 12836695797,
+  "snap_m": 42.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047430578",
+  "name": "Durga Maternity and Surgical Nursing Home",
+  "lat": 19.075849,
+  "lon": 72.860824,
+  "node": 14191552666,
+  "snap_m": 103.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047542514",
+  "name": "Vatsalya Maternity and Surgical Nursing Home",
+  "lat": 19.085865,
+  "lon": 72.905306,
+  "node": 13717893201,
+  "snap_m": 37.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047553990",
+  "name": "Shreeji Hospital, Ghatkopar",
+  "lat": 19.084493,
+  "lon": 72.904813,
+  "node": 3245675983,
+  "snap_m": 16.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047557038",
+  "name": "Banaji Eyesurgery and Laser Center",
+  "lat": 18.935836,
+  "lon": 72.833237,
+  "node": 1643105844,
+  "snap_m": 152.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047598027",
+  "name": "Nirmala Maternity and Surgical Hospital with Polyclinic",
+  "lat": 18.986894,
+  "lon": 72.830687,
+  "node": 13802289410,
+  "snap_m": 113.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047711117",
+  "name": "Siddhivinayak Surgical Centre",
+  "lat": 19.127407,
+  "lon": 72.831462,
+  "node": 7157873782,
+  "snap_m": 76.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047933154",
+  "name": "Aryan Hospital and Icu",
+  "lat": 18.98986,
+  "lon": 72.841224,
+  "node": 14013889303,
+  "snap_m": 29.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048131897",
+  "name": "Purandare Hospital, Mumbai",
+  "lat": 19.129351,
+  "lon": 72.822122,
+  "node": 9118087826,
+  "snap_m": 75.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048172474",
+  "name": "Vaishnav Seva Samaj",
+  "lat": 19.033861,
+  "lon": 72.859015,
+  "node": 10113324236,
+  "snap_m": 115.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048261227",
+  "name": "Priyanka Maternity and Surgical Nursing Home",
+  "lat": 19.100678,
+  "lon": 72.890722,
+  "node": 623885624,
+  "snap_m": 160.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048433639",
+  "name": "Foresight Eye Center",
+  "lat": 18.956311,
+  "lon": 72.813386,
+  "node": 2442510064,
+  "snap_m": 46.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048433662",
+  "name": "Vivek Maternity and Nursing Home",
+  "lat": 19.094061,
+  "lon": 72.900036,
+  "node": 1366097133,
+  "snap_m": 32.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048433674",
+  "name": "Sujata Medicare (Sujata Gyanaecology Clinic);Dhake Colony",
+  "lat": 19.127861,
+  "lon": 72.83338,
+  "node": 7157873784,
+  "snap_m": 237.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048747818",
+  "name": "Saket Maternity and Nursing Home",
+  "lat": 19.135208,
+  "lon": 72.814064,
+  "node": 13857111140,
+  "snap_m": 318.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048777736",
+  "name": "Dr. Nisars Eye Care Centre",
+  "lat": 18.959061,
+  "lon": 72.81167,
+  "node": 13905111277,
+  "snap_m": 13.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048863374",
+  "name": "Varsha Parekh Maternity and Surgical Hospital",
+  "lat": 19.061032,
+  "lon": 72.898513,
+  "node": 245665982,
+  "snap_m": 43.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048872963",
+  "name": "Shree Sukh Shanti Hospital",
+  "lat": 19.087879,
+  "lon": 72.902334,
+  "node": 2622177342,
+  "snap_m": 47.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7048966028",
+  "name": "Saraswati Eye Hospital, Mumbai",
+  "lat": 19.079996,
+  "lon": 72.904321,
+  "node": 1643027258,
+  "snap_m": 56.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049041346",
+  "name": "Ashirwad Heart Hospital",
+  "lat": 19.076179,
+  "lon": 72.905641,
+  "node": 8703487829,
+  "snap_m": 115.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049124019",
+  "name": "Shree Vardhaman Sthanakvasi Jain Shravak Sangh Dadar Sanchalit Navneet Jain Health Centre",
+  "lat": 19.020467,
+  "lon": 72.838378,
+  "node": 6165604792,
+  "snap_m": 167.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049182746",
+  "name": "Amruta Surgical and Maternity Home",
+  "lat": 19.092629,
+  "lon": 72.912514,
+  "node": 3245626610,
+  "snap_m": 63.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049336179",
+  "name": "Criticare Multispeciality Hospital and Research Centre",
+  "lat": 19.115688,
+  "lon": 72.83533,
+  "node": 9137843243,
+  "snap_m": 43.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049454051",
+  "name": "Balaji Speciality Hospital",
+  "lat": 19.107906,
+  "lon": 72.888,
+  "node": 245671529,
+  "snap_m": 188.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049584815",
+  "name": "RG Stone Urology and Laparoscopy Hospital, Khar",
+  "lat": 19.074076,
+  "lon": 72.832961,
+  "node": 245667874,
+  "snap_m": 189.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049683148",
+  "name": "Shanmukhananda Jasubhai R k shah Medical Centre",
+  "lat": 19.031047,
+  "lon": 72.860038,
+  "node": 4362787511,
+  "snap_m": 57.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049712542",
+  "name": "Kokilaben Dhirubhai Ambani Hospital, Mumbai",
+  "lat": 19.131295,
+  "lon": 72.82463,
+  "node": 884364447,
+  "snap_m": 187.3,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-7049755583",
+  "name": "Dr Telangs Dhanvantari Hospital",
+  "lat": 19.118872,
+  "lon": 72.843332,
+  "node": 865063296,
+  "snap_m": 180.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049756932",
+  "name": "Dr.Pintos Pathological Laboratory",
+  "lat": 19.121252,
+  "lon": 72.87997,
+  "node": 7416574461,
+  "snap_m": 109.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049800769",
+  "name": "Dr.Sakhalkar's Maternity and Nursing Home",
+  "lat": 19.124449,
+  "lon": 72.861146,
+  "node": 1651800483,
+  "snap_m": 197.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049803405",
+  "name": "Suyog Urology Centre",
+  "lat": 19.093182,
+  "lon": 72.913152,
+  "node": 3245626610,
+  "snap_m": 152.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049812966",
+  "name": "Punamiya Hospital, Mumbai",
+  "lat": 19.01247,
+  "lon": 72.834345,
+  "node": 6430837133,
+  "snap_m": 114.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049822998",
+  "name": "Patil Hospital, Mumbai",
+  "lat": 19.123593,
+  "lon": 72.842336,
+  "node": 9201441624,
+  "snap_m": 78.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7049847480",
+  "name": "Oculus Eye Hospital Pvt. Ltd",
+  "lat": 19.114371,
+  "lon": 72.833412,
+  "node": 9137843244,
+  "snap_m": 177.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7050167816",
+  "name": "Zynova Heart Hospital",
+  "lat": 19.089031,
+  "lon": 72.907144,
+  "node": 12334170885,
+  "snap_m": 54.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7050575276",
+  "name": "Prince Aly Khan Hospital",
+  "lat": 18.970777,
+  "lon": 72.836609,
+  "node": 5637109060,
+  "snap_m": 415.6,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7050614446",
+  "name": "Khushal Hospital and Maternity Home",
+  "lat": 19.085204,
+  "lon": 72.91006,
+  "node": 1454672572,
+  "snap_m": 138.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7050932259",
+  "name": "Hiren Mehta Eye Care Centre",
+  "lat": 19.079808,
+  "lon": 72.905886,
+  "node": 1643027258,
+  "snap_m": 198.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051069996",
+  "name": "Dr Thakur Hospital",
+  "lat": 19.025071,
+  "lon": 72.840078,
+  "node": 7371092120,
+  "snap_m": 35.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051069997",
+  "name": "Ashirwad Children and Surgical Hospital",
+  "lat": 19.106492,
+  "lon": 72.887781,
+  "node": 10279615797,
+  "snap_m": 58.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051070010",
+  "name": "Reliance Life Sciences Pvt. Ltd",
+  "lat": 19.005028,
+  "lon": 72.822556,
+  "node": 245659720,
+  "snap_m": 78.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051070842",
+  "name": "Mallika Hospital and Envision Eye Centre",
+  "lat": 19.137379,
+  "lon": 72.846665,
+  "node": 1936499595,
+  "snap_m": 157.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051176229",
+  "name": "Kiran Care and Cure Hospital",
+  "lat": 19.10681,
+  "lon": 72.865545,
+  "node": 1185553719,
+  "snap_m": 122.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051342865",
+  "name": "Doctor Pareek's Deafness Clinic and ENT Hospital",
+  "lat": 19.128856,
+  "lon": 72.829476,
+  "node": 867276452,
+  "snap_m": 39.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051595414",
+  "name": "Mangal Anand Hospital",
+  "lat": 19.056599,
+  "lon": 72.89054,
+  "node": 10279771671,
+  "snap_m": 40.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051650092",
+  "name": "Umang Maternity and Surgical Nursing Home",
+  "lat": 19.116902,
+  "lon": 72.871322,
+  "node": 3736905346,
+  "snap_m": 134.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7051825616",
+  "name": "Sugun Hospital Multispeciality Diagnostic, Icu",
+  "lat": 19.1172,
+  "lon": 72.882747,
+  "node": 13911665120,
+  "snap_m": 9.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052027524",
+  "name": "Jashem Eye Institute",
+  "lat": 19.027928,
+  "lon": 72.853838,
+  "node": 245661837,
+  "snap_m": 141.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052058100",
+  "name": "Vyas' Surgery",
+  "lat": 19.034287,
+  "lon": 72.859189,
+  "node": 10113324236,
+  "snap_m": 66.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052181497",
+  "name": "Sai Hospital",
+  "lat": 19.039966,
+  "lon": 72.85462,
+  "node": 13504496394,
+  "snap_m": 62.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052185493",
+  "name": "Khar Clinico-Pathology Laboratory",
+  "lat": 19.074446,
+  "lon": 72.834412,
+  "node": 2629418529,
+  "snap_m": 103.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052294540",
+  "name": "Ashirwad Hospital and Polyclinic",
+  "lat": 19.052156,
+  "lon": 72.909252,
+  "node": 1367092731,
+  "snap_m": 136.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052303296",
+  "name": "Aseem Orthopaedic Hospital",
+  "lat": 19.079945,
+  "lon": 72.854523,
+  "node": 4342420750,
+  "snap_m": 224.1,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052365607",
+  "name": "Brahman Sabha, Mhaskar Gruh and General Nursing Home",
+  "lat": 18.956803,
+  "lon": 72.81904,
+  "node": 245655778,
+  "snap_m": 92.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052388277",
+  "name": "Tata Memorial Hospital",
+  "lat": 19.004984,
+  "lon": 72.843213,
+  "node": 10613423002,
+  "snap_m": 67.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052525501",
+  "name": "J.P Hospital, Mumbai",
+  "lat": 19.101253,
+  "lon": 72.8853,
+  "node": 245670344,
+  "snap_m": 187.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052767202",
+  "name": "Samarth Hospital, Mumbai",
+  "lat": 19.10958,
+  "lon": 72.926494,
+  "node": 1640769588,
+  "snap_m": 163.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052811704",
+  "name": "Navnirman Maternity and Surgical Hospital",
+  "lat": 19.089012,
+  "lon": 72.907079,
+  "node": 12334170885,
+  "snap_m": 48.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052813761",
+  "name": "Dr. Vaidya Eye Hospital",
+  "lat": 19.127359,
+  "lon": 72.831581,
+  "node": 7157873782,
+  "snap_m": 87.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7052963441",
+  "name": "Dr.Palep's Priyank Maternity Nursing Home",
+  "lat": 19.014688,
+  "lon": 72.831868,
+  "node": 10277717591,
+  "snap_m": 73.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053014921",
+  "name": "Nulife Hospital, Mumbai",
+  "lat": 19.088102,
+  "lon": 72.905198,
+  "node": 13711148095,
+  "snap_m": 32.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053026376",
+  "name": "Jivdaya Hospital",
+  "lat": 19.088256,
+  "lon": 72.905331,
+  "node": 1366900663,
+  "snap_m": 31.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053034034",
+  "name": "Shradha Heart Hospital",
+  "lat": 19.08815,
+  "lon": 72.905182,
+  "node": 13711148095,
+  "snap_m": 35.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053184769",
+  "name": "Mamta Maternity and Nursing Home",
+  "lat": 19.129382,
+  "lon": 72.815854,
+  "node": 13857111126,
+  "snap_m": 33.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053189597",
+  "name": "Dr.Satish G.Desai",
+  "lat": 19.103515,
+  "lon": 72.851498,
+  "node": 469941496,
+  "snap_m": 65.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053245833",
+  "name": "Dev Nursing Home",
+  "lat": 19.01544,
+  "lon": 72.833599,
+  "node": 10877441444,
+  "snap_m": 112.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053265680",
+  "name": "Suprabha Surgicare",
+  "lat": 19.013639,
+  "lon": 72.845106,
+  "node": 1179261850,
+  "snap_m": 121.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053266063",
+  "name": "Dr. Deosthaci's Eye Care Centre",
+  "lat": 19.041898,
+  "lon": 72.864093,
+  "node": 7372175019,
+  "snap_m": 32.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053273298",
+  "name": "H.J. Doshi Ghatkopar Hindu Sabha Hospital",
+  "lat": 19.085295,
+  "lon": 72.906287,
+  "node": 13717893201,
+  "snap_m": 87.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053277891",
+  "name": "Dr.Chhatres Maternity and Surgical Nursing Home",
+  "lat": 19.025323,
+  "lon": 72.852052,
+  "node": 7371796085,
+  "snap_m": 208.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7053355770",
+  "name": "Well Spring Dr Avinash Phadke Pathlab Clinic",
+  "lat": 19.024178,
+  "lon": 72.838038,
+  "node": 1348056648,
+  "snap_m": 37.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054423656",
+  "name": "Shetty Nursing Home (Shetty Health Services Pvt. Ltd.)",
+  "lat": 18.974795,
+  "lon": 72.812839,
+  "node": 12080057697,
+  "snap_m": 211.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054447906",
+  "name": "Dholkawalla Maternity Home",
+  "lat": 18.952713,
+  "lon": 72.833784,
+  "node": 858671995,
+  "snap_m": 28.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054456795",
+  "name": "Vibha Maternity and Surgical Nursing Home",
+  "lat": 19.116968,
+  "lon": 72.844373,
+  "node": 1392429440,
+  "snap_m": 49.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054526793",
+  "name": "Surlata Hospital",
+  "lat": 19.030722,
+  "lon": 72.841652,
+  "node": 245662295,
+  "snap_m": 97.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054625890",
+  "name": "Dr. Kamat's Hospital",
+  "lat": 19.136145,
+  "lon": 72.85035,
+  "node": 13437636817,
+  "snap_m": 186.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054682098",
+  "name": "Mahatma Gandhi Seva Mandir",
+  "lat": 19.055927,
+  "lon": 72.836856,
+  "node": 347149014,
+  "snap_m": 62.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054725462",
+  "name": "Ameya Surgical and General Nursing Home",
+  "lat": 19.107077,
+  "lon": 72.867375,
+  "node": 12401445371,
+  "snap_m": 128.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054746894",
+  "name": "Dr. Raut's Maternity and Surgical Nursing Home",
+  "lat": 19.08045,
+  "lon": 72.856203,
+  "node": 10653592689,
+  "snap_m": 310.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054759108",
+  "name": "Oma Hospital",
+  "lat": 19.051268,
+  "lon": 72.901816,
+  "node": 13674197201,
+  "snap_m": 145.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054797503",
+  "name": "Dr Kulkarni Hospital",
+  "lat": 19.13595,
+  "lon": 72.852008,
+  "node": 10880800994,
+  "snap_m": 237.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7054852418",
+  "name": "Krishna Eye Centre",
+  "lat": 19.044428,
+  "lon": 72.865166,
+  "node": 10656668354,
+  "snap_m": 56.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055036505",
+  "name": "Sehgal Path Lab",
+  "lat": 19.12915,
+  "lon": 72.825176,
+  "node": 9117998475,
+  "snap_m": 52.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055036574",
+  "name": "Rushabh Eye Hospital and Laser Centre",
+  "lat": 19.059445,
+  "lon": 72.900081,
+  "node": 1643264330,
+  "snap_m": 45.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055144633",
+  "name": "Malhaar Maternity and Nursing Home",
+  "lat": 19.088093,
+  "lon": 72.836329,
+  "node": 10877179697,
+  "snap_m": 242.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055153115",
+  "name": "Medico Surgical Clinic and Hospital",
+  "lat": 19.088305,
+  "lon": 72.90696,
+  "node": 12334170884,
+  "snap_m": 34.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055262419",
+  "name": "Dr Savlas Child Care Centre",
+  "lat": 19.039982,
+  "lon": 72.851173,
+  "node": 13847213884,
+  "snap_m": 230.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055276698",
+  "name": "Doctor Eye Hospital",
+  "lat": 19.114807,
+  "lon": 72.843204,
+  "node": 1936627909,
+  "snap_m": 134.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055279023",
+  "name": "Shanmukhananda Aditya Jyot Eye Institute",
+  "lat": 19.030896,
+  "lon": 72.860059,
+  "node": 4362787511,
+  "snap_m": 74.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055330884",
+  "name": "Dr Eye Institute Pvt Ltd",
+  "lat": 19.138686,
+  "lon": 72.83214,
+  "node": 884379411,
+  "snap_m": 233.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055419121",
+  "name": "Ashwini Maternity and Surgical Hospital,Ghatkopar(E)",
+  "lat": 19.080088,
+  "lon": 72.904344,
+  "node": 1643027258,
+  "snap_m": 47.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055428168",
+  "name": "Yogeshwar Surgical Clinic and Nursing Home - Mumbai",
+  "lat": 18.957344,
+  "lon": 72.824837,
+  "node": 245655919,
+  "snap_m": 141.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055441837",
+  "name": "G.M.Medical Centre - Khar",
+  "lat": 19.07045,
+  "lon": 72.837025,
+  "node": 471554800,
+  "snap_m": 63.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055460057",
+  "name": "Tulip Womens Healthcare Centre - Khar (W)",
+  "lat": 19.066032,
+  "lon": 72.831977,
+  "node": 5887563940,
+  "snap_m": 211.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055476546",
+  "name": "Mother Care Maternity and Surgical Nursing Home - Mumbai",
+  "lat": 19.130979,
+  "lon": 72.846815,
+  "node": 6429075944,
+  "snap_m": 70.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055590161",
+  "name": "Parekh Eye Hospital",
+  "lat": 19.055454,
+  "lon": 72.835639,
+  "node": 1654348856,
+  "snap_m": 84.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055749046",
+  "name": "Kokan Hospital",
+  "lat": 19.133976,
+  "lon": 72.865421,
+  "node": 1651800567,
+  "snap_m": 402.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7055759633",
+  "name": "Ipc Heart Care",
+  "lat": 18.992548,
+  "lon": 72.824335,
+  "node": 11953521026,
+  "snap_m": 167.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7059172378",
+  "name": "Jain Eye Clinic",
+  "lat": 19.079644,
+  "lon": 72.904319,
+  "node": 1643027258,
+  "snap_m": 94.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7059192085",
+  "name": "Mandakini Nuclear Imaging Centre",
+  "lat": 19.074112,
+  "lon": 72.90572,
+  "node": 2246472380,
+  "snap_m": 48.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7059192086",
+  "name": "M.H. Saboo Siddique Maternity and General Hospital - Masjid",
+  "lat": 18.959598,
+  "lon": 72.833121,
+  "node": 861155655,
+  "snap_m": 184.2,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7062228611",
+  "name": "I Sight Eyecare and Surgery",
+  "lat": 19.071378,
+  "lon": 72.837719,
+  "node": 1936355394,
+  "snap_m": 26.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7062712062",
+  "name": "Smt. Laxmiben Dharamsi Karsan Gala Eye Hospital",
+  "lat": 19.099527,
+  "lon": 72.849344,
+  "node": 482278859,
+  "snap_m": 291.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7063077062",
+  "name": "Sunita Hospital, Mumbai",
+  "lat": 19.129221,
+  "lon": 72.860116,
+  "node": 13439601787,
+  "snap_m": 37.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7063077063",
+  "name": "Dr Haresh Shah Prabhat Maternity and Surgical Nursing Home",
+  "lat": 19.037392,
+  "lon": 72.839746,
+  "node": 7459352439,
+  "snap_m": 57.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7063077077",
+  "name": "Doshi Nursing Home",
+  "lat": 19.083172,
+  "lon": 72.904719,
+  "node": 245668759,
+  "snap_m": 50.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7063808889",
+  "name": "Lions Club Of East Bombay",
+  "lat": 19.025415,
+  "lon": 72.853579,
+  "node": 493925065,
+  "snap_m": 192.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7064364272",
+  "name": "Worli Hospital For Women",
+  "lat": 19.012812,
+  "lon": 72.822586,
+  "node": 7394074688,
+  "snap_m": 97.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7064405838",
+  "name": "Dr Gupte Lying-In Surgical Hospital",
+  "lat": 19.071627,
+  "lon": 72.837659,
+  "node": 1936355394,
+  "snap_m": 37.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7064716703",
+  "name": "Shakuntala Memorial Surgical Childerns and General Hospital",
+  "lat": 19.127779,
+  "lon": 72.862577,
+  "node": 13055592479,
+  "snap_m": 232.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7064867159",
+  "name": "K B Haji Bachooali Charitable Ophthalmic and E N T H",
+  "lat": 19.003077,
+  "lon": 72.84023,
+  "node": 2258304421,
+  "snap_m": 164.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7065561525",
+  "name": "Dr Chauhans Sanjeevani Hospital",
+  "lat": 19.069963,
+  "lon": 72.904769,
+  "node": 10809175117,
+  "snap_m": 59.7,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7065572990",
+  "name": "Dr. Joshi Surgical and Maternity Hospital",
+  "lat": 19.112605,
+  "lon": 72.842561,
+  "node": 1936355582,
+  "snap_m": 141.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7065817369",
+  "name": "Ami Drashti Eye Care Centre",
+  "lat": 19.080673,
+  "lon": 72.903907,
+  "node": 1643027258,
+  "snap_m": 33.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066371677",
+  "name": "Parel Institute Of Orthopaedic Specialities",
+  "lat": 19.005626,
+  "lon": 72.844947,
+  "node": 14016729091,
+  "snap_m": 26.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066374601",
+  "name": "Narurkar Ent Hospital",
+  "lat": 19.049437,
+  "lon": 72.906344,
+  "node": 13657812310,
+  "snap_m": 391.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066374709",
+  "name": "Sushama Patkar Maternity ( and Surgical) Home - Bandra",
+  "lat": 19.053611,
+  "lon": 72.824619,
+  "node": 10603240106,
+  "snap_m": 59.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066497782",
+  "name": "Parulekar Maternity and Surgical Nursing Home - Mumbai",
+  "lat": 19.132282,
+  "lon": 72.849671,
+  "node": 6429075943,
+  "snap_m": 269.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066505685",
+  "name": "Dr. Trivedi's Maternity Nursing Home & Aakar IVF Test Tube Baby Centre",
+  "lat": 19.078271,
+  "lon": 72.905856,
+  "node": 10279742512,
+  "snap_m": 195.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066505690",
+  "name": "Ashtavinayak Maternity Surgical and Eye Hospital",
+  "lat": 19.020267,
+  "lon": 72.833964,
+  "node": 7394094907,
+  "snap_m": 183.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066505700",
+  "name": "Bombay City Eye Institute and Research Centre",
+  "lat": 18.958037,
+  "lon": 72.809529,
+  "node": 618682503,
+  "snap_m": 112.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066505743",
+  "name": "Asmi Arthroscopy and Sports Medicine Institute",
+  "lat": 19.005134,
+  "lon": 72.84859,
+  "node": 11927594954,
+  "snap_m": 251.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066505804",
+  "name": "Beramjis Hospital",
+  "lat": 18.954713,
+  "lon": 72.818269,
+  "node": 13905428411,
+  "snap_m": 45.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066505805",
+  "name": "Dr Sonagra Medical and Surgical Centre",
+  "lat": 19.087567,
+  "lon": 72.904528,
+  "node": 2244961457,
+  "snap_m": 27.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066695543",
+  "name": "G S B S Medical Trust",
+  "lat": 19.015612,
+  "lon": 72.845187,
+  "node": 5921458189,
+  "snap_m": 87.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7066865609",
+  "name": "Gupte Maternity and Surgical Home",
+  "lat": 19.034684,
+  "lon": 72.84017,
+  "node": 245662638,
+  "snap_m": 105.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067050974",
+  "name": "Jeevan ram Hospital",
+  "lat": 19.085372,
+  "lon": 72.906747,
+  "node": 13717893201,
+  "snap_m": 132.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067050981",
+  "name": "Vivek Pathology Laboratory",
+  "lat": 19.102255,
+  "lon": 72.848685,
+  "node": 1913053666,
+  "snap_m": 230.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067070262",
+  "name": "Clear Vision Eye Center",
+  "lat": 19.088058,
+  "lon": 72.905214,
+  "node": 1366900663,
+  "snap_m": 30.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067113558",
+  "name": "Saurabh Clinic Dr.Sanjanwalas Maternity and Gynacologist",
+  "lat": 19.109618,
+  "lon": 72.848917,
+  "node": 10880826048,
+  "snap_m": 220.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067231946",
+  "name": "Eye Essential Hospital",
+  "lat": 19.075485,
+  "lon": 72.908548,
+  "node": 1643035300,
+  "snap_m": 262.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067373861",
+  "name": "Despande Nursing Home",
+  "lat": 19.070441,
+  "lon": 72.875106,
+  "node": 6429588363,
+  "snap_m": 42.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067540680",
+  "name": "Gokul Maternity & Surgical Home",
+  "lat": 19.121366,
+  "lon": 72.879487,
+  "node": 7416574444,
+  "snap_m": 137.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7068096871",
+  "name": "Sai Kripa Childrens Hospital",
+  "lat": 19.060668,
+  "lon": 72.899638,
+  "node": 13789652001,
+  "snap_m": 29.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7068099987",
+  "name": "Piyush Hospital",
+  "lat": 19.135292,
+  "lon": 72.854295,
+  "node": 1375215375,
+  "snap_m": 105.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7068194959",
+  "name": "Indu Maternity and Surgical Nursing Home",
+  "lat": 19.127861,
+  "lon": 72.862414,
+  "node": 13055592479,
+  "snap_m": 242.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7068194983",
+  "name": "Spectrum Health Care",
+  "lat": 18.923141,
+  "lon": 72.827574,
+  "node": 12299724446,
+  "snap_m": 84.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7068429399",
+  "name": "Bses Mg Hospital (Managed By)Brahma Kumari Global Hospital and Res Center",
+  "lat": 19.119331,
+  "lon": 72.845019,
+  "node": 865063296,
+  "snap_m": 68.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7069814001",
+  "name": "Nagori Clinic and Nursing Home",
+  "lat": 18.968507,
+  "lon": 72.828604,
+  "node": 10277817425,
+  "snap_m": 100.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7069814015",
+  "name": "Nandini Eye Care Centre",
+  "lat": 19.060538,
+  "lon": 72.845695,
+  "node": 9931191124,
+  "snap_m": 90.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7069814052",
+  "name": "Cumbala Hill Hospital and Heart Institute",
+  "lat": 18.963497,
+  "lon": 72.808776,
+  "node": 10885684490,
+  "snap_m": 101.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070050990",
+  "name": "Eva Medicare Center - andheri",
+  "lat": 19.127405,
+  "lon": 72.831372,
+  "node": 7157873782,
+  "snap_m": 72.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070050992",
+  "name": "Spectacles and Contact Lens Clinic",
+  "lat": 19.11132,
+  "lon": 72.867199,
+  "node": 10301894313,
+  "snap_m": 50.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070054643",
+  "name": "Sai Raj Hospital",
+  "lat": 18.977225,
+  "lon": 72.848596,
+  "node": 245657786,
+  "snap_m": 159.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070054648",
+  "name": "Sai Baba Hospital, Mumbai",
+  "lat": 19.035349,
+  "lon": 72.896094,
+  "node": 10279857151,
+  "snap_m": 52.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070354910",
+  "name": "Bakul Parekh Children Hospital",
+  "lat": 19.079143,
+  "lon": 72.903852,
+  "node": 10279742511,
+  "snap_m": 44.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070711758",
+  "name": "Shreedhar Hospital",
+  "lat": 19.019609,
+  "lon": 72.833732,
+  "node": 1650385414,
+  "snap_m": 116.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070857458",
+  "name": "Life Line Hospital and Diagnostics Pvt Ltd",
+  "lat": 19.089543,
+  "lon": 72.837998,
+  "node": 9985506416,
+  "snap_m": 27.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070857459",
+  "name": "Sadhu-Kamal Eye Hospital",
+  "lat": 18.966181,
+  "lon": 72.819571,
+  "node": 10277829350,
+  "snap_m": 33.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070857468",
+  "name": "Daycare Angels",
+  "lat": 19.056534,
+  "lon": 72.889527,
+  "node": 13789930611,
+  "snap_m": 40.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070859091",
+  "name": "Nityanand Iccu and Nursing Home",
+  "lat": 19.10746,
+  "lon": 72.848421,
+  "node": 1913053670,
+  "snap_m": 285.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070859097",
+  "name": "Khandwala Eye Hospital and Polyclinic",
+  "lat": 19.103133,
+  "lon": 72.839223,
+  "node": 866806765,
+  "snap_m": 159.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7070859138",
+  "name": "Life Care Iccu , Medical and Surgical Emergencies",
+  "lat": 19.109554,
+  "lon": 72.837668,
+  "node": 864964244,
+  "snap_m": 54.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7072535182",
+  "name": "Satyam Hospital",
+  "lat": 19.092497,
+  "lon": 72.912431,
+  "node": 3245626610,
+  "snap_m": 50.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7072544668",
+  "name": "Zain Eye Care",
+  "lat": 18.9415,
+  "lon": 72.827841,
+  "node": 245654566,
+  "snap_m": 150.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7072801164",
+  "name": "Sarla Hospital and Icu",
+  "lat": 19.085733,
+  "lon": 72.836723,
+  "node": 13522606638,
+  "snap_m": 174.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7072837154",
+  "name": "Hinduja Healthcare",
+  "lat": 19.067905,
+  "lon": 72.835353,
+  "node": 9979171957,
+  "snap_m": 185.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073099556",
+  "name": "Diamond Hospital",
+  "lat": 19.139644,
+  "lon": 72.843501,
+  "node": 5346620503,
+  "snap_m": 69.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073537755",
+  "name": "The Metropolitan Heart Institute and Research Centre",
+  "lat": 19.088954,
+  "lon": 72.90701,
+  "node": 12334170885,
+  "snap_m": 39.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073537782",
+  "name": "Sunny Childrens Hospital",
+  "lat": 19.052864,
+  "lon": 72.89783,
+  "node": 1643351766,
+  "snap_m": 109.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073651578",
+  "name": "Rg Stone Urology and Laparoscopy Hospital, Mumbai",
+  "lat": 19.136643,
+  "lon": 72.836422,
+  "node": 12320173511,
+  "snap_m": 109.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073672865",
+  "name": "Dr.Pai Dhungat Maternity and Nursing Home",
+  "lat": 18.957191,
+  "lon": 72.822912,
+  "node": 245655919,
+  "snap_m": 328.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073765630",
+  "name": "Dr A K Chandiramani Hospital",
+  "lat": 19.062597,
+  "lon": 72.83585,
+  "node": 12926034666,
+  "snap_m": 53.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073944671",
+  "name": "Smt. Kamladevi Gauridutt Mittal Ayurvedic Hospital",
+  "lat": 18.949842,
+  "lon": 72.820101,
+  "node": 6553104157,
+  "snap_m": 75.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073949849",
+  "name": "Samyak Drishti Eye Centre",
+  "lat": 18.956391,
+  "lon": 72.813349,
+  "node": 2442510064,
+  "snap_m": 51.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7073961725",
+  "name": "Paramount General Hospital and ICCU",
+  "lat": 19.103614,
+  "lon": 72.88704,
+  "node": 10653616785,
+  "snap_m": 59.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7074541583",
+  "name": "Sankalp Eye Care Centre",
+  "lat": 18.98934,
+  "lon": 72.83136,
+  "node": 13802511354,
+  "snap_m": 242.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7074576485",
+  "name": "Dr. Shindes Childrens Hospital and Nicu",
+  "lat": 19.136651,
+  "lon": 72.850185,
+  "node": 13437636821,
+  "snap_m": 158.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7076379914",
+  "name": "SRL Diagnostics Andheri (MIDC)",
+  "lat": 19.11768,
+  "lon": 72.873617,
+  "node": 7398009409,
+  "snap_m": 21.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7079392099",
+  "name": "Dr. Rane hospital maternity & surgical",
+  "lat": 19.094253,
+  "lon": 72.849741,
+  "node": 245669481,
+  "snap_m": 148.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7079665691",
+  "name": "Shobha Maternity and Surgical Home",
+  "lat": 19.012092,
+  "lon": 72.854969,
+  "node": 12901659996,
+  "snap_m": 89.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7079665692",
+  "name": "Sadanand Danait Hospital",
+  "lat": 19.110726,
+  "lon": 72.848381,
+  "node": 1344357227,
+  "snap_m": 187.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7079665770",
+  "name": "Netrapuja Research Centre",
+  "lat": 19.088007,
+  "lon": 72.836742,
+  "node": 9985506416,
+  "snap_m": 240.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080141268",
+  "name": "Sapna Health Care Centre Pvt Ltd",
+  "lat": 19.092115,
+  "lon": 72.912369,
+  "node": 13719841411,
+  "snap_m": 26.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080141269",
+  "name": "Smt.Laxmiben Dhanji Devshi Health Centre",
+  "lat": 18.959242,
+  "lon": 72.838354,
+  "node": 10885845678,
+  "snap_m": 91.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080205211",
+  "name": "Cg Eye Foundaton and Shree Ghatkopar Brahman Samaj",
+  "lat": 19.081415,
+  "lon": 72.905796,
+  "node": 10279730306,
+  "snap_m": 138.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080205222",
+  "name": "Gynaecworld",
+  "lat": 18.963995,
+  "lon": 72.807872,
+  "node": 12411440897,
+  "snap_m": 17.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080205265",
+  "name": "Dr Shah Hospital",
+  "lat": 19.137326,
+  "lon": 72.848511,
+  "node": 13437636822,
+  "snap_m": 21.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080269652",
+  "name": "Ashwini Accident Hospital and Poly Clinic",
+  "lat": 19.03637,
+  "lon": 72.842734,
+  "node": 5271602938,
+  "snap_m": 82.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080269989",
+  "name": "Ashish Maternity and Nursing Home - Vile Parle (E)",
+  "lat": 19.09706,
+  "lon": 72.847386,
+  "node": 12082858148,
+  "snap_m": 198.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080413752",
+  "name": "Tandon Hospital",
+  "lat": 19.0597,
+  "lon": 72.899677,
+  "node": 1651404922,
+  "snap_m": 65.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7080878125",
+  "name": "Radiance Laser Vision Centre",
+  "lat": 19.0829,
+  "lon": 72.837655,
+  "node": 245668594,
+  "snap_m": 40.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7081965757",
+  "name": "Vision Laser Surgery Centre",
+  "lat": 19.052044,
+  "lon": 72.823811,
+  "node": 346622920,
+  "snap_m": 210.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082370226",
+  "name": "Dr Sanjay Soni Dental Clinic",
+  "lat": 19.106917,
+  "lon": 72.835641,
+  "node": 10279333677,
+  "snap_m": 125.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082370250",
+  "name": "Parijat Surgical and General Hospital",
+  "lat": 19.128406,
+  "lon": 72.832253,
+  "node": 7157873784,
+  "snap_m": 121.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082499146",
+  "name": "Shree Ramnath Eye Care",
+  "lat": 19.091819,
+  "lon": 72.843605,
+  "node": 7384981353,
+  "snap_m": 134.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082518991",
+  "name": "Society Of The Helpers Of Mary Shraddha Vihar Hospital",
+  "lat": 19.135245,
+  "lon": 72.838181,
+  "node": 13857111109,
+  "snap_m": 78.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082733154",
+  "name": "Nachiketa Health Care Center",
+  "lat": 19.088733,
+  "lon": 72.905095,
+  "node": 1366900663,
+  "snap_m": 90.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082733172",
+  "name": "Anudhiti Care",
+  "lat": 18.973456,
+  "lon": 72.814558,
+  "node": 10877664315,
+  "snap_m": 67.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7082738898",
+  "name": "Amar Jyot Eye Care Centre",
+  "lat": 19.088778,
+  "lon": 72.907477,
+  "node": 2622177356,
+  "snap_m": 63.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7083190122",
+  "name": "Abhishek Day Care Institute and Medical Research Centre",
+  "lat": 18.923067,
+  "lon": 72.82755,
+  "node": 12299724446,
+  "snap_m": 79.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7083324261",
+  "name": "Uma Maternity Nursing Home",
+  "lat": 19.129734,
+  "lon": 72.87022,
+  "node": 630298114,
+  "snap_m": 219.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7085422809",
+  "name": "Apex Kidney Care Pvt. Ltd.",
+  "lat": 19.061144,
+  "lon": 72.894872,
+  "node": 10216570896,
+  "snap_m": 150.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7085731347",
+  "name": "Jeevandeep Children Hospital, Mumbai",
+  "lat": 19.088126,
+  "lon": 72.905198,
+  "node": 1366900663,
+  "snap_m": 33.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7085742085",
+  "name": "Zen Eye Center",
+  "lat": 19.072145,
+  "lon": 72.834369,
+  "node": 2629418526,
+  "snap_m": 56.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7085742120",
+  "name": "Iris Eye Center",
+  "lat": 19.106973,
+  "lon": 72.835877,
+  "node": 10279333677,
+  "snap_m": 99.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7086283489",
+  "name": "Dr Phadkes Maternity and Surgical Hospital",
+  "lat": 19.132605,
+  "lon": 72.869669,
+  "node": 10277636651,
+  "snap_m": 164.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7086283490",
+  "name": "Varad Medical Centre",
+  "lat": 19.014688,
+  "lon": 72.827479,
+  "node": 11043951305,
+  "snap_m": 71.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7086409774",
+  "name": "Icon The Eye Consultants Eye and Laser Centre",
+  "lat": 19.023035,
+  "lon": 72.849831,
+  "node": 1650770681,
+  "snap_m": 23.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7086532370",
+  "name": "Goel Hospital",
+  "lat": 19.110059,
+  "lon": 72.864211,
+  "node": 10277882001,
+  "snap_m": 167.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7086734179",
+  "name": "Infiniti Eye Hospital",
+  "lat": 18.965438,
+  "lon": 72.811624,
+  "node": 13901790645,
+  "snap_m": 142.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7086758044",
+  "name": "Lifecare Hospital",
+  "lat": 19.046676,
+  "lon": 72.857498,
+  "node": 13947318601,
+  "snap_m": 161.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7087131445",
+  "name": "Dr. Dipak Desai's Ear Nose and Throat Hospital",
+  "lat": 19.082484,
+  "lon": 72.904984,
+  "node": 1454673998,
+  "snap_m": 27.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7087131468",
+  "name": "Prarushi Healthcare Pvt Ltd / Kusumesh Chandra Maternity Hospital",
+  "lat": 19.06265,
+  "lon": 72.881615,
+  "node": 13681073487,
+  "snap_m": 121.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7206288300",
+  "name": "Dawood Multispeciality Nursing Home",
+  "lat": 18.966643,
+  "lon": 72.828916,
+  "node": 12698412249,
+  "snap_m": 44.5,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7207893889",
+  "name": "Tibbia Hospital",
+  "lat": 18.966675,
+  "lon": 72.828438,
+  "node": 12698412250,
+  "snap_m": 44.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7207893890",
+  "name": "Noor Hospital",
+  "lat": 18.953888,
+  "lon": 72.833461,
+  "node": 620393234,
+  "snap_m": 101.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067112",
+  "name": "Kalina Hospital",
+  "lat": 19.078004,
+  "lon": 72.86302,
+  "node": 245668015,
+  "snap_m": 54.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067144",
+  "name": "Kasturba Hospital",
+  "lat": 18.98419,
+  "lon": 72.830035,
+  "node": 13806567316,
+  "snap_m": 32.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067153",
+  "name": "ESIS Hospital WORLI",
+  "lat": 19.001731,
+  "lon": 72.816903,
+  "node": 7366043901,
+  "snap_m": 124.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067170",
+  "name": "Marol Maternity Home",
+  "lat": 19.110877,
+  "lon": 72.878159,
+  "node": 3708878218,
+  "snap_m": 232.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067179",
+  "name": "Matoshri Ramabai Ambedkar Maternity Hospital",
+  "lat": 19.056203,
+  "lon": 72.894763,
+  "node": 13676994257,
+  "snap_m": 31.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067192",
+  "name": "Poddar Hospital",
+  "lat": 19.00228,
+  "lon": 72.816262,
+  "node": 10277780850,
+  "snap_m": 102.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067197",
+  "name": "V N Shirodkar Hospital",
+  "lat": 19.105457,
+  "lon": 72.851859,
+  "node": 1913053676,
+  "snap_m": 182.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067213",
+  "name": "Nair Hospital Dental College",
+  "lat": 18.971194,
+  "lon": 72.820968,
+  "node": 13303028460,
+  "snap_m": 116.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067267",
+  "name": "Sant Muktabai Hospital",
+  "lat": 19.098485,
+  "lon": 72.904147,
+  "node": 13711214602,
+  "snap_m": 378.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7225067271",
+  "name": "L.T.Muncipal Medical College and Sion Hospital",
+  "lat": 19.036919,
+  "lon": 72.858205,
+  "node": 4264834980,
+  "snap_m": 102.6,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-7225067284",
+  "name": "BYL Nair hospital",
+  "lat": 18.974215,
+  "lon": 72.821919,
+  "node": 13303028467,
+  "snap_m": 230.0,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-7226727393",
+  "name": "General Hospital, Janabai Rokade",
+  "lat": 18.95168,
+  "lon": 72.838827,
+  "node": 245655285,
+  "snap_m": 198.4,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7433481438",
+  "name": "Habib Hospital",
+  "lat": 18.959695,
+  "lon": 72.836805,
+  "node": 245656188,
+  "snap_m": 35.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7433682214",
+  "name": "Nagpada Police Hospital",
+  "lat": 18.966061,
+  "lon": 72.831912,
+  "node": 245656964,
+  "snap_m": 69.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7433749757",
+  "name": "Rajshree Maternity",
+  "lat": 18.972422,
+  "lon": 72.835751,
+  "node": 2258304338,
+  "snap_m": 267.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7433829905",
+  "name": "Masina Cancer Center",
+  "lat": 18.974954,
+  "lon": 72.835737,
+  "node": 245657747,
+  "snap_m": 216.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7607557871",
+  "name": "BMC Eye Hospital ,Kamathipura",
+  "lat": 18.961983,
+  "lon": 72.82651,
+  "node": 10885774557,
+  "snap_m": 52.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7607578889",
+  "name": "Matoshree Ramabai Maternity BMC Hospital",
+  "lat": 19.096091,
+  "lon": 72.91038,
+  "node": 13711148077,
+  "snap_m": 303.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7607631740",
+  "name": "Deonar Maternity Home",
+  "lat": 19.053627,
+  "lon": 72.92321,
+  "node": 2439202899,
+  "snap_m": 125.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7607886540",
+  "name": "All India Institute of Physical Medicine and Rehabilitation",
+  "lat": 18.978585,
+  "lon": 72.812875,
+  "node": 6167841753,
+  "snap_m": 105.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961397",
+  "name": "Lotus Eye Hospital",
+  "lat": 19.10982,
+  "lon": 72.82763,
+  "node": 866879594,
+  "snap_m": 174.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961398",
+  "name": "Dr. Ashfaque Shah's City Hospital",
+  "lat": 19.060585,
+  "lon": 72.916991,
+  "node": 5913226245,
+  "snap_m": 54.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961401",
+  "name": "Dadasaheb Gaikwad BMC Hospital",
+  "lat": 19.076394,
+  "lon": 72.91527,
+  "node": 2264152050,
+  "snap_m": 128.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961402",
+  "name": "Medicare Hospital",
+  "lat": 19.108448,
+  "lon": 72.877743,
+  "node": 1199606539,
+  "snap_m": 30.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961403",
+  "name": "Chandra Maternity Hospital",
+  "lat": 19.042245,
+  "lon": 72.894166,
+  "node": 13676889444,
+  "snap_m": 95.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961404",
+  "name": "CritiCare Hospital",
+  "lat": 19.11808,
+  "lon": 72.850552,
+  "node": 623881375,
+  "snap_m": 111.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961406",
+  "name": "Dr. Sanjanwala Hospital",
+  "lat": 19.105497,
+  "lon": 72.848124,
+  "node": 10880826060,
+  "snap_m": 194.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961413",
+  "name": "Sona Maternity and Surgical Nursing Home",
+  "lat": 19.07815,
+  "lon": 72.916753,
+  "node": 8976481323,
+  "snap_m": 163.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961415",
+  "name": "Subhash Hospital",
+  "lat": 19.082699,
+  "lon": 72.881698,
+  "node": 1366028058,
+  "snap_m": 336.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961416",
+  "name": "Lions Club Medical Centre General Hospital",
+  "lat": 19.061542,
+  "lon": 72.872554,
+  "node": 6494952054,
+  "snap_m": 149.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961417",
+  "name": "Buddh Colony BMC Hospital",
+  "lat": 19.079786,
+  "lon": 72.882718,
+  "node": 6435423923,
+  "snap_m": 235.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961419",
+  "name": "Kohinoor Hospital",
+  "lat": 19.064667,
+  "lon": 72.835138,
+  "node": 2629418497,
+  "snap_m": 50.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961423",
+  "name": "Zobiya Hospital Maternity Home",
+  "lat": 19.107299,
+  "lon": 72.893154,
+  "node": 2246661809,
+  "snap_m": 96.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961426",
+  "name": "Jogeshwari Hospital",
+  "lat": 19.135875,
+  "lon": 72.844619,
+  "node": 13437559874,
+  "snap_m": 135.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961428",
+  "name": "Kankal Hospital Child Specialist",
+  "lat": 19.068348,
+  "lon": 72.901948,
+  "node": 11929993564,
+  "snap_m": 95.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961430",
+  "name": "Sapna Maternity and General Hospital",
+  "lat": 19.102619,
+  "lon": 72.893489,
+  "node": 1366097698,
+  "snap_m": 342.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961433",
+  "name": "Dr. Chhajed Surgerical & Maternity Hospital",
+  "lat": 19.10238,
+  "lon": 72.891458,
+  "node": 12384157466,
+  "snap_m": 147.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961434",
+  "name": "Sai Hospital",
+  "lat": 19.054452,
+  "lon": 72.891364,
+  "node": 2629741753,
+  "snap_m": 113.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961436",
+  "name": "Muskaan Hospital",
+  "lat": 19.078367,
+  "lon": 72.880408,
+  "node": 6497154928,
+  "snap_m": 91.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961438",
+  "name": "DNA Hospital",
+  "lat": 19.139418,
+  "lon": 72.859691,
+  "node": 621244019,
+  "snap_m": 372.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961440",
+  "name": "Pasaydan Hospital and Trust",
+  "lat": 19.092921,
+  "lon": 72.903873,
+  "node": 13717731389,
+  "snap_m": 157.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961441",
+  "name": "Amarnath Multidisciplinary Children's Hospital",
+  "lat": 19.049242,
+  "lon": 72.906051,
+  "node": 13657812310,
+  "snap_m": 413.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961442",
+  "name": "Cuddles N Care Pediatric Hospital",
+  "lat": 19.117342,
+  "lon": 72.884186,
+  "node": 1288998782,
+  "snap_m": 46.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961443",
+  "name": "Habib Hospital",
+  "lat": 19.078247,
+  "lon": 72.880101,
+  "node": 6497154928,
+  "snap_m": 106.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961444",
+  "name": "Shiv Hospital",
+  "lat": 19.04119,
+  "lon": 72.894087,
+  "node": 13676889447,
+  "snap_m": 103.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961446",
+  "name": "RCF Hospital",
+  "lat": 19.040567,
+  "lon": 72.897252,
+  "node": 278919343,
+  "snap_m": 299.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961450",
+  "name": "Uma Hospital",
+  "lat": 19.094566,
+  "lon": 72.887051,
+  "node": 12432928829,
+  "snap_m": 40.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961454",
+  "name": "Alphine Life Solutions General Hospital",
+  "lat": 19.072612,
+  "lon": 72.871065,
+  "node": 2897024850,
+  "snap_m": 48.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961457",
+  "name": "Mahavir Hospital",
+  "lat": 19.063212,
+  "lon": 72.919795,
+  "node": 3215559553,
+  "snap_m": 100.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961459",
+  "name": "Mangal Multispeciality Hospital",
+  "lat": 19.083466,
+  "lon": 72.839501,
+  "node": 1936355451,
+  "snap_m": 166.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961462",
+  "name": "Dr. Wagh Maternity Hospital",
+  "lat": 19.101669,
+  "lon": 72.848999,
+  "node": 1913053666,
+  "snap_m": 290.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961463",
+  "name": "Santrupti Hospital",
+  "lat": 19.053227,
+  "lon": 72.876813,
+  "node": 1642954392,
+  "snap_m": 194.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961464",
+  "name": "Naval Hospital",
+  "lat": 19.132448,
+  "lon": 72.925483,
+  "node": 6583145397,
+  "snap_m": 255.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961465",
+  "name": "Sunridges Speciality Hospital",
+  "lat": 19.103219,
+  "lon": 72.834862,
+  "node": 866807395,
+  "snap_m": 111.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961467",
+  "name": "Masoom Child Hospital",
+  "lat": 19.081844,
+  "lon": 72.882106,
+  "node": 2622177294,
+  "snap_m": 279.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961468",
+  "name": "Balthakra Sahara Jogeshwari Hospital",
+  "lat": 19.136917,
+  "lon": 72.856459,
+  "node": 1375215407,
+  "snap_m": 129.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961471",
+  "name": "Zen Multi Speciality Hospital",
+  "lat": 19.055935,
+  "lon": 72.896965,
+  "node": 245665275,
+  "snap_m": 55.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961472",
+  "name": "Shrimati Diwaliben Mohanlal Mehta Maa Sarvasadharan Rugnalay Hospital",
+  "lat": 19.061992,
+  "lon": 72.896719,
+  "node": 1651414478,
+  "snap_m": 116.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961476",
+  "name": "Chandra Hospital",
+  "lat": 19.041382,
+  "lon": 72.894743,
+  "node": 13676889447,
+  "snap_m": 125.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961478",
+  "name": "Shree Hospital",
+  "lat": 19.060533,
+  "lon": 72.900096,
+  "node": 1643264361,
+  "snap_m": 54.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961479",
+  "name": "Prathamesh Hospital",
+  "lat": 19.052772,
+  "lon": 72.87496,
+  "node": 5841999703,
+  "snap_m": 218.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961482",
+  "name": "Central Hospital & Child Care Centre",
+  "lat": 19.100297,
+  "lon": 72.882998,
+  "node": 13597495215,
+  "snap_m": 93.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961484",
+  "name": "Apex Multi Speciality Hospital",
+  "lat": 19.099487,
+  "lon": 72.891648,
+  "node": 7097850904,
+  "snap_m": 38.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961486",
+  "name": "Mohili Village Municipal Hospital",
+  "lat": 19.097922,
+  "lon": 72.892138,
+  "node": 7097850904,
+  "snap_m": 158.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961488",
+  "name": "Shalyak Hospital",
+  "lat": 19.137293,
+  "lon": 72.854152,
+  "node": 10880800994,
+  "snap_m": 42.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961489",
+  "name": "Hajari Hospital",
+  "lat": 19.129543,
+  "lon": 72.853012,
+  "node": 13734361088,
+  "snap_m": 269.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961492",
+  "name": "Asmira Hospital",
+  "lat": 19.107066,
+  "lon": 72.892075,
+  "node": 2246661809,
+  "snap_m": 36.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961493",
+  "name": "Shashikant Hospital",
+  "lat": 19.061966,
+  "lon": 72.901475,
+  "node": 10151560371,
+  "snap_m": 84.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7663961495",
+  "name": "Jeevan Jyot Hospital and Nursing Home",
+  "lat": 19.063681,
+  "lon": 72.919959,
+  "node": 3215559553,
+  "snap_m": 116.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032187",
+  "name": "Dr. Sanjay Shah Hospital",
+  "lat": 18.959185,
+  "lon": 72.823862,
+  "node": 7384002971,
+  "snap_m": 236.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032188",
+  "name": "Suryakant Wagal Maternity Hospital",
+  "lat": 18.951385,
+  "lon": 72.82365,
+  "node": 245655133,
+  "snap_m": 103.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032192",
+  "name": "Gorai Naka Nalasopara Zoya Hospital",
+  "lat": 19.012455,
+  "lon": 72.835058,
+  "node": 1645876418,
+  "snap_m": 112.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032193",
+  "name": "Kalajot Hospital",
+  "lat": 18.923038,
+  "lon": 72.832811,
+  "node": 245653665,
+  "snap_m": 28.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032196",
+  "name": "Anand Niketan Hospital",
+  "lat": 18.988777,
+  "lon": 72.823037,
+  "node": 13073741407,
+  "snap_m": 50.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032197",
+  "name": "Desa's Hospital",
+  "lat": 18.956001,
+  "lon": 72.807685,
+  "node": 1236410178,
+  "snap_m": 62.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032200",
+  "name": "Dolby Hospital",
+  "lat": 18.957096,
+  "lon": 72.811597,
+  "node": 13905111274,
+  "snap_m": 116.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032202",
+  "name": "Ashvini Nursing Home",
+  "lat": 19.014609,
+  "lon": 72.842484,
+  "node": 245660619,
+  "snap_m": 233.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032203",
+  "name": "Dr. Shantilal Oza Hospital",
+  "lat": 18.967509,
+  "lon": 72.838751,
+  "node": 12082381201,
+  "snap_m": 184.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032209",
+  "name": "Janani Hospital",
+  "lat": 19.040411,
+  "lon": 72.854633,
+  "node": 13845998576,
+  "snap_m": 107.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032211",
+  "name": "Laxmi Niwas General Hospital",
+  "lat": 19.008175,
+  "lon": 72.835476,
+  "node": 11384605402,
+  "snap_m": 237.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032212",
+  "name": "Resham Hospital",
+  "lat": 19.045633,
+  "lon": 72.859634,
+  "node": 13845998562,
+  "snap_m": 29.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032213",
+  "name": "New Ratna Hospital",
+  "lat": 19.03586,
+  "lon": 72.838602,
+  "node": 245662645,
+  "snap_m": 45.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032214",
+  "name": "Smt. Motiben B. Dalvi Hospital",
+  "lat": 18.958287,
+  "lon": 72.810282,
+  "node": 477585773,
+  "snap_m": 45.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032215",
+  "name": "Punamiya Hospital",
+  "lat": 19.012145,
+  "lon": 72.833644,
+  "node": 6430837133,
+  "snap_m": 128.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032218",
+  "name": "Astha Nursing Home",
+  "lat": 18.988149,
+  "lon": 72.837693,
+  "node": 245658557,
+  "snap_m": 191.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032219",
+  "name": "BMC Hospital",
+  "lat": 19.015443,
+  "lon": 72.826177,
+  "node": 11043912919,
+  "snap_m": 115.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032220",
+  "name": "Hospital For Women Care",
+  "lat": 18.957089,
+  "lon": 72.807333,
+  "node": 1236410178,
+  "snap_m": 188.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032222",
+  "name": "Mahim Police Hospital",
+  "lat": 19.047153,
+  "lon": 72.84134,
+  "node": 245663814,
+  "snap_m": 188.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032224",
+  "name": "Welkarwadi BMC Hospital",
+  "lat": 19.03978,
+  "lon": 72.840027,
+  "node": 245662966,
+  "snap_m": 217.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032225",
+  "name": "Dr. Nadeem Rais Endocrinologist",
+  "lat": 18.955978,
+  "lon": 72.808408,
+  "node": 13701145280,
+  "snap_m": 57.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032231",
+  "name": "Raj Ratan Hospital",
+  "lat": 19.036338,
+  "lon": 72.840036,
+  "node": 245662681,
+  "snap_m": 43.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032232",
+  "name": "Sion Hospital",
+  "lat": 19.036381,
+  "lon": 72.859866,
+  "node": 631493993,
+  "snap_m": 78.5,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-7664032233",
+  "name": "Reliance Health Ventures Limited Hospital",
+  "lat": 18.936811,
+  "lon": 72.840342,
+  "node": 245654326,
+  "snap_m": 45.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032237",
+  "name": "Nair Hospital",
+  "lat": 18.973022,
+  "lon": 72.821913,
+  "node": 13303028467,
+  "snap_m": 97.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032240",
+  "name": "Lelavati Hospital",
+  "lat": 19.04033,
+  "lon": 72.855322,
+  "node": 13845998577,
+  "snap_m": 67.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032241",
+  "name": "Aayush Hospital",
+  "lat": 19.040315,
+  "lon": 72.854812,
+  "node": 13845998576,
+  "snap_m": 98.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7664032244",
+  "name": "Mhaskar Hospital",
+  "lat": 18.992198,
+  "lon": 72.829435,
+  "node": 6165302134,
+  "snap_m": 383.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8797139771",
+  "name": "Sapna Health Care Centre Pvt Ltd",
+  "lat": 19.084642,
+  "lon": 72.883653,
+  "node": 1366028055,
+  "snap_m": 81.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8797161232",
+  "name": "matoshri umabai RANE hospital",
+  "lat": 19.137235,
+  "lon": 72.856498,
+  "node": 1375215407,
+  "snap_m": 136.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8797173216",
+  "name": "Shantiniketan Hospital",
+  "lat": 19.095277,
+  "lon": 72.913706,
+  "node": 3245626610,
+  "snap_m": 368.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8797197801",
+  "name": "Dalvi Nursing Home",
+  "lat": 19.052686,
+  "lon": 72.873212,
+  "node": 3273736210,
+  "snap_m": 66.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8797726541",
+  "name": "Naigaon Municipal Maternity Home",
+  "lat": 19.011577,
+  "lon": 72.846014,
+  "node": 1179273129,
+  "snap_m": 232.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8797904410",
+  "name": "BMC arogya Kendra",
+  "lat": 19.130484,
+  "lon": 72.87208,
+  "node": 3893167782,
+  "snap_m": 327.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8798069854",
+  "name": "Axon Hospital & Dialysis Center",
+  "lat": 19.105346,
+  "lon": 72.887139,
+  "node": 3708879243,
+  "snap_m": 94.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8798161108",
+  "name": "Surya Hospital",
+  "lat": 19.089954,
+  "lon": 72.837668,
+  "node": 245669231,
+  "snap_m": 65.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8801598781",
+  "name": "Babasaheb Gawde Hospital",
+  "lat": 19.099722,
+  "lon": 72.846349,
+  "node": 1913053619,
+  "snap_m": 26.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8816508984",
+  "name": "CritiCare Hospital",
+  "lat": 19.117281,
+  "lon": 72.850461,
+  "node": 10005632789,
+  "snap_m": 190.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8817020641",
+  "name": "Dr Mudit Khanna",
+  "lat": 18.97523,
+  "lon": 72.82376,
+  "node": 245657649,
+  "snap_m": 326.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-8817571670",
+  "name": "S.N. Hospital",
+  "lat": 19.062128,
+  "lon": 72.921592,
+  "node": 3215559553,
+  "snap_m": 321.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-9215424189",
+  "name": "Axis Orthopaedic Hospital",
+  "lat": 19.136289,
+  "lon": 72.827378,
+  "node": 5172459965,
+  "snap_m": 172.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-9215451400",
+  "name": "AL Kaleskar Hospital",
+  "lat": 19.136067,
+  "lon": 72.812238,
+  "node": 245675175,
+  "snap_m": 178.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-9215480148",
+  "name": "Bhabha Hospital",
+  "lat": 19.070846,
+  "lon": 72.878112,
+  "node": 1366009054,
+  "snap_m": 63.8,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-9215659357",
+  "name": "Thyrocare Aarogyam Center - Dadar West",
+  "lat": 19.020782,
+  "lon": 72.84193,
+  "node": 245661185,
+  "snap_m": 36.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-9470829702",
+  "name": "Satvic Hospital",
+  "lat": 19.051942,
+  "lon": 72.894684,
+  "node": 6574294052,
+  "snap_m": 66.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-9533834652",
+  "name": "Kokilaben Dhirubhai Ambani Hospital",
+  "lat": 19.131246,
+  "lon": 72.824559,
+  "node": 884364447,
+  "snap_m": 196.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914421",
+  "name": "Fauziya hospital",
+  "lat": 19.062779,
+  "lon": 72.873177,
+  "node": 6494896736,
+  "snap_m": 51.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914423",
+  "name": "bhabha hospital",
+  "lat": 19.070872,
+  "lon": 72.878113,
+  "node": 1366009054,
+  "snap_m": 66.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914425",
+  "name": "Alphine life solutions general hospital",
+  "lat": 19.072649,
+  "lon": 72.871052,
+  "node": 2897024850,
+  "snap_m": 51.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914426",
+  "name": "Dalvi nursing home",
+  "lat": 19.052727,
+  "lon": 72.873218,
+  "node": 3273736210,
+  "snap_m": 66.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914427",
+  "name": "Prathamesh hospital",
+  "lat": 19.0528,
+  "lon": 72.87496,
+  "node": 5841999703,
+  "snap_m": 221.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914428",
+  "name": "Brihanmumbai mucipality Hospital",
+  "lat": 19.053289,
+  "lon": 72.875186,
+  "node": 3273736210,
+  "snap_m": 278.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914429",
+  "name": "Santrupti hospital",
+  "lat": 19.053224,
+  "lon": 72.876812,
+  "node": 1642954392,
+  "snap_m": 194.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914433",
+  "name": "Dr.Sanjay sonar laparoscopy and scopy centre",
+  "lat": 19.05903,
+  "lon": 72.897311,
+  "node": 1643351856,
+  "snap_m": 120.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914443",
+  "name": "Amita Patil Nursing Home",
+  "lat": 19.062253,
+  "lon": 72.899724,
+  "node": 3376195596,
+  "snap_m": 44.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914444",
+  "name": "Chandra maternity Hospital",
+  "lat": 19.042268,
+  "lon": 72.894154,
+  "node": 13676889444,
+  "snap_m": 92.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914448",
+  "name": "Nayak medicare -chembur",
+  "lat": 19.045681,
+  "lon": 72.902499,
+  "node": 9311818784,
+  "snap_m": 186.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-10172914449",
+  "name": "Inlaska Hospital",
+  "lat": 19.046654,
+  "lon": 72.896414,
+  "node": 7362076314,
+  "snap_m": 157.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-11192643417",
+  "name": "Nursing Home",
+  "lat": 19.110816,
+  "lon": 72.869028,
+  "node": 6493265091,
+  "snap_m": 93.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-11426731276",
+  "name": "KLS Memorial Hospital",
+  "lat": 19.107919,
+  "lon": 72.840863,
+  "node": 9771116371,
+  "snap_m": 49.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-11430465717",
+  "name": "Noble chemist",
+  "lat": 19.07712,
+  "lon": 72.902258,
+  "node": 4264598335,
+  "snap_m": 155.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-11617868277",
+  "name": "dr.anjali's hospital",
+  "lat": 19.124526,
+  "lon": 72.916043,
+  "node": 1879817632,
+  "snap_m": 221.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12150771601",
+  "name": "Agarwal Children's Hospital",
+  "lat": 19.058884,
+  "lon": 72.848007,
+  "node": 6243685415,
+  "snap_m": 156.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12311758511",
+  "name": "Parakh Hospital and Research Centre - Ghatkopar",
+  "lat": 19.084546,
+  "lon": 72.907615,
+  "node": 1454672565,
+  "snap_m": 118.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12415386367",
+  "name": "sanjivani hospital",
+  "lat": 19.072649,
+  "lon": 72.844391,
+  "node": 9764141726,
+  "snap_m": 254.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12555159227",
+  "name": "siddiqui",
+  "lat": 18.966699,
+  "lon": 72.828819,
+  "node": 12698412249,
+  "snap_m": 34.7,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12560946824",
+  "name": "Apollo Hospitals",
+  "lat": 18.923267,
+  "lon": 72.831386,
+  "node": 245653718,
+  "snap_m": 133.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12573856473",
+  "name": "Indian Cancer Society",
+  "lat": 18.923143,
+  "lon": 72.827499,
+  "node": 12299724446,
+  "snap_m": 76.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-12603333590",
+  "name": "Sattva Pediatric - Dr. Rishabh K. Shah",
+  "lat": 18.989919,
+  "lon": 72.841476,
+  "node": 14013889303,
+  "snap_m": 45.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-13088720350",
+  "name": "goel hospital",
+  "lat": 19.110093,
+  "lon": 72.864216,
+  "node": 10277882001,
+  "snap_m": 171.3,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-13377774440",
+  "name": "Kataria eye clinic",
+  "lat": 18.919226,
+  "lon": 72.829615,
+  "node": 10886066851,
+  "snap_m": 55.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-13633845989",
+  "name": "M J Speciality Clinic - Dr Manoj Jain",
+  "lat": 19.000942,
+  "lon": 72.83869,
+  "node": 10883588501,
+  "snap_m": 180.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-13996773101",
+  "name": "Airport Health Organization",
+  "lat": 19.10341,
+  "lon": 72.876802,
+  "node": 5130752071,
+  "snap_m": 30.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-14173965274",
+  "name": "Rajawadi Hospital",
+  "lat": 19.078773,
+  "lon": 72.901365,
+  "node": 14021384210,
+  "snap_m": 263.1,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-node-14174264968",
+  "name": "Dr. Maunil Ajay Bhuta",
+  "lat": 19.038002,
+  "lon": 72.859655,
+  "node": 1643134428,
+  "snap_m": 130.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-14174836460",
+  "name": "Dr. Anup Khatri Bone & Joint Clinic",
+  "lat": 19.068849,
+  "lon": 72.899336,
+  "node": 14251830233,
+  "snap_m": 12.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-14208365745",
+  "name": "Paramount General Hospital and ICU",
+  "lat": 19.103833,
+  "lon": 72.8869,
+  "node": 10653616785,
+  "snap_m": 32.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-14246457601",
+  "name": "SevenHills Reliance Foundation Hospital",
+  "lat": 19.117733,
+  "lon": 72.877973,
+  "node": 10882615926,
+  "snap_m": 231.3,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-31144296",
+  "name": "Lilavati Hospital and Research Centre",
+  "lat": 19.050975,
+  "lon": 72.829167,
+  "node": 13514297393,
+  "snap_m": 62.8,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-31213763",
+  "name": "Holy Family Hospital, Mumbai",
+  "lat": 19.055501,
+  "lon": 72.82714,
+  "node": 346633397,
+  "snap_m": 145.2,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-39223162",
+  "name": "ब्रीच कँडी हॉस्पिटल",
+  "lat": 18.972595,
+  "lon": 72.804314,
+  "node": 13093331210,
+  "snap_m": 184.8,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-39838498",
+  "name": "Ruxmani Lying in Hospital",
+  "lat": 18.957731,
+  "lon": 72.809274,
+  "node": 13905111275,
+  "snap_m": 142.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-46715024",
+  "name": "Bombay Hospital",
+  "lat": 18.940782,
+  "lon": 72.82792,
+  "node": 245654566,
+  "snap_m": 223.9,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-49681498",
+  "name": "Lokmanya Tilak Hospital",
+  "lat": 19.036358,
+  "lon": 72.859214,
+  "node": 7371920936,
+  "snap_m": 136.6,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-50884815",
+  "name": "St George Hospital",
+  "lat": 18.940693,
+  "lon": 72.837882,
+  "node": 2163539025,
+  "snap_m": 167.6,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-56199740",
+  "name": "Saifee Hospital",
+  "lat": 18.952537,
+  "lon": 72.818183,
+  "node": 13780043912,
+  "snap_m": 66.1,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-112781797",
+  "name": "Acworth Leper Asylum",
+  "lat": 19.020088,
+  "lon": 72.858746,
+  "node": 245660948,
+  "snap_m": 132.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-113561019",
+  "name": "Mahatma Gandhi Memorial Hospital",
+  "lat": 18.997025,
+  "lon": 72.842076,
+  "node": 13803051043,
+  "snap_m": 272.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-113570522",
+  "name": "Tata Memorial Cancer Hospital",
+  "lat": 19.005672,
+  "lon": 72.843055,
+  "node": 10613423002,
+  "snap_m": 81.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-113576203",
+  "name": "Haffkine Institute For Training, Research & Testing",
+  "lat": 19.002441,
+  "lon": 72.845411,
+  "node": 5921458144,
+  "snap_m": 145.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-113716576",
+  "name": "Hinduja Clinic",
+  "lat": 19.033073,
+  "lon": 72.839098,
+  "node": 7394094911,
+  "snap_m": 79.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-113716578",
+  "name": "Hinduja Hospital",
+  "lat": 19.033229,
+  "lon": 72.838172,
+  "node": 7394094911,
+  "snap_m": 80.6,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-116342799",
+  "name": "Aditya Jyot Eye Hospital",
+  "lat": 19.021215,
+  "lon": 72.859139,
+  "node": 245660948,
+  "snap_m": 255.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-143950812",
+  "name": "Karbhari",
+  "lat": 19.103238,
+  "lon": 72.84698,
+  "node": 1913053666,
+  "snap_m": 38.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-150485811",
+  "name": "Jaslok Hospital and Research Centre",
+  "lat": 18.971553,
+  "lon": 72.809942,
+  "node": 456188455,
+  "snap_m": 433.4,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-150491113",
+  "name": "sathya udaiyar",
+  "lat": 19.131214,
+  "lon": 72.824474,
+  "node": 884364447,
+  "snap_m": 204.3,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-151806615",
+  "name": "Lalita Girdhar (Hinduja Hospital)",
+  "lat": 19.031934,
+  "lon": 72.839623,
+  "node": 9909512441,
+  "snap_m": 75.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-152244251",
+  "name": "BPT Hospital",
+  "lat": 19.012957,
+  "lon": 72.861474,
+  "node": 12082300376,
+  "snap_m": 338.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-152357350",
+  "name": "Holy Spirit Hospital",
+  "lat": 19.12833,
+  "lon": 72.866205,
+  "node": 1184498924,
+  "snap_m": 166.6,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-154837118",
+  "name": "Niron Hospital and Research Center",
+  "lat": 19.077033,
+  "lon": 72.858464,
+  "node": 12406104883,
+  "snap_m": 237.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-202918725",
+  "name": "S.L. Raheja Hospital",
+  "lat": 19.046414,
+  "lon": 72.842497,
+  "node": 245663814,
+  "snap_m": 69.6,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-203215801",
+  "name": "Brihanmumbai Municipalty Hospital",
+  "lat": 19.053269,
+  "lon": 72.8752,
+  "node": 5841999703,
+  "snap_m": 276.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-204886718",
+  "name": "Vimala Dermatological Center",
+  "lat": 19.137808,
+  "lon": 72.809484,
+  "node": 14251922677,
+  "snap_m": 110.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-206806614",
+  "name": "Atmasingh Jassasingh Bankebihar Municipal ENT Hospital",
+  "lat": 18.934803,
+  "lon": 72.831343,
+  "node": 245654226,
+  "snap_m": 21.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-207319558",
+  "name": "Lady Willingdon Building",
+  "lat": 18.942804,
+  "lon": 72.829824,
+  "node": 1643210452,
+  "snap_m": 38.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-207324961",
+  "name": "Bombay Hospital and Medical Research Center",
+  "lat": 18.941011,
+  "lon": 72.827425,
+  "node": 245654566,
+  "snap_m": 181.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-207376648",
+  "name": "Cama Hospital",
+  "lat": 18.942364,
+  "lon": 72.832108,
+  "node": 245654509,
+  "snap_m": 146.1,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-207376654",
+  "name": "गोकुळदास तेजपाल रुग्णालय",
+  "lat": 18.944742,
+  "lon": 72.831714,
+  "node": 245654509,
+  "snap_m": 254.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-229636994",
+  "name": "Dharavi Hospital",
+  "lat": 19.040024,
+  "lon": 72.851931,
+  "node": 13847213884,
+  "snap_m": 181.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-260786332",
+  "name": "CritiCare Asia Hospital, Kurla",
+  "lat": 19.076011,
+  "lon": 72.886137,
+  "node": 1366027983,
+  "snap_m": 150.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-288426702",
+  "name": "Conwest And Manjula S. Badani Jain Hospital",
+  "lat": 18.954746,
+  "lon": 72.821097,
+  "node": 13905428417,
+  "snap_m": 240.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-288446227",
+  "name": "Sir H. N. Hospital & Research Centre;Sir H.N Reliance foundation hospital",
+  "lat": 18.958965,
+  "lon": 72.820123,
+  "node": 245655878,
+  "snap_m": 84.8,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-315448033",
+  "name": "Rajeev Gandhi Medical Centre",
+  "lat": 19.0691,
+  "lon": 72.922211,
+  "node": 1366795254,
+  "snap_m": 77.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-315510913",
+  "name": "Maa General Hospital",
+  "lat": 19.061983,
+  "lon": 72.896497,
+  "node": 1651414478,
+  "snap_m": 139.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353139106",
+  "name": "Dr. L. H. Hiranandani Hospital",
+  "lat": 19.120279,
+  "lon": 72.917051,
+  "node": 8878074693,
+  "snap_m": 123.2,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-353181448",
+  "name": "New Noor Hospital",
+  "lat": 19.076208,
+  "lon": 72.878003,
+  "node": 1366009125,
+  "snap_m": 52.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353353382",
+  "name": "Dr. Niraj Mahajan Gynecologist and Laparoscopic Surgeon",
+  "lat": 18.970384,
+  "lon": 72.814616,
+  "node": 245657288,
+  "snap_m": 93.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353378830",
+  "name": "Sanjeevni hospital",
+  "lat": 19.027796,
+  "lon": 72.868293,
+  "node": 13994815998,
+  "snap_m": 191.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353772277",
+  "name": "Maru Hospital",
+  "lat": 18.998298,
+  "lon": 72.837024,
+  "node": 13822911971,
+  "snap_m": 77.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353799754",
+  "name": "Balaji Hospital",
+  "lat": 18.977237,
+  "lon": 72.835354,
+  "node": 2258304349,
+  "snap_m": 182.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-356207236",
+  "name": "umerkhadi hospital",
+  "lat": 18.961394,
+  "lon": 72.836587,
+  "node": 10277786607,
+  "snap_m": 127.6,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-356531751",
+  "name": "Gokul maternity and Surgical home",
+  "lat": 19.121341,
+  "lon": 72.87948,
+  "node": 7416574444,
+  "snap_m": 135.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-356531771",
+  "name": "The Vein Center Andheri",
+  "lat": 19.120667,
+  "lon": 72.879413,
+  "node": 7416574444,
+  "snap_m": 86.2,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-357360289",
+  "name": "smriti narvekar",
+  "lat": 19.031417,
+  "lon": 72.843996,
+  "node": 13552218473,
+  "snap_m": 144.5,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-357472226",
+  "name": "The Vein Center Mumbai",
+  "lat": 19.068566,
+  "lon": 72.837027,
+  "node": 1936355384,
+  "snap_m": 91.1,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-395048290",
+  "name": "Thunga",
+  "lat": 19.121112,
+  "lon": 72.826941,
+  "node": 13598885114,
+  "snap_m": 300.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-411617420",
+  "name": "Shatabdi Hospital",
+  "lat": 19.049569,
+  "lon": 72.911128,
+  "node": 13657812311,
+  "snap_m": 203.3,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-430029987",
+  "name": "K B H B Charitable Ophthalmic and E.N.T Hospital",
+  "lat": 19.002345,
+  "lon": 72.840422,
+  "node": 10883588501,
+  "snap_m": 193.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-430223744",
+  "name": "Dr. Babasaheb Ambedkar Memorial Central Railway Hospital",
+  "lat": 18.980147,
+  "lon": 72.833581,
+  "node": 1966835497,
+  "snap_m": 80.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-430418378",
+  "name": "Asian Heart Institute",
+  "lat": 19.06525,
+  "lon": 72.860912,
+  "node": 6554384670,
+  "snap_m": 86.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-436606769",
+  "name": "Godrej Memorial Hospital, Mumbai",
+  "lat": 19.104161,
+  "lon": 72.927885,
+  "node": 3747300132,
+  "snap_m": 401.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-618791586",
+  "name": "Nowrosjee Wadia Maternity Hospital",
+  "lat": 19.003605,
+  "lon": 72.842373,
+  "node": 5848596607,
+  "snap_m": 35.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-665481038",
+  "name": "K B Bhabha Municipal General Hospital",
+  "lat": 19.057384,
+  "lon": 72.833448,
+  "node": 346633203,
+  "snap_m": 169.9,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-723323008",
+  "name": "IIT Hospital",
+  "lat": 19.130755,
+  "lon": 72.91424,
+  "node": 1879817672,
+  "snap_m": 605.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-803325198",
+  "name": "J. J. Hospital",
+  "lat": 18.963857,
+  "lon": 72.834789,
+  "node": 245656521,
+  "snap_m": 195.5,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-820951209",
+  "name": "School of Medical Assistants",
+  "lat": 18.899433,
+  "lon": 72.813903,
+  "node": 459482449,
+  "snap_m": 37.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-959572919",
+  "name": "Nirali A M Naik Charitable Health-Care Facility",
+  "lat": 19.121167,
+  "lon": 72.891439,
+  "node": 12343188110,
+  "snap_m": 408.5,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1009229724",
+  "name": "Apollo Spectra Hospital",
+  "lat": 19.047207,
+  "lon": 72.911156,
+  "node": 11274067553,
+  "snap_m": 150.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1052052198",
+  "name": "K.J. Somaiya Hospital and Research Centre",
+  "lat": 19.047085,
+  "lon": 72.874927,
+  "node": 10738867823,
+  "snap_m": 330.9,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-1120060026",
+  "name": "Municipal TB Hospital",
+  "lat": 19.006805,
+  "lon": 72.852361,
+  "node": 7374507910,
+  "snap_m": 271.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1121494180",
+  "name": "Jagjivan Ram Hospital",
+  "lat": 18.970431,
+  "lon": 72.824078,
+  "node": 6925978233,
+  "snap_m": 260.3,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1123412924",
+  "name": "Khubchandani Hospital",
+  "lat": 19.11937,
+  "lon": 72.835378,
+  "node": 4461968005,
+  "snap_m": 366.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1126997792",
+  "name": "Sushrut Hospital and Research Centre",
+  "lat": 19.056571,
+  "lon": 72.889446,
+  "node": 13789930611,
+  "snap_m": 50.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1127318871",
+  "name": "Shivaji Nagar Muncipal Hospital",
+  "lat": 19.062998,
+  "lon": 72.919015,
+  "node": 3215559553,
+  "snap_m": 52.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1149824759",
+  "name": "Guru Nanak Hospital",
+  "lat": 19.05949,
+  "lon": 72.852677,
+  "node": 12486614588,
+  "snap_m": 63.4,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-1159753733",
+  "name": "The B.D.Petit Parsee General Hospital",
+  "lat": 18.968823,
+  "lon": 72.805623,
+  "node": 13908512726,
+  "snap_m": 202.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1186783958",
+  "name": "Ayurseva Hospital",
+  "lat": 19.043434,
+  "lon": 72.84984,
+  "node": 11023557408,
+  "snap_m": 308.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1227680040",
+  "name": "Women's Hospital",
+  "lat": 19.069402,
+  "lon": 72.830653,
+  "node": 9979171945,
+  "snap_m": 114.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1288781456",
+  "name": "INHS Asvini Naval Hospital",
+  "lat": 18.900289,
+  "lon": 72.814986,
+  "node": 459482449,
+  "snap_m": 149.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1289053364",
+  "name": "Masina Hospital",
+  "lat": 18.974627,
+  "lon": 72.83557,
+  "node": 245657747,
+  "snap_m": 212.7,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-1289063015",
+  "name": "Wockhardt Hospitals, South Mumbai",
+  "lat": 18.97521,
+  "lon": 72.823965,
+  "node": 245657649,
+  "snap_m": 305.7,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-1289073489",
+  "name": "NH SRCC Children's Hospital",
+  "lat": 18.979096,
+  "lon": 72.812798,
+  "node": 12070986541,
+  "snap_m": 69.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1291729684",
+  "name": "Sarvodaya Hospital",
+  "lat": 19.090163,
+  "lon": 72.90677,
+  "node": 13718113581,
+  "snap_m": 104.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1329415478",
+  "name": "Head And Neck Cancer Institute Of India",
+  "lat": 18.970277,
+  "lon": 72.845704,
+  "node": 7379493821,
+  "snap_m": 61.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1410330978",
+  "name": "Asian",
+  "lat": 19.06525,
+  "lon": 72.860912,
+  "node": 6554384670,
+  "snap_m": 86.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1411712168",
+  "name": "King George V Infimary",
+  "lat": 18.988639,
+  "lon": 72.823198,
+  "node": 13802299623,
+  "snap_m": 70.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1413471846",
+  "name": "Sion Hospital",
+  "lat": 19.034845,
+  "lon": 72.858231,
+  "node": 7371920939,
+  "snap_m": 116.2,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-1442093565",
+  "name": "V.N. Desai Hospital",
+  "lat": 19.078736,
+  "lon": 72.845098,
+  "node": 12079658306,
+  "snap_m": 198.8,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-1447315313",
+  "name": "Mangal nursing home",
+  "lat": 19.083444,
+  "lon": 72.839498,
+  "node": 1936355451,
+  "snap_m": 167.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1451543691",
+  "name": "hehehe",
+  "lat": 19.110518,
+  "lon": 72.842043,
+  "node": 1936355577,
+  "snap_m": 320.0,
+  "emergency": true,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1471965392",
+  "name": "Shushrusha Citizens Co-Op Hospital Ltd.",
+  "lat": 19.023357,
+  "lon": 72.837817,
+  "node": 6165604799,
+  "snap_m": 92.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1524835595",
+  "name": "Western Railway Health Unit Bandra West",
+  "lat": 19.063038,
+  "lon": 72.838245,
+  "node": 1936355375,
+  "snap_m": 142.4,
+  "emergency": null,
+  "ambulance_destination": false
+ }
+]

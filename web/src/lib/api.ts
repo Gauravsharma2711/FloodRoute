@@ -10,9 +10,12 @@ import {
 } from '../types/api';
 import { mockBackend } from './mock/provider';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE?.trim() || '';
+const API_BASE = (process.env.NEXT_PUBLIC_API_BASE ?? '').trim().replace(/\/+$/, '');
 
-// Internal fetcher that calls real API if API_BASE is configured, or falls back to mock
+// Mock data is used ONLY when no API base is configured (the UI then shows the
+// "SYNTHETIC UI FIXTURE" ribbon from meta.data_mode). If a real API is configured and a
+// call fails, the error is thrown so the UI shows an error state: synthetic data must
+// never appear in place of real data.
 class ApiClient {
   private base: string;
 
@@ -24,116 +27,56 @@ class ApiClient {
     return Boolean(this.base);
   }
 
-  async meta(): Promise<MetaResponse> {
-    if (!this.base) {
-      return mockBackend.meta();
-    }
-    try {
-      const res = await fetch(`${this.base}/api/meta`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch {
-      return mockBackend.meta();
-    }
-  }
-
-  async scenarios(): Promise<ScenariosResponse> {
-    if (!this.base) {
-      return mockBackend.scenarios();
-    }
-    try {
-      const res = await fetch(`${this.base}/api/scenarios`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch {
-      return mockBackend.scenarios();
-    }
-  }
-
-  async flagged(scenarioId: string, share?: number | null): Promise<FlaggedGeoJSON> {
-    if (!this.base) {
-      return mockBackend.flaggedGeojson(scenarioId, share);
-    }
-    try {
-      const url = new URL(`${this.base}/api/flagged`);
-      url.searchParams.set('scenario_id', scenarioId);
-      if (share !== undefined && share !== null) {
-        url.searchParams.set('share', share.toString());
-      }
-      const res = await fetch(url.toString());
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch {
-      return mockBackend.flaggedGeojson(scenarioId, share);
-    }
-  }
-
-  async hospitals(): Promise<Hospital[]> {
-    if (!this.base) {
-      return mockBackend.hospitals();
-    }
-    try {
-      const res = await fetch(`${this.base}/api/hospitals`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch {
-      return mockBackend.hospitals();
-    }
-  }
-
-  async route(
-    lat: number,
-    lon: number,
-    scenarioId: string,
-    share?: number | null,
+  private async getJson<T>(
+    path: string,
+    params: Record<string, string | number | null | undefined> = {},
     signal?: AbortSignal
-  ): Promise<RouteResponse> {
-    if (!this.base) {
-      return mockBackend.route(lat, lon, scenarioId, share);
+  ): Promise<T> {
+    const url = new URL(`${this.base}${path}`);
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== undefined && value !== null) url.searchParams.set(key, String(value));
     }
+    let res: Response;
     try {
-      const url = new URL(`${this.base}/api/route`);
-      url.searchParams.set('lat', lat.toString());
-      url.searchParams.set('lon', lon.toString());
-      url.searchParams.set('scenario_id', scenarioId);
-      if (share !== undefined && share !== null) {
-        url.searchParams.set('share', share.toString());
-      }
-      const res = await fetch(url.toString(), { signal });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
+      res = await fetch(url.toString(), { signal });
     } catch (e: unknown) {
-      if (e instanceof Error && e.name === 'AbortError') {
-        throw e;
-      }
-      return mockBackend.route(lat, lon, scenarioId, share);
+      if (e instanceof Error && e.name === 'AbortError') throw e;
+      throw new Error('Cannot reach the FloodRoute server. It may be waking up: please try again in a moment.');
     }
+    if (!res.ok) throw new Error(`The FloodRoute server answered with an error (HTTP ${res.status}).`);
+    return (await res.json()) as T;
   }
 
-  async validation(): Promise<ValidationResponse> {
-    if (!this.base) {
-      return mockBackend.validation();
-    }
-    try {
-      const res = await fetch(`${this.base}/api/validation`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch {
-      return mockBackend.validation();
-    }
+  meta(): Promise<MetaResponse> {
+    return this.base ? this.getJson('/api/meta') : mockBackend.meta();
   }
 
-  async eda(): Promise<EDAResponse> {
-    if (!this.base) {
-      return mockBackend.eda();
-    }
-    try {
-      const res = await fetch(`${this.base}/api/eda`);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.json();
-    } catch {
-      return mockBackend.eda();
-    }
+  scenarios(): Promise<ScenariosResponse> {
+    return this.base ? this.getJson('/api/scenarios') : mockBackend.scenarios();
+  }
+
+  flagged(scenarioId: string, share?: number | null): Promise<FlaggedGeoJSON> {
+    return this.base
+      ? this.getJson('/api/flagged', { scenario_id: scenarioId, share })
+      : mockBackend.flaggedGeojson(scenarioId, share);
+  }
+
+  hospitals(): Promise<Hospital[]> {
+    return this.base ? this.getJson('/api/hospitals') : mockBackend.hospitals();
+  }
+
+  route(lat: number, lon: number, scenarioId: string, share?: number | null, signal?: AbortSignal): Promise<RouteResponse> {
+    return this.base
+      ? this.getJson('/api/route', { lat, lon, scenario_id: scenarioId, share }, signal)
+      : mockBackend.route(lat, lon, scenarioId, share);
+  }
+
+  validation(): Promise<ValidationResponse> {
+    return this.base ? this.getJson('/api/validation') : mockBackend.validation();
+  }
+
+  eda(): Promise<EDAResponse> {
+    return this.base ? this.getJson('/api/eda') : mockBackend.eda();
   }
 }
 

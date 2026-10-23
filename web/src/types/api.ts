@@ -80,6 +80,8 @@ export interface Hospital {
 
 export interface RouteLeg {
   hospital: string;
+  hospital_lat?: number;
+  hospital_lon?: number;
   coords: [number, number][]; // [[lat, lon], ...]
   minutes: number;
   km: number;
