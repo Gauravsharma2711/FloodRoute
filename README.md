@@ -1,5 +1,13 @@
 # FloodRoute — "Can the ambulance get through?"
 
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20App-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://flood-route-six.vercel.app/)
+[![Render Backend](https://img.shields.io/badge/Render-API%20Live-46E3B7?style=for-the-badge&logo=render&logoColor=black)](https://floodroute.onrender.com/)
+
+- **Live Web Application (Vercel):** [https://flood-route-six.vercel.app/](https://flood-route-six.vercel.app/)
+- **Live API Backend (Render):** [https://floodroute.onrender.com/](https://floodroute.onrender.com/)
+- **API Health Check:** [https://floodroute.onrender.com/health](https://floodroute.onrender.com/health)
+- **API Interactive Docs (Swagger):** [https://floodroute.onrender.com/docs](https://floodroute.onrender.com/docs)
+
 HackAMatch 1.0 · CityPulse (Predict. Explain. Act.) · City: Mumbai (island city + suburbs up to Andheri / Kurla)
 
 FloodRoute is a decision-support map for ambulance dispatchers and the city flood-control team. For a heavy-rain day it:
