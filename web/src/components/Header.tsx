@@ -1,22 +1,25 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { MetaResponse } from "../types/api";
 
 interface HeaderProps {
   meta?: MetaResponse;
-  onOpenReliability: () => void;
+  dataMode?: "real" | "fixture";
+  onOpenReliability?: () => void;
   isDarkMode?: boolean;
   onToggleDarkMode?: () => void;
 }
 
 export function Header({
   meta,
+  dataMode,
   onOpenReliability,
   isDarkMode = false,
   onToggleDarkMode,
 }: HeaderProps) {
-  const isFixture = meta?.data_mode !== "real";
+  const isFixture = dataMode ? dataMode !== "real" : meta?.data_mode !== "real";
   const [timeStr, setTimeStr] = useState<string>("");
 
   useEffect(() => {
@@ -116,17 +119,31 @@ export function Header({
             </button>
           )}
 
-          <button
-            onClick={onOpenReliability}
-            className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold transition-colors py-1 px-2.5 rounded-lg border ${
-              isDarkMode
-                ? "text-[#2DD4BF] hover:text-[#5EEAD4] border-transparent hover:border-[#2DD4BF]/20 hover:bg-[#134E4A]/30"
-                : "text-[#0B8A7E] hover:text-[#09756B] border-transparent hover:border-[#0B8A7E]/20 hover:bg-[#F0FDF4]"
-            }`}
-          >
-            <span className="material-symbols-outlined text-[17px]">verified</span>
-            <span className="hidden xs:inline">How reliable?</span>
-          </button>
+          {onOpenReliability ? (
+            <button
+              onClick={onOpenReliability}
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold transition-colors py-1 px-2.5 rounded-lg border ${
+                isDarkMode
+                  ? "text-[#2DD4BF] hover:text-[#5EEAD4] border-transparent hover:border-[#2DD4BF]/20 hover:bg-[#134E4A]/30"
+                  : "text-[#0B8A7E] hover:text-[#09756B] border-transparent hover:border-[#0B8A7E]/20 hover:bg-[#F0FDF4]"
+              }`}
+            >
+              <span className="material-symbols-outlined text-[17px]">verified</span>
+              <span className="hidden xs:inline">How reliable?</span>
+            </button>
+          ) : (
+            <Link
+              href="/reliable"
+              className={`flex items-center gap-1.5 text-xs sm:text-sm font-semibold transition-colors py-1 px-2.5 rounded-lg border ${
+                isDarkMode
+                  ? "text-[#2DD4BF] hover:text-[#5EEAD4] border-transparent hover:border-[#2DD4BF]/20 hover:bg-[#134E4A]/30"
+                  : "text-[#0B8A7E] hover:text-[#09756B] border-transparent hover:border-[#0B8A7E]/20 hover:bg-[#F0FDF4]"
+              }`}
+            >
+              <span className="material-symbols-outlined text-[17px]">verified</span>
+              <span className="hidden xs:inline">How reliable?</span>
+            </Link>
+          )}
 
           <span
             className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
