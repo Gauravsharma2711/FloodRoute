@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   api,
   useMeta,
@@ -86,16 +86,16 @@ export default function Home() {
   }, [scenariosData, selectedScenarioId]);
 
   // Handle Preset Selection
-  const handleSelectPreset = (preset: PresetLocation) => {
+  const handleSelectPreset = useCallback((preset: PresetLocation) => {
     setSelectedPresetId(preset.id);
     setPatientLocation({ lat: preset.lat, lon: preset.lon });
-  };
+  }, []);
 
   // Handle Map Click Selection
-  const handleSelectLocation = (lat: number, lon: number) => {
+  const handleSelectLocation = useCallback((lat: number, lon: number) => {
     setSelectedPresetId(null);
     setPatientLocation({ lat, lon });
-  };
+  }, []);
 
   // Compute Route on Location / Scenario / Share / Retry Change
   useEffect(() => {

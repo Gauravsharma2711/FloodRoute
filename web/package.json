@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:css": "npx -y @tailwindcss/cli -i src/app/globals.css -o src/app/output.css --minify",
+    "build:css": "tailwindcss -i src/app/globals.css -o src/app/output.css --minify",
     "dev": "next dev",
     "build": "npm run build:css && next build",
     "start": "next start",
@@ -19,6 +19,7 @@
     "swr": "^2.5.1"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

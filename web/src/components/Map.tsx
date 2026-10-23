@@ -39,12 +39,20 @@ export function Map({
 }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   const patientMarkerRef = useRef<maplibregl.Marker | null>(null);
   const hospitalMarkersRef = useRef<maplibregl.Marker[]>([]);
   const popupRef = useRef<maplibregl.Popup | null>(null);
 
   const [isLocating, setIsLocating] = useState<boolean>(false);
   const [gpsError, setGpsError] = useState<string | null>(null);
+
+  // Keep latest callback in a ref to avoid destroying the map when onSelectLocation changes
+  const onSelectLocationRef = useRef(onSelectLocation);
+  useEffect(() => {
+    onSelectLocationRef.current = onSelectLocation;
+  }, [onSelectLocation]);
 
   const handleLocateMe = () => {
     if (!navigator.geolocation) {
@@ -57,7 +65,7 @@ export function Map({
       (pos) => {
         setIsLocating(false);
         const { latitude, longitude } = pos.coords;
-        onSelectLocation(latitude, longitude);
+        onSelectLocationRef.current(latitude, longitude);
         if (mapRef.current) {
           mapRef.current.flyTo({
             center: [longitude, latitude],
@@ -75,7 +83,7 @@ export function Map({
     );
   };
 
-  // Initialize Map
+  // Initialize Map ONCE on mount
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
 
@@ -94,7 +102,15 @@ export function Map({
 
     map.addControl(new maplibregl.NavigationControl({ showCompass: true }), "top-right");
 
+    // Click handler registered directly on map instance
+    map.on("click", (e) => {
+      onSelectLocationRef.current(e.lngLat.lat, e.lngLat.lng);
+    });
+
     map.on("load", () => {
+      // Set crosshair cursor so user knows map is clickable to place patient
+      map.getCanvas().style.cursor = "crosshair";
+
       // 1. Study Area Bounds Box Source & Layer
       map.addSource("study-bounds", {
         type: "geojson",
@@ -273,14 +289,11 @@ export function Map({
       });
 
       map.on("mouseleave", "flagged-roads-line", () => {
-        map.getCanvas().style.cursor = "";
+        map.getCanvas().style.cursor = "crosshair";
         popup.remove();
       });
 
-      // Map Click Handler for Patient Placement
-      map.on("click", (e) => {
-        onSelectLocation(e.lngLat.lat, e.lngLat.lng);
-      });
+      setMapLoaded(true);
     });
 
     mapRef.current = map;
@@ -288,30 +301,34 @@ export function Map({
     return () => {
       map.remove();
       mapRef.current = null;
+      setMapLoaded(false);
     };
-  }, [onSelectLocation]);
+  }, []);
 
-  // Update Flagged Roads Data
+  // Sync Flagged Roads Data
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !map.isStyleLoaded()) return;
+    if (!map || !mapLoaded) return;
 
     const source = map.getSource("flagged-roads") as maplibregl.GeoJSONSource | undefined;
-    if (source && flaggedData) {
-      source.setData(flaggedData as unknown as GeoJSON.GeoJSON);
+    if (source) {
+      if (flaggedData) {
+        source.setData(flaggedData as unknown as GeoJSON.GeoJSON);
+      } else {
+        source.setData({ type: "FeatureCollection", features: [] });
+      }
     }
-  }, [flaggedData]);
+  }, [flaggedData, mapLoaded]);
 
-  // Update Routes
+  // Sync Routes
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !map.isStyleLoaded()) return;
+    if (!map || !mapLoaded) return;
 
     // Normal Route update
     const normalSource = map.getSource("normal-route") as maplibregl.GeoJSONSource | undefined;
     if (normalSource) {
       if (normalRoute && normalRoute.coords && normalRoute.coords.length > 0) {
-        // coords are [[lat, lon], ...] -> MapLibre wants [[lon, lat], ...]
         const coordinates = normalRoute.coords.map(([lat, lon]) => [lon, lat]);
         normalSource.setData({
           type: "Feature",
@@ -343,9 +360,9 @@ export function Map({
         safeSource.setData({ type: "FeatureCollection", features: [] });
       }
     }
-  }, [normalRoute, safeRoute, routeStatus]);
+  }, [normalRoute, safeRoute, routeStatus, mapLoaded]);
 
-  // Update Patient Marker
+  // Sync Patient Marker (Draggable & Clickable)
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -353,26 +370,52 @@ export function Map({
     if (patientLocation) {
       if (!patientMarkerRef.current) {
         const el = document.createElement("div");
-        el.className = "flex flex-col items-center cursor-pointer select-none group";
+        el.className = "flex flex-col items-center cursor-grab active:cursor-grabbing select-none group";
 
         const label = document.createElement("div");
-        label.className = "px-2 py-0.5 mb-1 rounded bg-[#1F2937] text-white text-[10px] font-bold shadow-md tracking-wide";
-        label.textContent = "Patient";
+        label.className = "px-2 py-0.5 mb-1 rounded bg-[#111827] text-white text-[10px] font-bold shadow-md tracking-wide pointer-events-none whitespace-nowrap transition-transform group-hover:scale-105";
+        label.textContent = "📍 Patient (Drag to adjust)";
 
-        const circle = document.createElement("div");
-        circle.className = "w-8 h-8 rounded-full bg-[#F59E0B] shadow-lg flex items-center justify-center text-white ring-3 ring-white transition-transform group-hover:scale-110";
+        const pinWrap = document.createElement("div");
+        pinWrap.className = "relative flex items-center justify-center";
+
+        const ping = document.createElement("span");
+        ping.className = "animate-ping absolute inline-flex h-8 w-8 rounded-full bg-[#F59E0B] opacity-75";
+
+        const pin = document.createElement("div");
+        pin.className = "w-8 h-8 rounded-full bg-gradient-to-br from-[#F59E0B] to-[#D97706] text-white shadow-xl flex items-center justify-center border-2 border-white ring-2 ring-[#F59E0B]/30 hover:scale-110 transition-transform";
 
         const icon = document.createElement("span");
         icon.className = "material-symbols-outlined text-[18px]";
         icon.textContent = "person_pin_circle";
 
-        circle.appendChild(icon);
+        pin.appendChild(icon);
+        pinWrap.appendChild(ping);
+        pinWrap.appendChild(pin);
         el.appendChild(label);
-        el.appendChild(circle);
+        el.appendChild(pinWrap);
 
-        const marker = new maplibregl.Marker({ element: el })
+        const marker = new maplibregl.Marker({
+          element: el,
+          draggable: true,
+          anchor: "bottom",
+        })
           .setLngLat([patientLocation.lon, patientLocation.lat])
           .addTo(map);
+
+        // Handle marker drag end to update patient position
+        marker.on("dragend", () => {
+          const lngLat = marker.getLngLat();
+          onSelectLocationRef.current(lngLat.lat, lngLat.lng);
+        });
+
+        // Click on marker directly
+        el.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const lngLat = marker.getLngLat();
+          onSelectLocationRef.current(lngLat.lat, lngLat.lng);
+        });
+
         patientMarkerRef.current = marker;
       } else {
         patientMarkerRef.current.setLngLat([patientLocation.lon, patientLocation.lat]);
@@ -381,12 +424,27 @@ export function Map({
       patientMarkerRef.current.remove();
       patientMarkerRef.current = null;
     }
+  }, [patientLocation, mapLoaded]);
+
+  // Smoothly pan map when patient location changes significantly (e.g. from preset)
+  const prevLocRef = useRef<{ lat: number; lon: number } | null>(null);
+  useEffect(() => {
+    if (!patientLocation || !mapRef.current) return;
+    const prev = prevLocRef.current;
+    prevLocRef.current = patientLocation;
+
+    if (!prev || Math.hypot(prev.lat - patientLocation.lat, prev.lon - patientLocation.lon) > 0.008) {
+      mapRef.current.easeTo({
+        center: [patientLocation.lon, patientLocation.lat],
+        duration: 600,
+      });
+    }
   }, [patientLocation]);
 
-  // Update Hospital Markers (using textContent for secure DOM creation)
+  // Sync Hospital Markers (Interactive with Clickable Details)
   useEffect(() => {
     const map = mapRef.current;
-    if (!map) return;
+    if (!map || !mapLoaded) return;
 
     // Clear existing hospital markers
     hospitalMarkersRef.current.forEach((m) => m.remove());
@@ -394,18 +452,19 @@ export function Map({
 
     if (!hospitals || hospitals.length === 0) return;
 
-    // Add up to ~30 major hospitals as styled clean pins
     const displayHospitals = hospitals.slice(0, 30);
     displayHospitals.forEach((h) => {
       const el = document.createElement("div");
       el.className = "group relative cursor-pointer select-none";
 
       const pin = document.createElement("div");
-      pin.className = "w-7 h-7 rounded-full bg-white shadow-md border-2 border-[#0B8A7E] flex items-center justify-center text-[#0B8A7E] font-black text-xs hover:scale-115 transition-transform hover:z-20";
+      pin.className =
+        "w-7 h-7 rounded-full bg-white shadow-md border-2 border-[#0B8A7E] flex items-center justify-center text-[#0B8A7E] font-black text-xs hover:scale-115 transition-transform hover:z-20";
       pin.textContent = "H";
 
       const tooltip = document.createElement("div");
-      tooltip.className = "opacity-0 group-hover:opacity-100 pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-[#111827] text-white text-[10px] font-semibold rounded shadow-md whitespace-nowrap transition-opacity z-30";
+      tooltip.className =
+        "opacity-0 group-hover:opacity-100 pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-[#111827] text-white text-[10px] font-semibold rounded shadow-md whitespace-nowrap transition-opacity z-30";
       tooltip.textContent = h.name;
 
       el.appendChild(pin);
@@ -415,13 +474,41 @@ export function Map({
         .setLngLat([h.lon, h.lat])
         .addTo(map);
 
+      // Hospital Click Popup
+      el.addEventListener("click", (e) => {
+        e.stopPropagation();
+        new maplibregl.Popup({ offset: 15, closeButton: true })
+          .setLngLat([h.lon, h.lat])
+          .setHTML(
+            `<div class="p-1 text-xs select-none">
+              <div class="font-bold text-[#111827] text-sm flex items-center gap-1.5">
+                <span class="w-4 h-4 rounded-full bg-[#0B8A7E] text-white flex items-center justify-center text-[10px] font-bold">H</span>
+                <span>${escapeHtml(h.name)}</span>
+              </div>
+              <div class="text-[#6B7280] text-[11px] mt-1">
+                Emergency Hospital Destination
+              </div>
+              <div class="text-[10px] text-[#0B8A7E] font-medium mt-1">
+                Coordinates: ${h.lat.toFixed(4)}, ${h.lon.toFixed(4)}
+              </div>
+            </div>`
+          )
+          .addTo(map);
+      });
+
       hospitalMarkersRef.current.push(marker);
     });
-  }, [hospitals]);
+  }, [hospitals, mapLoaded]);
 
   return (
     <div className={`relative w-full h-full overflow-hidden ${className}`}>
       <div ref={mapContainerRef} className="w-full h-full" />
+
+      {/* Interactive Helper Banner */}
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 pointer-events-none hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#E5E7EB] shadow-sm text-xs font-medium text-[#374151]">
+        <span className="material-symbols-outlined text-[16px] text-[#0B8A7E]">touch_app</span>
+        <span>Click map or drag patient pin to set emergency origin</span>
+      </div>
 
       {/* Floating GPS Locate Me Button */}
       <div className="absolute top-24 right-2.5 z-10 flex items-center">
@@ -451,34 +538,56 @@ export function Map({
       </div>
 
       {/* Floating Legend */}
-      <div className={`hidden sm:block absolute bottom-4 left-4 z-10 backdrop-blur-xs border rounded-xl shadow-md p-3 select-none text-xs transition-colors ${
-        isDarkMode
-          ? "bg-[#0F172A]/90 border-[#1E293B] text-white"
-          : "bg-white/95 border-[#E5E7EB] text-[#111827]"
-      }`}>
-        <div className={`font-bold text-[11px] mb-2 uppercase tracking-wider ${isDarkMode ? "text-[#94A3B8]" : "text-[#111827]"}`}>
+      <div
+        className={`hidden sm:block absolute bottom-4 left-4 z-10 backdrop-blur-xs border rounded-xl shadow-md p-3 select-none text-xs transition-colors ${
+          isDarkMode
+            ? "bg-[#0F172A]/90 border-[#1E293B] text-white"
+            : "bg-white/95 border-[#E5E7EB] text-[#111827]"
+        }`}
+      >
+        <div
+          className={`font-bold text-[11px] mb-2 uppercase tracking-wider ${
+            isDarkMode ? "text-[#94A3B8]" : "text-[#111827]"
+          }`}
+        >
           Legend
         </div>
         <div className="flex flex-col gap-1.5 text-[11px]">
           <div className="flex items-center gap-2">
             <span className="w-5 h-1 bg-[#DC2626] rounded-full" />
-            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>Likely to flood (proxy)</span>
+            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>
+              Likely to flood (proxy)
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-5 h-0.5 border-t-2 border-dashed border-[#2563EB]" />
-            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>Normal route (direct)</span>
+            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>
+              Normal route (direct)
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-5 h-1.5 bg-[#0B8A7E] rounded-full" />
-            <span className={isDarkMode ? "text-[#2DD4BF] font-semibold" : "text-[#065F46] font-semibold"}>Flood-safe route</span>
+            <span
+              className={
+                isDarkMode ? "text-[#2DD4BF] font-semibold" : "text-[#065F46] font-semibold"
+              }
+            >
+              Flood-safe route
+            </span>
           </div>
           <div className="flex items-center gap-2 mt-0.5">
-            <span className={`w-4 h-4 rounded-full border flex items-center justify-center font-bold text-[9px] ${
-              isDarkMode ? "bg-[#1E293B] border-[#2DD4BF] text-[#2DD4BF]" : "bg-white border-[#0B8A7E] text-[#0B8A7E]"
-            }`}>
+            <span
+              className={`w-4 h-4 rounded-full border flex items-center justify-center font-bold text-[9px] ${
+                isDarkMode
+                  ? "bg-[#1E293B] border-[#2DD4BF] text-[#2DD4BF]"
+                  : "bg-white border-[#0B8A7E] text-[#0B8A7E]"
+              }`}
+            >
               H
             </span>
-            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>Hospital destination</span>
+            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>
+              Hospital destination
+            </span>
           </div>
         </div>
       </div>

@@ -1,0 +1,12 @@
+{
+  "name": "flood-route",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FloodRoute: Flood-Aware Ambulance Routing for Mumbai",
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "lint": "npm --prefix web run lint"
+  }
+}
