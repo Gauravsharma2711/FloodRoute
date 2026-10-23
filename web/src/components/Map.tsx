@@ -1,9 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { FlaggedGeoJSON, Hospital, RouteLeg, RouteStatus } from "../types/api";
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 interface MapProps {
   flaggedData?: FlaggedGeoJSON;
@@ -14,6 +23,7 @@ interface MapProps {
   patientLocation?: { lat: number; lon: number } | null;
   onSelectLocation: (lat: number, lon: number) => void;
   className?: string;
+  isDarkMode?: boolean;
 }
 
 export function Map({
@@ -25,12 +35,45 @@ export function Map({
   patientLocation,
   onSelectLocation,
   className = "",
+  isDarkMode = false,
 }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const patientMarkerRef = useRef<maplibregl.Marker | null>(null);
   const hospitalMarkersRef = useRef<maplibregl.Marker[]>([]);
   const popupRef = useRef<maplibregl.Popup | null>(null);
+
+  const [isLocating, setIsLocating] = useState<boolean>(false);
+  const [gpsError, setGpsError] = useState<string | null>(null);
+
+  const handleLocateMe = () => {
+    if (!navigator.geolocation) {
+      setGpsError("Geolocation unsupported");
+      return;
+    }
+    setIsLocating(true);
+    setGpsError(null);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setIsLocating(false);
+        const { latitude, longitude } = pos.coords;
+        onSelectLocation(latitude, longitude);
+        if (mapRef.current) {
+          mapRef.current.flyTo({
+            center: [longitude, latitude],
+            zoom: 13.5,
+            essential: true,
+          });
+        }
+      },
+      (err) => {
+        setIsLocating(false);
+        setGpsError(err.code === 1 ? "Permission denied" : "Position unavailable");
+        setTimeout(() => setGpsError(null), 4000);
+      },
+      { enableHighAccuracy: true, timeout: 8000 }
+    );
+  };
 
   // Initialize Map
   useEffect(() => {
@@ -201,22 +244,27 @@ export function Map({
           const score = props.score ? Number(props.score).toFixed(2) : "0.00";
           const why = props.why || "Low-lying road depression near water drainage";
 
+          const safeName = escapeHtml(String(name));
+          const safeScore = escapeHtml(String(score));
+          const safeWhy = escapeHtml(String(why));
+          const rankPct = (Number(score) * 100).toFixed(0);
+
           popup
             .setLngLat(e.lngLat)
             .setHTML(
               `<div class="p-0.5 text-xs select-none">
                 <div class="font-bold text-[#111827] text-sm tracking-tight flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-[#DC2626]"></span>
-                  <span>${name}</span>
+                  <span>${safeName}</span>
                 </div>
                 <div class="flex items-center gap-2 mt-1">
                   <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#FEE2E2] text-[#991B1B] border border-[#EF4444]/20">
-                    Risk Rank: ${(Number(score) * 100).toFixed(0)}%
+                    Risk Rank: ${rankPct}%
                   </span>
-                  <span class="text-[10px] text-[#6B7280]">Score: ${score}</span>
+                  <span class="text-[10px] text-[#6B7280]">Score: ${safeScore}</span>
                 </div>
                 <div class="text-[#374151] text-[11px] mt-1.5 bg-[#F9FAFB] p-2 rounded-lg border border-[#E5E7EB] leading-relaxed">
-                  ${why}
+                  ${safeWhy}
                 </div>
               </div>`
             )
@@ -306,14 +354,22 @@ export function Map({
       if (!patientMarkerRef.current) {
         const el = document.createElement("div");
         el.className = "flex flex-col items-center cursor-pointer select-none group";
-        el.innerHTML = `
-          <div class="px-2 py-0.5 mb-1 rounded bg-[#1F2937] text-white text-[10px] font-bold shadow-md tracking-wide">
-            Patient
-          </div>
-          <div class="w-8 h-8 rounded-full bg-[#F59E0B] shadow-lg flex items-center justify-center text-white ring-3 ring-white transition-transform group-hover:scale-110">
-            <span class="material-symbols-outlined text-[18px]">person_pin_circle</span>
-          </div>
-        `;
+
+        const label = document.createElement("div");
+        label.className = "px-2 py-0.5 mb-1 rounded bg-[#1F2937] text-white text-[10px] font-bold shadow-md tracking-wide";
+        label.textContent = "Patient";
+
+        const circle = document.createElement("div");
+        circle.className = "w-8 h-8 rounded-full bg-[#F59E0B] shadow-lg flex items-center justify-center text-white ring-3 ring-white transition-transform group-hover:scale-110";
+
+        const icon = document.createElement("span");
+        icon.className = "material-symbols-outlined text-[18px]";
+        icon.textContent = "person_pin_circle";
+
+        circle.appendChild(icon);
+        el.appendChild(label);
+        el.appendChild(circle);
+
         const marker = new maplibregl.Marker({ element: el })
           .setLngLat([patientLocation.lon, patientLocation.lat])
           .addTo(map);
@@ -327,7 +383,7 @@ export function Map({
     }
   }, [patientLocation]);
 
-  // Update Hospital Markers
+  // Update Hospital Markers (using textContent for secure DOM creation)
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
@@ -343,14 +399,17 @@ export function Map({
     displayHospitals.forEach((h) => {
       const el = document.createElement("div");
       el.className = "group relative cursor-pointer select-none";
-      el.innerHTML = `
-        <div class="w-7 h-7 rounded-full bg-white shadow-md border-2 border-[#0B8A7E] flex items-center justify-center text-[#0B8A7E] font-black text-xs hover:scale-115 transition-transform hover:z-20">
-          H
-        </div>
-        <div class="opacity-0 group-hover:opacity-100 pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-[#111827] text-white text-[10px] font-semibold rounded shadow-md whitespace-nowrap transition-opacity z-30">
-          ${h.name}
-        </div>
-      `;
+
+      const pin = document.createElement("div");
+      pin.className = "w-7 h-7 rounded-full bg-white shadow-md border-2 border-[#0B8A7E] flex items-center justify-center text-[#0B8A7E] font-black text-xs hover:scale-115 transition-transform hover:z-20";
+      pin.textContent = "H";
+
+      const tooltip = document.createElement("div");
+      tooltip.className = "opacity-0 group-hover:opacity-100 pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-[#111827] text-white text-[10px] font-semibold rounded shadow-md whitespace-nowrap transition-opacity z-30";
+      tooltip.textContent = h.name;
+
+      el.appendChild(pin);
+      el.appendChild(tooltip);
 
       const marker = new maplibregl.Marker({ element: el })
         .setLngLat([h.lon, h.lat])
@@ -364,29 +423,62 @@ export function Map({
     <div className={`relative w-full h-full overflow-hidden ${className}`}>
       <div ref={mapContainerRef} className="w-full h-full" />
 
+      {/* Floating GPS Locate Me Button */}
+      <div className="absolute top-24 right-2.5 z-10 flex items-center">
+        {gpsError && (
+          <div className="mr-2 px-2.5 py-1 rounded-lg bg-[#FEE2E2] border border-[#EF4444]/40 text-[#991B1B] text-[10px] font-bold shadow-md whitespace-nowrap animate-fade-in flex items-center gap-1">
+            <span className="material-symbols-outlined text-[13px]">error</span>
+            <span>{gpsError}</span>
+          </div>
+        )}
+        <button
+          onClick={handleLocateMe}
+          disabled={isLocating}
+          title="Use My Current Location (GPS)"
+          aria-label="Locate patient using GPS"
+          className={`w-9 h-9 rounded-xl shadow-md border flex items-center justify-center transition-all ${
+            isLocating ? "animate-pulse" : ""
+          } ${
+            isDarkMode
+              ? "bg-[#1E293B] border-[#334155] text-[#38BDF8] hover:bg-[#334155]"
+              : "bg-white border-[#E5E7EB] text-[#0284C7] hover:bg-[#F0F9FF]"
+          }`}
+        >
+          <span className="material-symbols-outlined text-[20px]">
+            {isLocating ? "autorenew" : "my_location"}
+          </span>
+        </button>
+      </div>
+
       {/* Floating Legend */}
-      <div className="hidden sm:block absolute bottom-4 left-4 z-10 bg-white/95 backdrop-blur-xs border border-[#E5E7EB] rounded-xl shadow-md p-3 select-none text-xs">
-        <div className="font-bold text-[#111827] text-[11px] mb-2 uppercase tracking-wider">
+      <div className={`hidden sm:block absolute bottom-4 left-4 z-10 backdrop-blur-xs border rounded-xl shadow-md p-3 select-none text-xs transition-colors ${
+        isDarkMode
+          ? "bg-[#0F172A]/90 border-[#1E293B] text-white"
+          : "bg-white/95 border-[#E5E7EB] text-[#111827]"
+      }`}>
+        <div className={`font-bold text-[11px] mb-2 uppercase tracking-wider ${isDarkMode ? "text-[#94A3B8]" : "text-[#111827]"}`}>
           Legend
         </div>
         <div className="flex flex-col gap-1.5 text-[11px]">
           <div className="flex items-center gap-2">
             <span className="w-5 h-1 bg-[#DC2626] rounded-full" />
-            <span className="text-[#374151]">Likely to flood (proxy)</span>
+            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>Likely to flood (proxy)</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-5 h-0.5 border-t-2 border-dashed border-[#2563EB]" />
-            <span className="text-[#374151]">Normal route (direct)</span>
+            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>Normal route (direct)</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-5 h-1.5 bg-[#0B8A7E] rounded-full" />
-            <span className="text-[#065F46] font-semibold">Flood-safe route</span>
+            <span className={isDarkMode ? "text-[#2DD4BF] font-semibold" : "text-[#065F46] font-semibold"}>Flood-safe route</span>
           </div>
           <div className="flex items-center gap-2 mt-0.5">
-            <span className="w-4 h-4 rounded-full bg-white border border-[#0B8A7E] flex items-center justify-center font-bold text-[9px] text-[#0B8A7E]">
+            <span className={`w-4 h-4 rounded-full border flex items-center justify-center font-bold text-[9px] ${
+              isDarkMode ? "bg-[#1E293B] border-[#2DD4BF] text-[#2DD4BF]" : "bg-white border-[#0B8A7E] text-[#0B8A7E]"
+            }`}>
               H
             </span>
-            <span className="text-[#374151]">Hospital destination</span>
+            <span className={isDarkMode ? "text-[#CBD5E1]" : "text-[#374151]"}>Hospital destination</span>
           </div>
         </div>
       </div>

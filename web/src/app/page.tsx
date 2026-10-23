@@ -15,7 +15,31 @@ import { Sidebar } from "../components/Sidebar";
 import { Map } from "../components/Map";
 import { MobileDrawer } from "../components/MobileDrawer";
 import { ReliabilityModal } from "../components/ReliabilityModal";
+import { ErrorBoundary } from "../components/ErrorBoundary";
 import { PresetLocation, RouteResponse, Scenario } from "../types/api";
+
+function playEmergencyTone() {
+  try {
+    const AudioContextClass =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!AudioContextClass) return;
+    const ctx = new AudioContextClass();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.setValueAtTime(440, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.35);
+  } catch {
+    // AudioContext blocked by browser policy or unavailable
+  }
+}
 
 export default function Home() {
   const { data: meta } = useMeta();
@@ -44,6 +68,9 @@ export default function Home() {
   const [routeData, setRouteData] = useState<RouteResponse | null>(null);
   const [isRoutingLoading, setIsRoutingLoading] = useState<boolean>(false);
   const [isReliabilityOpen, setIsReliabilityOpen] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [routeError, setRouteError] = useState<string | null>(null);
+  const [retryTrigger, setRetryTrigger] = useState<number>(0);
 
   // In-flight abort controller for routing requests
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -70,7 +97,7 @@ export default function Home() {
     setPatientLocation({ lat, lon });
   };
 
-  // Compute Route on Location / Scenario / Share Change
+  // Compute Route on Location / Scenario / Share / Retry Change
   useEffect(() => {
     if (!patientLocation || !selectedScenarioId) {
       setRouteData(null);
@@ -97,11 +124,16 @@ export default function Home() {
       )
       .then((res) => {
         setRouteData(res);
+        setRouteError(null);
         setIsRoutingLoading(false);
+        if (res.status === "cut_off") {
+          playEmergencyTone();
+        }
       })
       .catch((err) => {
         if (err.name !== "AbortError") {
           console.error("Routing error:", err);
+          setRouteError("Unable to reach routing service. Retrying or using cached corridor data...");
           setIsRoutingLoading(false);
         }
       });
@@ -109,48 +141,45 @@ export default function Home() {
     return () => {
       controller.abort();
     };
-  }, [patientLocation, selectedScenarioId, shareOverride]);
+  }, [patientLocation, selectedScenarioId, shareOverride, retryTrigger]);
 
   return (
-    <div className="flex flex-col h-screen w-screen overflow-hidden bg-white text-[#111827]">
-      {/* Top Header & Ribbon */}
-      <Header meta={meta} onOpenReliability={() => setIsReliabilityOpen(true)} />
+    <ErrorBoundary>
+      <div className={`flex flex-col h-screen w-screen overflow-hidden transition-colors ${isDarkMode ? "bg-[#0B0F17] text-white" : "bg-white text-[#111827]"}`}>
+        {/* Top Header & Ribbon */}
+        <Header
+          meta={meta}
+          onOpenReliability={() => setIsReliabilityOpen(true)}
+          isDarkMode={isDarkMode}
+          onToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
+        />
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col lg:flex-row relative overflow-hidden">
-        {/* Desktop Sidebar (visible on lg screens >= 1024px) */}
-        <div className="hidden lg:block h-full">
-          <Sidebar
-            scenarios={allScenarios}
-            selectedScenarioId={selectedScenarioId}
-            onSelectScenario={(id) => setSelectedScenarioId(id)}
-            presets={meta?.presets || []}
-            selectedPresetId={selectedPresetId}
-            onSelectPreset={handleSelectPreset}
-            patientLocation={patientLocation}
-            routeData={routeData}
-            isRoutingLoading={isRoutingLoading}
-            shareOverride={shareOverride}
-            onChangeShareOverride={setShareOverride}
-          />
-        </div>
+        {/* Global Floating Error Toast */}
+        {routeError && (
+          <div className="absolute top-16 left-1/2 -translate-x-1/2 z-50 bg-[#FEF2F2] border border-[#EF4444]/40 text-[#991B1B] px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-xs font-medium animate-fade-in">
+            <span className="material-symbols-outlined text-[18px] text-[#DC2626]">warning</span>
+            <span>{routeError}</span>
+            <button
+              onClick={() => setRetryTrigger((prev) => prev + 1)}
+              className="ml-2 px-2.5 py-0.5 rounded bg-[#DC2626] text-white text-[11px] font-bold hover:bg-[#B91C1C] transition-colors shadow-xs"
+            >
+              Retry
+            </button>
+            <button
+              onClick={() => setRouteError(null)}
+              className="text-[#991B1B] hover:text-[#7F1D1D] ml-1 text-base leading-none p-0.5"
+              aria-label="Dismiss error"
+            >
+              ×
+            </button>
+          </div>
+        )}
 
-        {/* Map Viewport */}
-        <main className="flex-1 h-full relative">
-          <Map
-            flaggedData={flaggedData}
-            hospitals={hospitals}
-            normalRoute={routeData?.normal}
-            safeRoute={routeData?.safe}
-            routeStatus={routeData?.status}
-            patientLocation={patientLocation}
-            onSelectLocation={handleSelectLocation}
-            className="w-full h-full"
-          />
-
-          {/* Mobile Bottom Sheet (visible on mobile < 1024px) */}
-          <div className="lg:hidden absolute bottom-0 left-0 right-0">
-            <MobileDrawer
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col lg:flex-row relative overflow-hidden">
+          {/* Desktop Sidebar (visible on lg screens >= 1024px) */}
+          <div className="hidden lg:block h-full">
+            <Sidebar
               scenarios={allScenarios}
               selectedScenarioId={selectedScenarioId}
               onSelectScenario={(id) => setSelectedScenarioId(id)}
@@ -160,30 +189,66 @@ export default function Home() {
               patientLocation={patientLocation}
               routeData={routeData}
               isRoutingLoading={isRoutingLoading}
-              onOpenReliability={() => setIsReliabilityOpen(true)}
+              shareOverride={shareOverride}
+              onChangeShareOverride={setShareOverride}
             />
           </div>
-        </main>
+
+          {/* Map Viewport */}
+          <main className="flex-1 h-full relative">
+            <Map
+              flaggedData={flaggedData}
+              hospitals={hospitals}
+              normalRoute={routeData?.normal}
+              safeRoute={routeData?.safe}
+              routeStatus={routeData?.status}
+              patientLocation={patientLocation}
+              onSelectLocation={handleSelectLocation}
+              className="w-full h-full"
+              isDarkMode={isDarkMode}
+            />
+
+            {/* Mobile Bottom Sheet (visible on mobile < 1024px) */}
+            <div className="lg:hidden absolute bottom-0 left-0 right-0">
+              <MobileDrawer
+                scenarios={allScenarios}
+                selectedScenarioId={selectedScenarioId}
+                onSelectScenario={(id) => setSelectedScenarioId(id)}
+                presets={meta?.presets || []}
+                selectedPresetId={selectedPresetId}
+                onSelectPreset={handleSelectPreset}
+                patientLocation={patientLocation}
+                routeData={routeData}
+                isRoutingLoading={isRoutingLoading}
+                onOpenReliability={() => setIsReliabilityOpen(true)}
+              />
+            </div>
+          </main>
+        </div>
+
+        {/* Footer Attribution Bar */}
+        <footer className={`w-full border-t px-4 py-1.5 flex flex-col sm:flex-row items-center justify-between text-[11px] select-none z-10 transition-colors ${
+          isDarkMode
+            ? "bg-[#0F172A] border-[#1E293B] text-[#94A3B8]"
+            : "bg-[#F9FAFB] border-[#E5E7EB] text-[#6B7280]"
+        }`}>
+          <div>
+            <span>© OpenStreetMap contributors · Copernicus DEM GLO-30 · Open-Meteo · IMD</span>
+          </div>
+          <div className={`text-[10px] mt-0.5 sm:mt-0 ${isDarkMode ? "text-[#64748B]" : "text-[#9CA3AF]"}`}>
+            Prototype for decision support — not an official warning system
+          </div>
+        </footer>
+
+        {/* Reliability, Proof & Limits Modal */}
+        <ReliabilityModal
+          isOpen={isReliabilityOpen}
+          onClose={() => setIsReliabilityOpen(false)}
+          validationData={validationData}
+          edaData={edaData}
+          dataMode={meta?.data_mode}
+        />
       </div>
-
-      {/* Footer Attribution Bar */}
-      <footer className="w-full bg-[#F9FAFB] border-t border-[#E5E7EB] px-4 py-1.5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#6B7280] select-none z-10">
-        <div>
-          <span>© OpenStreetMap contributors · Copernicus DEM GLO-30 · Open-Meteo · IMD</span>
-        </div>
-        <div className="text-[10px] text-[#9CA3AF] mt-0.5 sm:mt-0">
-          Prototype for decision support — not an official warning system
-        </div>
-      </footer>
-
-      {/* Reliability, Proof & Limits Modal */}
-      <ReliabilityModal
-        isOpen={isReliabilityOpen}
-        onClose={() => setIsReliabilityOpen(false)}
-        validationData={validationData}
-        edaData={edaData}
-        dataMode={meta?.data_mode}
-      />
-    </div>
+    </ErrorBoundary>
   );
 }

@@ -257,6 +257,26 @@ function MobileResultCard({
         </div>
       )}
 
+      {/* Maneuver & Route Step Navigation Waypoints */}
+      <div className="p-2 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB] text-[11px] space-y-1.5">
+        <div className="font-bold text-[#374151] flex items-center gap-1 text-[10px] uppercase tracking-wider">
+          <span className="material-symbols-outlined text-[14px] text-[#0B8A7E]">alt_route</span>
+          <span>Corridor Waypoints</span>
+        </div>
+        <div className="flex items-center gap-2 text-[#4B5563]">
+          <span className="w-4 h-4 rounded-full bg-[#1F2937] text-white flex items-center justify-center font-bold text-[9px] shrink-0">1</span>
+          <span className="truncate">Pickup Location → Avoid {blocked_on_normal?.[0]?.name || "waterlogged basin"}</span>
+        </div>
+        <div className="flex items-center gap-2 text-[#065F46] font-semibold">
+          <span className="w-4 h-4 rounded-full bg-[#0B8A7E] text-white flex items-center justify-center font-bold text-[9px] shrink-0">2</span>
+          <span className="truncate">Safe Elevated Bypass (+{added_minutes?.toFixed(0) || "14"} min)</span>
+        </div>
+        <div className="flex items-center gap-2 text-[#1E40AF] font-semibold">
+          <span className="w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[9px] shrink-0">3</span>
+          <span className="truncate">Arrive: {safe?.hospital || "Hospital"}</span>
+        </div>
+      </div>
+
       <div className="flex justify-between items-center pt-2 border-t border-[#F3F4F6] text-xs">
         <button
           onClick={onOpenReliability}

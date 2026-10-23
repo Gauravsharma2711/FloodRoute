@@ -55,6 +55,7 @@ class RealBackend:
         self._fixture = FixtureBackend()
         self._processed_dir = Path("data/processed")
         self._edges_df = None
+        self._geojson_cache: Dict[Any, Dict[str, Any]] = {}
         self._load_data()
 
     def _load_data(self):
@@ -110,6 +111,10 @@ class RealBackend:
                     break
             share = flag_share
 
+        cache_key = (str(scenario_id), round(float(share), 3))
+        if cache_key in self._geojson_cache:
+            return self._geojson_cache[cache_key]
+
         # Filter top share% by flood_rank_pct
         cutoff_rank = 1.0 - float(share)
         flagged = self._edges_df[self._edges_df["flood_rank_pct"] >= cutoff_rank]
@@ -159,10 +164,12 @@ class RealBackend:
                 }
             })
 
-        return {
+        result = {
             "type": "FeatureCollection",
             "features": features
         }
+        self._geojson_cache[cache_key] = result
+        return result
 
     def hospitals(self) -> List[Dict[str, Any]]:
         return self._fixture.hospitals()

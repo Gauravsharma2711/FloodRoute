@@ -379,6 +379,7 @@ function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
   }
 
   // Status: OK (with added delay)
+  const [isManeuversOpen, setIsManeuversOpen] = useState<boolean>(false);
   const normalMin = normal?.minutes || 9;
   const addedMin = added_minutes || 14;
   const safeMin = safe?.minutes || 23;
@@ -441,6 +442,74 @@ function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
           </div>
         </div>
       )}
+
+      {/* Expandable Maneuver & Route Step Navigation Card */}
+      <div className="pt-2 border-t border-[#E5E7EB]">
+        <button
+          onClick={() => setIsManeuversOpen(!isManeuversOpen)}
+          className="w-full flex items-center justify-between text-[11px] font-bold text-[#4B5563] hover:text-[#111827] py-1 transition-colors select-none"
+        >
+          <span className="flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-[16px] text-[#0B8A7E]">alt_route</span>
+            <span>Turn Maneuvers & Corridors</span>
+          </span>
+          <span className="material-symbols-outlined text-[16px]">
+            {isManeuversOpen ? "expand_less" : "expand_more"}
+          </span>
+        </button>
+
+        {isManeuversOpen && (
+          <div className="mt-2 space-y-2 text-[11px] bg-[#F9FAFB] p-2.5 rounded-lg border border-[#E5E7EB] animate-fade-in">
+            <div className="flex items-start gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#1F2937] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+                1
+              </span>
+              <div>
+                <span className="font-semibold text-[#111827]">Pickup Location</span>
+                <p className="text-[#6B7280] text-[10px]">Patient emergency origin point</p>
+              </div>
+            </div>
+
+            {blocked_on_normal && blocked_on_normal.length > 0 ? (
+              <div className="flex items-start gap-2">
+                <span className="w-4 h-4 rounded-full bg-[#DC2626] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+                  2
+                </span>
+                <div>
+                  <span className="font-semibold text-[#DC2626]">Avoid Submerged Basin</span>
+                  <p className="text-[#991B1B] text-[10px]">
+                    Bypass {blocked_on_normal[0].name} (risk score {blocked_on_normal[0].score})
+                  </p>
+                </div>
+              </div>
+            ) : null}
+
+            <div className="flex items-start gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#0B8A7E] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+                {blocked_on_normal && blocked_on_normal.length > 0 ? "3" : "2"}
+              </span>
+              <div>
+                <span className="font-semibold text-[#065F46]">High-Ground Flood Bypass</span>
+                <p className="text-[#047857] text-[10px]">
+                  Divert via elevated feeder corridor (+{added_minutes?.toFixed(0) || "14"} min)
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-2">
+              <span className="w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
+                {blocked_on_normal && blocked_on_normal.length > 0 ? "4" : "3"}
+              </span>
+              <div>
+                <span className="font-semibold text-[#1E40AF]">Destination Arrival</span>
+                <p className="text-[#1D4ED8] text-[10px]">
+                  {safe?.hospital || "Hospital Destination"} ({safe?.km.toFixed(1) || "5.2"} km total)
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
       {note && (
         <p className="text-[11px] text-[#4B5563] leading-relaxed italic border-t border-[#F3F4F6] pt-1.5">
