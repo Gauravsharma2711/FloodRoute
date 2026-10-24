@@ -78,7 +78,7 @@
     <div>
       <div class="kicker">HackAMatch 1.0 · CityPulse: Predict. Explain. Act.</div>
       <h1>When it pours in Mumbai: which hospital, and which road?</h1>
-      <p style="font-size:23px; margin-top:22px; max-width:560px">Flood-aware ambulance dispatch, built only on public data.</p>
+      <p style="font-size:23px; margin-top:22px; max-width:560px">Can the ambulance get through when Mumbai floods? Flood-aware ambulance dispatch, built only on public data.</p>
       <div style="margin-top:34px; display:flex; gap:10px; flex-wrap:wrap">
         <span class="chip teal">100% public data</span><span class="chip">No paid APIs</span><span class="chip">Working prototype</span>
       </div>
@@ -144,9 +144,9 @@
     <tr><td><b>BMC / gauges / news</b></td><td>Reported waterlogging spots</td><td><b>14</b> sourced spots, used only to test the score</td></tr>
   </table>
   <div class="grid3" style="margin-top:22px">
-    <div class="card teal"><p class="small"><b>No keys, no paid APIs.</b> Free for anyone to rebuild.</p></div>
-    <div class="card teal"><p class="small"><b>Cached and reproducible:</b> one script per step.</p></div>
-    <div class="card teal"><p class="small"><b>Attributed:</b> © OpenStreetMap, Copernicus, Open-Meteo, IMD.</p></div>
+    <div class="card teal"><p class="small"><b>Data &amp; routing:</b> Python · OSMnx · NetworkX · rasterio · pandas</p></div>
+    <div class="card teal"><p class="small"><b>App:</b> FastAPI · Next.js · TypeScript · MapLibre (OpenStreetMap tiles)</p></div>
+    <div class="card teal"><p class="small"><b>Zero cost:</b> no keys, no paid APIs, every step reproducible</p></div>
   </div>
 </div>
 </section>
@@ -195,6 +195,7 @@
       <tr><td><b>Question</b></td><td>How do I reach <i>X</i> fastest now?</td><td><b>Which hospital</b>, and which way, if it rains this hard?</td></tr>
       <tr><td><b>Knows a road floods</b></td><td>After traffic stops or a report</td><td><b>Before</b>, from terrain + rain category</td></tr>
       <tr><td><b>Destination</b></td><td>Chosen by the user</td><td><b>Chosen by the tool</b></td></tr>
+      <tr><td><b>Flyover vs underpass</b></td><td>No flood distinction</td><td>Flyovers never flagged; underpasses scored higher</td></tr>
       <tr><td><b>Explains why</b></td><td>No</td><td>Every avoided road</td></tr>
       <tr><td><b>Cost</b></td><td>Routing API is paid</td><td>Free, open data</td></tr>
     </table>
@@ -257,11 +258,11 @@ Route map: …/driver?lat=19.068&amp;lon=72.868…</div>
   <div class="body">
   <div class="grid3" style="margin-bottom:24px">
     <div class="card"><span class="chip teal">108 EMS DISPATCH</span><h3 style="margin-top:12px">Plan before the call</h3><p class="small">Check tomorrow's rain category; know which hospitals stay reachable.</p></div>
-    <div class="card"><span class="chip teal">AMBULANCE DRIVERS</span><h3 style="margin-top:12px">One clear instruction</h3><p class="small">Hospital, minutes, roads to avoid, and navigation on the phone.</p></div>
+    <div class="card"><span class="chip teal">DRIVERS · PATIENTS</span><h3 style="margin-top:12px">No dead ends</h3><p class="small">One clear instruction: hospital, minutes, roads to avoid, navigation on the phone.</p></div>
     <div class="card"><span class="chip teal">BMC FLOOD CONTROL</span><h3 style="margin-top:12px">Fix what matters</h3><p class="small">Which roads, once drained, reopen the most ambulance trips.</p></div>
   </div>
   <div class="card white">
-    <h3>Roadmap</h3>
+    <h3>Roadmap <span class="xs" style="font-weight:500; margin-left:10px">Free for public emergency services; paid integration for private hospital fleets.</span></h3>
     <div class="grid4" style="margin-top:10px">
       <p class="small"><b>1.</b> Live forecast refresh every few hours</p>
       <p class="small"><b>2.</b> "Fix-first" city view for BMC</p>
