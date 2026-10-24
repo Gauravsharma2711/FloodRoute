@@ -69,6 +69,8 @@ python presentation/build_deck.py    # rebuilds presentation/index.html from dec
 
 Edit the slide text in `deck_template.html`, never in `index.html`, because the build script overwrites `index.html`.
 
-## Speaker transcript
+## Speaker transcript and Q&A
 
-The word-by-word script is written after the slides are approved (see `SCRIPT.md`).
+- [SCRIPT.md](SCRIPT.md): what to say on every slide, with demo actions and timing
+- [QA.md](QA.md): likely judge questions with short answers
+- [TEAM_CHECKLIST.md](TEAM_CHECKLIST.md): day-of checklist

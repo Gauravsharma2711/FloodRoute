@@ -33,6 +33,11 @@ def main() -> None:
     html = (HERE / "deck_template.html").read_text(encoding="utf-8")
     for key, (name, max_w, q) in IMAGES.items():
         html = html.replace(key, data_uri(name, max_w, q))
+    # drop the "this is the template" warning from the built deck
+    start = html.find("<!-- TEMPLATE-WARNING")
+    end = html.find("</script>", start) + len("</script>\n")
+    if start != -1:
+        html = html[:start] + html[end:]
     out = HERE / "index.html"
     out.write_text(html, encoding="utf-8")
     print(f"wrote {out} ({out.stat().st_size // 1024} KB)")
