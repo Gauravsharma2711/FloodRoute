@@ -11,6 +11,24 @@ interface ReliabilityModalProps {
   dataMode?: "real" | "fixture";
 }
 
+const pct = (x: number) => `${Math.round(x * 100)}%`;
+
+// AUC shown on a 0..1 bar with the 0.5 "random" line
+function AucBar({ label, value, color }: { label: string; value: number; color: string }) {
+  return (
+    <div className="space-y-1">
+      <div className="flex justify-between text-xs">
+        <span className="font-semibold text-[#111827]">{label}</span>
+        <span className="font-bold tabular-nums" style={{ color }}>{value.toFixed(2)}</span>
+      </div>
+      <div className="relative h-3 rounded-full bg-[#E5E7EB]">
+        <div className="h-3 rounded-full" style={{ width: `${value * 100}%`, background: color }} />
+        <div className="absolute top-[-3px] h-[18px] w-[2px] bg-[#111827]" style={{ left: "50%" }} title="0.5 = random" />
+      </div>
+    </div>
+  );
+}
+
 export function ReliabilityModal({
   isOpen,
   onClose,
@@ -18,29 +36,40 @@ export function ReliabilityModal({
   edaData,
   dataMode = "fixture",
 }: ReliabilityModalProps) {
-  const [activeTab, setActiveTab] = useState<"proof" | "limits" | "city">("proof");
-  const [fixTopN, setFixTopN] = useState<number>(5);
+  const [activeTab, setActiveTab] = useState<"proof" | "limits">("proof");
 
   if (!isOpen) return null;
 
-  const isFixture = dataMode === "fixture" || validationData?.data_mode === "fixture";
+  const v = validationData;
+  const isFixture = dataMode === "fixture" || v?.data_mode === "fixture";
+  const hasNumbers = !isFixture && v?.auc_score !== undefined && v?.auc_elev_only !== undefined;
+  const top15 = v?.curves?.find((c) => Math.abs(c.flag_share - 0.15) < 1e-9);
+  const spots = (v?.spots ?? []).filter((s) => s.snapped && s.rank_pct !== null);
+
+  const tabBtn = (id: "proof" | "limits", icon: string, text: string) => (
+    <button
+      onClick={() => setActiveTab(id)}
+      className={`py-3 border-b-2 transition-all flex items-center gap-1.5 ${
+        activeTab === id ? "border-[#0B8A7E] text-[#0B8A7E]" : "border-transparent text-[#6B7280] hover:text-[#111827]"
+      }`}
+    >
+      <span className="material-symbols-outlined text-base">{icon}</span>
+      <span>{text}</span>
+    </button>
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs select-none animate-in fade-in duration-150">
       <div className="bg-white rounded-2xl shadow-2xl border border-[#E5E7EB] w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
-        {/* Modal Header */}
+        {/* Header */}
         <div className="px-6 py-4 border-b border-[#E5E7EB] flex items-center justify-between bg-[#F9FAFB]">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-xl bg-[#0B8A7E]/10 text-[#0B8A7E] flex items-center justify-center">
               <span className="material-symbols-outlined text-[20px]">verified</span>
             </div>
             <div>
-              <h3 className="font-bold text-base text-[#111827]">
-                Reliability, Proof & Limits
-              </h3>
-              <p className="text-xs text-[#6B7280]">
-                Methodological transparency & evaluation metrics
-              </p>
+              <h3 className="font-bold text-base text-[#111827]">How reliable is this?</h3>
+              <p className="text-xs text-[#6B7280]">Our score checked against places where waterlogging was reported</p>
             </div>
           </div>
           <button
@@ -51,230 +80,139 @@ export function ReliabilityModal({
           </button>
         </div>
 
-        {/* Modal Nav Tabs */}
         <div className="flex border-b border-[#E5E7EB] px-6 gap-6 text-xs font-semibold">
-          <button
-            onClick={() => setActiveTab("proof")}
-            className={`py-3 border-b-2 transition-all flex items-center gap-1.5 ${
-              activeTab === "proof"
-                ? "border-[#0B8A7E] text-[#0B8A7E]"
-                : "border-transparent text-[#6B7280] hover:text-[#111827]"
-            }`}
-          >
-            <span className="material-symbols-outlined text-base">analytics</span>
-            <span>Proof & Validation</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("limits")}
-            className={`py-3 border-b-2 transition-all flex items-center gap-1.5 ${
-              activeTab === "limits"
-                ? "border-[#0B8A7E] text-[#0B8A7E]"
-                : "border-transparent text-[#6B7280] hover:text-[#111827]"
-            }`}
-          >
-            <span className="material-symbols-outlined text-base">warning</span>
-            <span>Honest Limits & Assumptions</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("city")}
-            className={`py-3 border-b-2 transition-all flex items-center gap-1.5 ${
-              activeTab === "city"
-                ? "border-[#0B8A7E] text-[#0B8A7E]"
-                : "border-transparent text-[#6B7280] hover:text-[#111827]"
-            }`}
-          >
-            <span className="material-symbols-outlined text-base">location_city</span>
-            <span>City View (Tier B)</span>
-          </button>
+          {tabBtn("proof", "analytics", "Evidence")}
+          {tabBtn("limits", "warning", "Limits & assumptions")}
         </div>
 
-        {/* Modal Body */}
         <div className="p-6 overflow-y-auto flex-1 text-xs text-[#374151] space-y-4">
           {activeTab === "proof" && (
-            <div className="space-y-4">
-              {isFixture ? (
+            <div className="space-y-5">
+              {!hasNumbers ? (
                 <div className="p-4 rounded-xl bg-[#FEF3C7] border border-[#F59E0B]/40 text-[#92400E]">
                   <div className="flex items-center gap-2 font-bold text-sm">
                     <span className="material-symbols-outlined text-base">info</span>
                     <span>Validation numbers: n/a in fixture mode</span>
                   </div>
                   <p className="mt-1 text-xs leading-relaxed">
-                    The UI is currently running against the synthetic fixture backend. Per hackathon hard rules, synthetic data may never fabricate evaluation metrics.
-                  </p>
-                  <p className="mt-1 text-xs font-semibold">
-                    To see real validation curves (Lift, AUC vs random, bootstrap 95% CIs), launch with real pipeline outputs.
+                    Real numbers appear only when the app runs on the real pipeline outputs.
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-center">
-                      <div className="text-xl font-black text-[#0B8A7E]">
-                        {validationData?.auc_score?.toFixed(2) || "0.78"}
-                      </div>
-                      <div className="text-[11px] text-[#6B7280] mt-0.5">Score AUC</div>
-                    </div>
-                    <div className="p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-center">
-                      <div className="text-xl font-black text-[#111827]">
-                        {validationData?.auc_elev_only?.toFixed(2) || "0.64"}
-                      </div>
-                      <div className="text-[11px] text-[#6B7280] mt-0.5">Elevation-only AUC</div>
-                    </div>
-                    <div className="p-3 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl text-center">
-                      <div className="text-xl font-black text-[#2563EB]">
-                        {validationData?.n_spots || 14}
-                      </div>
-                      <div className="text-[11px] text-[#6B7280] mt-0.5">Reported Spots Checked</div>
-                    </div>
+                <>
+                  <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] space-y-3">
+                    <p className="text-[13px] text-[#111827] leading-relaxed">
+                      We matched <b>{v!.n_spots}</b> reported waterlogging spots (of {v!.n_spots_total}) to a road within{" "}
+                      {v!.snap_m} m and asked: does our score rank these roads above the rest?
+                    </p>
+                    <AucBar label="Our score" value={v!.auc_score!} color="#0B8A7E" />
+                    <AucBar label="Elevation only (baseline)" value={v!.auc_elev_only!} color="#6B7280" />
+                    <p className="text-[11px] text-[#6B7280]">
+                      AUC: 1.0 = every reported spot ranked above every other road · black line 0.5 = random guess.
+                      {v!.ci && <> 95% interval for our score: {v!.ci.low.toFixed(2)}–{v!.ci.high.toFixed(2)}.</>}
+                    </p>
+                    {top15 && (
+                      <p className="text-[13px] text-[#111827]">
+                        On a very heavy day we flag the top 15% of roads: that catches <b>{top15.caught} of {top15.n}</b> spots
+                        (random would catch about {(0.15 * (top15.n ?? 0)).toFixed(1)}).
+                      </p>
+                    )}
+                    <p className="text-[13px] font-semibold text-[#991B1B]">
+                      Verdict: on this small sample, terrain alone is not better than random overall. Read the spot list below
+                      to see where it works and where it fails.
+                    </p>
                   </div>
-                </div>
+
+                  <div>
+                    <h4 className="font-bold text-sm text-[#111827] mb-2">Spot by spot (rank among all roads)</h4>
+                    <div className="space-y-1">
+                      {spots.map((s) => {
+                        const caught = (s.rank_pct ?? 0) >= 0.5;
+                        return (
+                          <div key={s.name} className="flex items-center gap-2 p-2 rounded-lg border border-[#E5E7EB]">
+                            <span className={`w-2 h-2 rounded-full ${caught ? "bg-[#0B8A7E]" : "bg-[#DC2626]"}`} />
+                            <span className="flex-1 font-medium text-[#111827]">{s.name}</span>
+                            <span className="text-[#6B7280]">
+                              {s.rel_elev_m < 0 ? `${Math.abs(s.rel_elev_m).toFixed(1)} m below surroundings` : `${s.rel_elev_m.toFixed(1)} m above surroundings`}
+                              {s.is_underpass ? " · underpass" : ""}
+                            </span>
+                            <span className="w-12 text-right font-bold tabular-nums">{pct(s.rank_pct ?? 0)}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <p className="mt-2 text-[11px] text-[#6B7280]">
+                      Misses such as Milan Subway and Gandhi Market read as <i>higher</i> than their surroundings: the 30 m
+                      elevation model is a surface model that sees rail embankments and flyovers, not the road beneath.
+                    </p>
+                  </div>
+
+                  {v!.sensitivity?.auc_by_variant && (
+                    <div>
+                      <h4 className="font-bold text-sm text-[#111827] mb-2">Sensitivity: each signal on its own</h4>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {v!.sensitivity.auc_by_variant
+                          .filter((x) => x.variant.endsWith(" only") || x.variant === "configured weights")
+                          .map((x) => (
+                            <div key={x.variant} className="flex justify-between p-2 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
+                              <span>{x.variant.replace(/_/g, " ")}</span>
+                              <span className="font-bold tabular-nums">{x.auc.toFixed(2)}</span>
+                            </div>
+                          ))}
+                      </div>
+                      <p className="mt-2 text-[11px] text-[#6B7280]">
+                        Weights were fixed before this test and were not changed after it. {v!.notes}
+                      </p>
+                    </div>
+                  )}
+                </>
               )}
 
-              {/* EDA Findings */}
-              <div className="space-y-2 mt-4">
-                <h4 className="font-bold text-sm text-[#111827]">
-                  Key Exploratory Data Findings (EDA)
-                </h4>
-                <div className="space-y-2.5">
-                  <div className="p-3 bg-[#F9FAFB] rounded-xl border border-[#E5E7EB]">
-                    <div className="font-bold text-[#111827] text-xs">
-                      1 · Terrain Depression vs Waterlogging Spots
+              {/* EDA findings: computed by the pipeline (eda_summary.json) */}
+              {!isFixture && edaData?.findings && edaData.findings.length > 0 && (
+                <div className="space-y-2">
+                  <h4 className="font-bold text-sm text-[#111827]">What the data told us</h4>
+                  {edaData.findings.map((f, i) => (
+                    <div key={f.id} className="p-3 bg-[#F9FAFB] rounded-xl border border-[#E5E7EB]">
+                      <div className="font-bold text-[#111827] text-xs">
+                        {i + 1} · {f.title}
+                      </div>
+                      <p className="text-[#6B7280] text-[11px] mt-0.5 leading-relaxed">{f.caption}</p>
                     </div>
-                    <p className="text-[#6B7280] text-[11px] mt-0.5 leading-relaxed">
-                      Chronic flood points (Hindmata, Gandhi Market, Milan Subway) sit in distinct local elevation bowls (-0.4m to -3.6m below surrounding 300m radius).
-                    </p>
-                  </div>
-                  <div className="p-3 bg-[#F9FAFB] rounded-xl border border-[#E5E7EB]">
-                    <div className="font-bold text-[#111827] text-xs">
-                      2 · Extreme Rain Seasonality (2005–2025)
-                    </div>
-                    <p className="text-[#6B7280] text-[11px] mt-0.5 leading-relaxed">
-                      94% of heavy & deluge days occur strictly within July and August, concentrated along western coastal bands.
-                    </p>
-                  </div>
-                  <div className="p-3 bg-[#F9FAFB] rounded-xl border border-[#E5E7EB]">
-                    <div className="font-bold text-[#111827] text-xs">
-                      3 · Critical Access Severance Under Heavy Deluges
-                    </div>
-                    <p className="text-[#6B7280] text-[11px] mt-0.5 leading-relaxed">
-                      When 15% of roads are flagged, ambulance travel time to trauma centers doubles in central corridors, and Kurla becomes severed from western facilities.
-                    </p>
-                  </div>
+                  ))}
                 </div>
-              </div>
+              )}
             </div>
           )}
 
           {activeTab === "limits" && (
-            <div className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex gap-2.5 p-3 rounded-xl bg-[#FEF2F2] border border-[#EF4444]/20">
-                  <span className="material-symbols-outlined text-[#DC2626] text-base shrink-0">
-                    shield
-                  </span>
+            <div className="space-y-3">
+              {[
+                ["shield", "#FEF2F2", "#991B1B", "Not a live flood sensor",
+                  "FloodRoute ranks roads by terrain (lower than surroundings, low height, near water, underpasses). It does not know whether water is on a road right now."],
+                ["water", "#FFFBEB", "#92400E", "No drains, pumps or tide",
+                  "Underground drainage, pump status and tide levels drive much of Mumbai's waterlogging but are not open data, so they are not modelled."],
+                ["tune", "#FFFBEB", "#92400E", "Two explicit assumptions",
+                  "(1) How many roads count as likely to flood for each rain category (you can change it with \"What if?\"). (2) The list of 28 major hospitals we route to (KEM and Cooper are not tagged as hospitals in OpenStreetMap)."],
+                ["route", "#F0F9FF", "#075985", "Main roads only, free-flow times",
+                  "The road network has main roads only, so \"cut off\" means no flood-safe main-road route. Minutes are free-flow estimates from speed limits, without traffic."],
+                ["science", "#F0FDF4", "#065F46", "What data would make it a real predictor",
+                  "Bare-earth elevation (LiDAR), BMC drain and pump data, tide gauges, and dated waterlogging reports or flood-gauge time series."],
+              ].map(([icon, bg, color, title, body]) => (
+                <div key={title} className="flex gap-2.5 p-3 rounded-xl border border-[#E5E7EB]" style={{ background: bg }}>
+                  <span className="material-symbols-outlined text-base shrink-0" style={{ color }}>{icon}</span>
                   <div>
-                    <h5 className="font-bold text-xs text-[#991B1B]">
-                      Flood-Prone Road Proxy — Not a Live Flood Sensor
-                    </h5>
-                    <p className="text-[11px] text-[#7F1D1D] mt-0.5 leading-relaxed">
-                      FloodRoute identifies roads structurally predisposed to water accumulation based on digital surface terrain, distance to drains, and underpass geometry. It does not measure realtime water depth.
-                    </p>
+                    <h5 className="font-bold text-xs" style={{ color }}>{title}</h5>
+                    <p className="text-[11px] text-[#374151] mt-0.5 leading-relaxed">{body}</p>
                   </div>
                 </div>
-
-                <div className="flex gap-2.5 p-3 rounded-xl bg-[#FFFBEB] border border-[#F59E0B]/20">
-                  <span className="material-symbols-outlined text-[#D97706] text-base shrink-0">
-                    water
-                  </span>
-                  <div>
-                    <h5 className="font-bold text-xs text-[#92400E]">
-                      Underground Drains & Municipal Pumps Not Open Data
-                    </h5>
-                    <p className="text-[11px] text-[#78350F] mt-0.5 leading-relaxed">
-                      The BMC operates ~480 mobile dewatering pumps and underground holding tanks (e.g. at Hindmata). Since operational pump statuses are not open APIs, they are unmodelled.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-2.5 p-3 rounded-xl bg-[#F0FDF4] border border-[#059669]/20">
-                  <span className="material-symbols-outlined text-[#059669] text-base shrink-0">
-                    science
-                  </span>
-                  <div>
-                    <h5 className="font-bold text-xs text-[#065F46]">
-                      What Data We Need Next
-                    </h5>
-                    <p className="text-[11px] text-[#064E3B] mt-0.5 leading-relaxed">
-                      (1) Realtime municipal flood-gauge network feeds, (2) Arabian Sea tide gauge harmonics (waterlogging surges at high tide ≥ 4.5m), and (3) realtime open traffic speeds.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === "city" && (
-            <div className="space-y-4">
-              <div className="p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-sm text-[#111827]">
-                    Fix-Top-N Road Mitigation Simulator
-                  </span>
-                  <span className="px-2 py-0.5 bg-[#0B8A7E] text-white rounded-md font-bold text-xs">
-                    Top {fixTopN} Roads
-                  </span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="20"
-                  value={fixTopN}
-                  onChange={(e) => setFixTopN(parseInt(e.target.value))}
-                  className="w-full accent-[#0B8A7E] cursor-pointer"
-                />
-                <div className="flex justify-between items-center text-xs pt-1 border-t border-[#E5E7EB]">
-                  <span className="text-[#6B7280]">Ambulance Trips Recovered:</span>
-                  <span className="font-bold text-sm text-[#0B8A7E]">
-                    {Math.min(100, fixTopN * 8.5).toFixed(0)}%
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <h5 className="font-bold text-xs text-[#111827] mb-2">
-                  Top Priority Flood Corridors for Mitigation
-                </h5>
-                <div className="space-y-1.5">
-                  {[
-                    { name: "Dr Babasaheb Ambedkar Road (Dadar/Parel)", cut_off: 142, impact: "High" },
-                    { name: "LBS Marg (Kurla / Mithi River section)", cut_off: 118, impact: "Critical" },
-                    { name: "Milan Subway (Santacruz Western Corridor)", cut_off: 94, impact: "High" },
-                    { name: "Sion Circle Link / Gandhi Market", cut_off: 76, impact: "Moderate" },
-                  ].map((road, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-between p-2.5 bg-white border border-[#E5E7EB] rounded-lg"
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="w-5 h-5 rounded-full bg-[#E5E7EB] text-[#374151] flex items-center justify-center font-bold text-[11px]">
-                          {idx + 1}
-                        </span>
-                        <span className="font-medium text-[#111827]">{road.name}</span>
-                      </div>
-                      <span className="text-[11px] text-[#6B7280]">
-                        Protects ~{road.cut_off} trips
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           )}
         </div>
 
-        {/* Modal Footer */}
         <div className="px-6 py-3 border-t border-[#E5E7EB] bg-[#F9FAFB] flex justify-between items-center text-xs text-[#6B7280]">
-          <span>Prototype for decision support · Not an official emergency alert</span>
+          <span>Prototype for decision support · Not an official warning system</span>
           <button
             onClick={onClose}
             className="px-4 py-1.5 rounded-lg bg-[#0B8A7E] text-white font-semibold hover:bg-[#09756B] transition-colors"

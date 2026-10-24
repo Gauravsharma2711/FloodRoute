@@ -22,9 +22,9 @@
 - **Title:** Open Data Infrastructure for Mumbai
 - **Datasets Ingested (100% Free & Open):**
   - **5,041 nodes & 9,746 edges** of Mumbai's core drivable road network (OSM).
-  - **569 medical facilities** mapped and geolocated across Mumbai.
+  - **569 OSM hospital features**; ambulances are routed to the nearest of **28 major hospitals**.
   - **Copernicus DEM GLO-30 (30 m resolution):** Sampled elevations from -1.68 m to 74.81 m (median 9.55 m).
-  - **Open-Meteo Historical Archive:** 7,305 days (2005–2024) classified into IMD rainfall intensities.
+  - **Open-Meteo Historical Archive:** 7,670 days (2005–2025) classified into IMD rainfall intensities.
 - **Core Empirical Insight:**
   - Waterlogging does not correlate merely with absolute elevation.
   - Chronic flood spots sit in acute **micro-depressions**: roads sitting **1.3 m to 3.6 m below surrounding terrain** within a 300 m radius (e.g. Sion basin at -3.61 m, Churchgate at -1.76 m).
@@ -51,7 +51,7 @@
 - **Step 1 — Rain Day Selection:** Pick real replay days (e.g. 5 Aug 2020: 187 mm *Very Heavy*) → map renders top 15% prone roads in amber-to-red.
 - **Step 2 — Road Tooltips:** Hovering a flagged corridor reveals exact terrain reasons (e.g. *"Dr. Ambedkar Road: -0.39 m depression, 386 m from creek"*).
 - **Step 3 — Routing Transitions:**
-  - *Hindmata Junction:* Detour calculated (+14 min detour, routes safely to Hinduja Hospital, avoiding flooded underpasses).
+  - *Chembur Circle (very heavy day):* normal route to K.J. Somaiya crosses roads likely to flood; flood-safe route goes to Rajawadi Hospital, +2.9 min (computed live).
   - *Kurla (LBS Marg):* Status shifts to **Area Cut Off** (all arterial exits submerged; prompts dispatchers to deploy high-clearance boats/amphibious units).
   - *Colaba Causeway:* Status **Route Unaffected** (direct transit intact).
 - **Mobile View:** Dedicated 48 px tap targets, bottom drawer, high-contrast driver guidance.

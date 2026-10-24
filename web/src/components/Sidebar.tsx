@@ -7,6 +7,7 @@ import {
   RouteResponse,
   RouteStatus,
 } from "../types/api";
+import { DecisionCard } from "./DecisionCard";
 
 interface SidebarProps {
   scenarios: Scenario[];
@@ -42,7 +43,7 @@ export function Sidebar({
     scenarios.find((s) => s.id === selectedScenarioId) || scenarios[0];
 
   const currentFlagShare =
-    shareOverride !== null ? shareOverride : selectedScenario?.flag_share ?? 0.15;
+    shareOverride !== null ? shareOverride : selectedScenario?.flag_share ?? 0;
 
   const imdChipStyle = (cat: string) => {
     switch (cat) {
@@ -280,7 +281,7 @@ export function Sidebar({
           <span className="w-5 h-5 rounded-full bg-[#0B8A7E] text-white text-xs flex items-center justify-center font-bold shadow-xs">
             3
           </span>
-          Routing result
+          Decision
         </h2>
 
         {isRoutingLoading ? (
@@ -296,226 +297,14 @@ export function Sidebar({
             <p>Click the map or select a preset location to evaluate transit.</p>
           </div>
         ) : (
-          <ResultCard routeData={routeData} />
+          <DecisionCard
+            routeData={routeData}
+            scenario={selectedScenario}
+            patientLocation={patientLocation}
+            shareOverride={shareOverride}
+          />
         )}
       </section>
     </aside>
-  );
-}
-
-function ResultCard({ routeData }: { routeData?: RouteResponse | null }) {
-  if (!routeData) return null;
-
-  const { status, normal, safe, added_minutes, blocked_on_normal, note } =
-    routeData;
-
-  if (status === "outside_area") {
-    return (
-      <div className="p-4 rounded-xl bg-[#F3F4F6] border border-[#D1D5DB] text-xs shadow-xs">
-        <div className="flex items-center gap-1.5 text-[#374151] font-bold text-sm">
-          <span className="material-symbols-outlined text-[#6B7280]">
-            location_off
-          </span>
-          <span>Outside Study Area</span>
-        </div>
-        <p className="text-[#4B5563] mt-1 text-[11px] leading-relaxed">
-          {note || "Please tap within the Mumbai metropolitan boundary."}
-        </p>
-      </div>
-    );
-  }
-
-  if (status === "cut_off") {
-    return (
-      <div className="p-4 rounded-xl bg-[#FEF2F2] border border-[#EF4444]/40 text-xs shadow-xs">
-        <div className="flex items-center gap-2 text-[#DC2626] font-bold text-sm">
-          <span className="material-symbols-outlined text-[#DC2626]">
-            crisis_alert
-          </span>
-          <span>Area Cut Off</span>
-        </div>
-        <div className="text-xl font-black text-[#991B1B] mt-1 tracking-tight">
-          No Flood-Safe Route
-        </div>
-        <p className="text-[#7F1D1D] mt-1 text-xs leading-relaxed font-medium">
-          {note}
-        </p>
-        {blocked_on_normal && blocked_on_normal.length > 0 && (
-          <div className="mt-2.5 pt-2 border-t border-[#FCA5A5]/40 text-[11px] text-[#991B1B]">
-            <span className="font-semibold">Submerged corridors:</span>
-            <ul className="list-disc list-inside mt-0.5 opacity-90">
-              {blocked_on_normal.slice(0, 2).map((b, i) => (
-                <li key={i} className="truncate">
-                  {b.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  if (status === "no_change") {
-    return (
-      <div className="p-4 rounded-xl bg-[#F0FDF4] border border-[#22C55E]/40 text-xs shadow-xs">
-        <div className="flex items-center gap-2 text-[#16A34A] font-bold text-sm">
-          <span className="material-symbols-outlined text-[#16A34A]">
-            check_circle
-          </span>
-          <span>Route Unaffected</span>
-        </div>
-        <div className="text-2xl font-black text-[#166534] mt-1">
-          {normal?.minutes.toFixed(0)} min
-        </div>
-        <div className="text-xs text-[#15803D] font-semibold mt-0.5">
-          Direct to {normal?.hospital}
-        </div>
-        <p className="text-[#166534] mt-1.5 text-[11px] leading-relaxed">
-          {note}
-        </p>
-      </div>
-    );
-  }
-
-  // Status: OK (with added delay)
-  const [isManeuversOpen, setIsManeuversOpen] = useState<boolean>(false);
-  const normalMin = normal?.minutes || 9;
-  const addedMin = added_minutes || 14;
-  const safeMin = safe?.minutes || 23;
-  const normalBarPct = Math.round((normalMin / safeMin) * 100);
-  const addedBarPct = 100 - normalBarPct;
-
-  return (
-    <div className="p-4 rounded-xl bg-white border border-[#E5E7EB] shadow-xs text-xs space-y-3">
-      <div className="flex items-baseline justify-between">
-        <div className="text-3xl font-black text-[#111827] tracking-tight">
-          +{added_minutes?.toFixed(0) || "14"} min
-        </div>
-        <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#FEF3C7] text-[#92400E] font-bold border border-[#F59E0B]/30 shadow-2xs">
-          Detour Required
-        </span>
-      </div>
-
-      <div className="font-bold text-sm text-[#0B8A7E] flex items-center gap-1.5 bg-[#F0FDF4] p-2 rounded-lg border border-[#0B8A7E]/20">
-        <span className="material-symbols-outlined text-base">local_hospital</span>
-        <span className="truncate">Send to {safe?.hospital || "Hospital Y"}</span>
-      </div>
-
-      {/* Segmented Detour Progress Visualizer */}
-      <div className="space-y-1.5 bg-[#F9FAFB] p-2.5 rounded-lg border border-[#E5E7EB]">
-        <div className="flex justify-between text-[11px] text-[#6B7280]">
-          <span className="flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-            <span>Direct ({normalMin.toFixed(0)}m)</span>
-          </span>
-          <span className="flex items-center gap-1 text-[#D97706] font-semibold">
-            <span className="w-2 h-2 rounded-full bg-[#F59E0B]" />
-            <span>Detour (+{addedMin.toFixed(0)}m)</span>
-          </span>
-          <span className="flex items-center gap-1 text-[#065F46] font-bold">
-            <span>Total: {safeMin.toFixed(0)}m</span>
-          </span>
-        </div>
-        <div className="w-full h-2 rounded-full overflow-hidden flex bg-[#E5E7EB]">
-          <div
-            className="h-full bg-[#2563EB] transition-all duration-300"
-            style={{ width: `${normalBarPct}%` }}
-            title={`Direct route: ${normalMin} min`}
-          />
-          <div
-            className="h-full bg-[#F59E0B] transition-all duration-300"
-            style={{ width: `${addedBarPct}%` }}
-            title={`Detour penalty: +${addedMin} min`}
-          />
-        </div>
-      </div>
-
-      {blocked_on_normal && blocked_on_normal.length > 0 && (
-        <div className="flex items-start gap-1.5 text-[11px] text-[#DC2626] font-medium bg-[#FEF2F2] p-2 rounded-lg border border-[#FCA5A5]/30">
-          <span className="material-symbols-outlined text-[15px] shrink-0 mt-0.5">
-            warning
-          </span>
-          <div className="truncate">
-            <span className="font-bold">Avoid: </span>
-            <span>{blocked_on_normal.map((b) => b.name).join(", ")}</span>
-          </div>
-        </div>
-      )}
-
-      {/* Expandable Maneuver & Route Step Navigation Card */}
-      <div className="pt-2 border-t border-[#E5E7EB]">
-        <button
-          onClick={() => setIsManeuversOpen(!isManeuversOpen)}
-          className="w-full flex items-center justify-between text-[11px] font-bold text-[#4B5563] hover:text-[#111827] py-1 transition-colors select-none"
-        >
-          <span className="flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-[16px] text-[#0B8A7E]">alt_route</span>
-            <span>Turn Maneuvers & Corridors</span>
-          </span>
-          <span className="material-symbols-outlined text-[16px]">
-            {isManeuversOpen ? "expand_less" : "expand_more"}
-          </span>
-        </button>
-
-        {isManeuversOpen && (
-          <div className="mt-2 space-y-2 text-[11px] bg-[#F9FAFB] p-2.5 rounded-lg border border-[#E5E7EB] animate-fade-in">
-            <div className="flex items-start gap-2">
-              <span className="w-4 h-4 rounded-full bg-[#1F2937] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
-                1
-              </span>
-              <div>
-                <span className="font-semibold text-[#111827]">Pickup Location</span>
-                <p className="text-[#6B7280] text-[10px]">Patient emergency origin point</p>
-              </div>
-            </div>
-
-            {blocked_on_normal && blocked_on_normal.length > 0 ? (
-              <div className="flex items-start gap-2">
-                <span className="w-4 h-4 rounded-full bg-[#DC2626] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
-                  2
-                </span>
-                <div>
-                  <span className="font-semibold text-[#DC2626]">Avoid Submerged Basin</span>
-                  <p className="text-[#991B1B] text-[10px]">
-                    Bypass {blocked_on_normal[0].name} (risk score {blocked_on_normal[0].score})
-                  </p>
-                </div>
-              </div>
-            ) : null}
-
-            <div className="flex items-start gap-2">
-              <span className="w-4 h-4 rounded-full bg-[#0B8A7E] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
-                {blocked_on_normal && blocked_on_normal.length > 0 ? "3" : "2"}
-              </span>
-              <div>
-                <span className="font-semibold text-[#065F46]">High-Ground Flood Bypass</span>
-                <p className="text-[#047857] text-[10px]">
-                  Divert via elevated feeder corridor (+{added_minutes?.toFixed(0) || "14"} min)
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-2">
-              <span className="w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[9px] shrink-0 mt-0.5">
-                {blocked_on_normal && blocked_on_normal.length > 0 ? "4" : "3"}
-              </span>
-              <div>
-                <span className="font-semibold text-[#1E40AF]">Destination Arrival</span>
-                <p className="text-[#1D4ED8] text-[10px]">
-                  {safe?.hospital || "Hospital Destination"} ({safe?.km.toFixed(1) || "5.2"} km total)
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {note && (
-        <p className="text-[11px] text-[#4B5563] leading-relaxed italic border-t border-[#F3F4F6] pt-1.5">
-          {note}
-        </p>
-      )}
-    </div>
   );
 }

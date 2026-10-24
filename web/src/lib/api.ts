@@ -23,6 +23,15 @@ class ApiClient {
     this.base = base;
   }
 
+  // "auto" = same host the page was opened on, port 8000. Lets phones on the same Wi-Fi use the
+  // laptop's API (open the app at http://<laptop-ip>:3000) without editing any config.
+  private get resolvedBase(): string {
+    if (this.base === 'auto') {
+      return typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.hostname}:8000` : '';
+    }
+    return this.base;
+  }
+
   isRealBackendConfigured(): boolean {
     return Boolean(this.base);
   }
@@ -32,7 +41,7 @@ class ApiClient {
     params: Record<string, string | number | null | undefined> = {},
     signal?: AbortSignal
   ): Promise<T> {
-    const url = new URL(`${this.base}${path}`);
+    const url = new URL(`${this.resolvedBase}${path}`);
     for (const [key, value] of Object.entries(params)) {
       if (value !== undefined && value !== null) url.searchParams.set(key, String(value));
     }

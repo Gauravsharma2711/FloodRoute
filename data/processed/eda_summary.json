@@ -1,0 +1,19 @@
+{
+ "findings": [
+  {
+   "id": "eda-monsoon",
+   "title": "Heavy rain is a monsoon problem",
+   "caption": "110 days of at least 64.5 mm in 21 years (Open-Meteo, central Mumbai); 96% fall in June-September, most in July."
+  },
+  {
+   "id": "eda-extremes",
+   "title": "Weather grids miss the extremes",
+   "caption": "The reanalysis records 26 July 2005 as 69.6 mm, far below the ~944 mm widely reported at the Santacruz gauge. We use rain only to pick and label real heavy days."
+  },
+  {
+   "id": "eda-bowls",
+   "title": "Reported spots are local bowls, not coastal roads",
+   "caption": "7 of 13 reported spots sit lower than the area around them (vs 46% of all roads); their median distance to water is 526 m vs 330 m for all roads."
+  }
+ ]
+}

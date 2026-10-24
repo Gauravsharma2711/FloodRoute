@@ -1,0 +1,289 @@
+{
+ "data_mode": "real",
+ "n_spots": 13,
+ "n_spots_total": 14,
+ "snap_m": 150.0,
+ "auc_score": 0.463,
+ "auc_elev_only": 0.447,
+ "auc_random": 0.5,
+ "ci": {
+  "low": 0.322,
+  "high": 0.613,
+  "method": "bootstrap over spots, 1000 resamples, seed 42"
+ },
+ "curves": [
+  {
+   "flag_share": 0.03,
+   "recall_score": 0.0,
+   "recall_elev_only": 0.0,
+   "expected_random": 0.03,
+   "caught": 0,
+   "n": 13,
+   "lift_score": 0.0,
+   "lift_elev_only": 0.0
+  },
+  {
+   "flag_share": 0.05,
+   "recall_score": 0.0,
+   "recall_elev_only": 0.0,
+   "expected_random": 0.05,
+   "caught": 0,
+   "n": 13,
+   "lift_score": 0.0,
+   "lift_elev_only": 0.0
+  },
+  {
+   "flag_share": 0.08,
+   "recall_score": 0.0,
+   "recall_elev_only": 0.0,
+   "expected_random": 0.08,
+   "caught": 0,
+   "n": 13,
+   "lift_score": 0.0,
+   "lift_elev_only": 0.0
+  },
+  {
+   "flag_share": 0.1,
+   "recall_score": 0.0,
+   "recall_elev_only": 0.0,
+   "expected_random": 0.1,
+   "caught": 0,
+   "n": 13,
+   "lift_score": 0.0,
+   "lift_elev_only": 0.0
+  },
+  {
+   "flag_share": 0.15,
+   "recall_score": 0.077,
+   "recall_elev_only": 0.0,
+   "expected_random": 0.15,
+   "caught": 1,
+   "n": 13,
+   "lift_score": 0.51,
+   "lift_elev_only": 0.0
+  },
+  {
+   "flag_share": 0.25,
+   "recall_score": 0.231,
+   "recall_elev_only": 0.077,
+   "expected_random": 0.25,
+   "caught": 3,
+   "n": 13,
+   "lift_score": 0.92,
+   "lift_elev_only": 0.31
+  }
+ ],
+ "sensitivity": {
+  "weights": {
+   "relative_low_elevation": 0.45,
+   "absolute_low_elevation": 0.25,
+   "near_water": 0.2,
+   "underpass": 0.1
+  },
+  "share_grid": [
+   0.03,
+   0.05,
+   0.08,
+   0.1,
+   0.15,
+   0.25
+  ],
+  "auc_by_variant": [
+   {
+    "variant": "configured weights",
+    "auc": 0.463
+   },
+   {
+    "variant": "relative_low_elevation only",
+    "auc": 0.535
+   },
+   {
+    "variant": "absolute_low_elevation only",
+    "auc": 0.447
+   },
+   {
+    "variant": "near_water only",
+    "auc": 0.322
+   },
+   {
+    "variant": "underpass only",
+    "auc": 0.537
+   },
+   {
+    "variant": "relative_low_elevation x0.5",
+    "auc": 0.432
+   },
+   {
+    "variant": "relative_low_elevation x1.5",
+    "auc": 0.482
+   },
+   {
+    "variant": "absolute_low_elevation x0.5",
+    "auc": 0.471
+   },
+   {
+    "variant": "absolute_low_elevation x1.5",
+    "auc": 0.458
+   },
+   {
+    "variant": "near_water x0.5",
+    "auc": 0.488
+   },
+   {
+    "variant": "near_water x1.5",
+    "auc": 0.44
+   },
+   {
+    "variant": "underpass x0.5",
+    "auc": 0.458
+   },
+   {
+    "variant": "underpass x1.5",
+    "auc": 0.469
+   }
+  ]
+ },
+ "spots": [
+  {
+   "name": "Churchgate",
+   "snap_m": 32.6,
+   "snapped": true,
+   "road": "Maharshi Karve Road",
+   "rank_pct": 0.88,
+   "rel_elev_m": -1.76,
+   "water_dist_m": 357.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Gurukripa Hotel",
+   "snap_m": 17.9,
+   "snapped": true,
+   "road": "Road No 24",
+   "rank_pct": 0.832,
+   "rel_elev_m": -1.35,
+   "water_dist_m": 109.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Guru Nanak School",
+   "snap_m": 65.1,
+   "snapped": true,
+   "road": "Road No 24",
+   "rank_pct": 0.777,
+   "rel_elev_m": -3.61,
+   "water_dist_m": 538.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Oval Maidan",
+   "snap_m": 72.6,
+   "snapped": true,
+   "road": "Maharshi Karve Road",
+   "rank_pct": 0.695,
+   "rel_elev_m": -1.24,
+   "water_dist_m": 658.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Hindmata Junction",
+   "snap_m": 4.4,
+   "snapped": true,
+   "road": "Dr Babasaheb Ambedkar Marg (Vincent Road)",
+   "rank_pct": 0.618,
+   "rel_elev_m": -0.39,
+   "water_dist_m": 387.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Antop Hill fire station area",
+   "snap_m": 130.8,
+   "snapped": true,
+   "road": "Sheikh Misari Road",
+   "rank_pct": 0.485,
+   "rel_elev_m": -0.08,
+   "water_dist_m": 476.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Kemps Corner",
+   "snap_m": 39.4,
+   "snapped": true,
+   "road": "Laxmibai Jagmohandas Marg",
+   "rank_pct": 0.463,
+   "rel_elev_m": -1.03,
+   "water_dist_m": 620.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Milan Subway",
+   "snap_m": 1.1,
+   "snapped": true,
+   "road": "P V Avsare Marg / Milan Subway / Service Road; P V Avsare Marg",
+   "rank_pct": 0.357,
+   "rel_elev_m": 2.67,
+   "water_dist_m": 354.0,
+   "is_underpass": true
+  },
+  {
+   "name": "Mantralaya",
+   "snap_m": 92.6,
+   "snapped": true,
+   "road": "Madame Cama Road",
+   "rank_pct": 0.282,
+   "rel_elev_m": 0.79,
+   "water_dist_m": 526.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Hutatma Chowk",
+   "snap_m": 27.1,
+   "snapped": true,
+   "road": "Dr Dadabhai Naoroji Road",
+   "rank_pct": 0.274,
+   "rel_elev_m": 0.29,
+   "water_dist_m": 692.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Chembur Circle",
+   "snap_m": 7.2,
+   "snapped": true,
+   "road": "Ramakrishna Chemburkar Marg",
+   "rank_pct": 0.223,
+   "rel_elev_m": 0.68,
+   "water_dist_m": 375.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Gandhi Market",
+   "snap_m": 2.7,
+   "snapped": true,
+   "road": "Laxmibai Kelkar Marg",
+   "rank_pct": 0.101,
+   "rel_elev_m": 1.41,
+   "water_dist_m": 908.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Metro Cinema junction",
+   "snap_m": 10.1,
+   "snapped": true,
+   "road": "Corporation Street",
+   "rank_pct": 0.033,
+   "rel_elev_m": 3.22,
+   "water_dist_m": 700.0,
+   "is_underpass": false
+  },
+  {
+   "name": "Vidyalankar Institute area",
+   "snap_m": 423.2,
+   "snapped": false,
+   "road": "",
+   "rank_pct": null,
+   "rel_elev_m": 0.16,
+   "water_dist_m": 392.0,
+   "is_underpass": false
+  }
+ ],
+ "notes": "Weights were fixed in config.yaml before this evaluation and were not changed after it. Small sample of reported spots, biased toward busy roads; the 30 m elevation model is a surface model (includes buildings, flyovers and embankments)."
+}

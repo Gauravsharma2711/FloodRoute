@@ -22,7 +22,7 @@ During the Indian summer monsoon (June–September), extreme downpours routinely
 From OpenStreetMap (via Overpass API), we extract the core drivable network filtered to `motorway`, `trunk`, `primary`, `secondary`, `tertiary`, and their directional connectors:
 - **5,041 road nodes** and **9,746 directed road edges**.
 - Strongly connected island city & suburban core (5,035 nodes in primary component).
-- **569 medical facilities** (`amenity=hospital`, 550 named institutions).
+- **569 `amenity=hospital` features** (539 kept: named and not `emergency=no`; **28 major hospitals** used as ambulance destinations).
 - **583 water features** including the Mithi River, Mahim Bay, and Arabian Sea coastline.
 
 ### 2.2 Elevation Sampling & Relative Depression
@@ -60,9 +60,15 @@ We benchmarked the model against **14 independently sourced, publicly documented
 
 | Metric | Score Model | Random Baseline |
 |---|---|---|
-| **Top 25% Capture Rate (Rank $\ge 75\%$)** | **28.6%** (4 of 14) | 25.0% |
-| **Top 50% Capture Rate (Rank $\ge 50\%$)** | **50.0%** (7 of 14) | 50.0% |
-| **Mean Flood Rank Percentile** | **52.2%** | 50.0% |
+*All numbers below are produced by `pipeline/05_validate.py` → `data/processed/validation_results.json` (13 of 14 spots lie within 150 m of a road).*
+
+| Metric | Score model | Elevation-only baseline | Random |
+|---|---|---|---|
+| **AUC** (P(spot road ranks above a random road)) | **0.463** (bootstrap 95% CI 0.322–0.613) | 0.447 | 0.500 |
+| **Caught in top 15% flagged** (very heavy day) | **1 of 13** | — | 1.9 expected |
+| **Caught in top 25% flagged** (extremely heavy day) | **3 of 13** | — | 3.2 expected |
+
+**Verdict:** on this small, biased sample the terrain-only score is **not better than random overall**. Sensitivity (same script): relative-low-elevation alone 0.535, underpass alone 0.537, absolute height alone 0.447, near-water alone **0.322** (points the wrong way: reported spots are farther from water than the typical road, median 526 m vs 330 m). Weights were fixed before validation and were **not** changed after seeing these results.
 
 ### Key Benchmark Spot Findings:
 1. **Acute Natural Basins (Strong Detection):**
@@ -81,7 +87,7 @@ We benchmarked the model against **14 independently sourced, publicly documented
 
 For any patient coordinate:
 1. Snaps to the nearest road network node.
-2. Solves Dijkstra shortest-path to all 569 hospitals on the normal road graph.
+2. Solves Dijkstra shortest path (free-flow travel time from OSM speeds) to the nearest of **28 major hospitals** (a curated list of exact OSM names in `config.yaml`, an explicit assumption) on the normal road graph.
 3. Removes road segments exceeding the rain scenario's flood risk threshold $k$.
-4. Computes the flood-safe route. If disconnected from all medical facilities, flags status as **`Area Cut Off`**.
+4. Computes the flood-safe route. If no destination hospital is reachable, the status is **`cut_off`**: no flood-safe route on the main-road network (the graph holds main roads only, so this is conservative).
 5. Returns actionable detour metrics: added minutes, extra travel distance, and specific corridors to avoid.

@@ -90,6 +90,8 @@ export interface RouteLeg {
 export interface BlockedRoad {
   name: string;
   score: number;
+  lat?: number; // midpoint of the flagged stretch on the normal route
+  lon?: number;
 }
 
 export interface RouteResponse {
@@ -114,21 +116,37 @@ export interface ValidationCurve {
   lift_elev_only: number;
 }
 
+export interface ValidationSpot {
+  name: string;
+  snap_m: number;
+  snapped: boolean;
+  road: string;
+  rank_pct: number | null;
+  rel_elev_m: number;
+  water_dist_m: number;
+  is_underpass: boolean;
+}
+
 export interface ValidationResponse {
   data_mode: 'real' | 'fixture';
   n_spots?: number;
+  n_spots_total?: number;
   snap_m?: number;
   auc_score?: number;
   auc_elev_only?: number;
+  auc_random?: number;
   ci?: {
     low: number;
     high: number;
+    method?: string;
   };
-  curves?: ValidationCurve[];
+  curves?: (ValidationCurve & { caught?: number; n?: number })[];
   sensitivity?: {
     weights: Record<string, number>;
     share_grid: number[];
+    auc_by_variant?: { variant: string; auc: number }[];
   };
+  spots?: ValidationSpot[];
   notes?: string;
 }
 

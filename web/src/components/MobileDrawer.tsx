@@ -7,6 +7,7 @@ import {
   RouteResponse,
   RouteStatus,
 } from "../types/api";
+import { DecisionCard } from "./DecisionCard";
 
 interface MobileDrawerProps {
   scenarios: Scenario[];
@@ -19,6 +20,7 @@ interface MobileDrawerProps {
   routeData?: RouteResponse | null;
   isRoutingLoading: boolean;
   onOpenReliability: () => void;
+  shareOverride?: number | null;
 }
 
 export function MobileDrawer({
@@ -32,6 +34,7 @@ export function MobileDrawer({
   routeData,
   isRoutingLoading,
   onOpenReliability,
+  shareOverride = null,
 }: MobileDrawerProps) {
   const [activeStep, setActiveStep] = useState<"rain" | "patient" | "result">("result");
 
@@ -174,116 +177,25 @@ export function MobileDrawer({
                 </button>
               </div>
             ) : (
-              <MobileResultCard routeData={routeData} onOpenReliability={onOpenReliability} />
+              <>
+                <DecisionCard
+                  routeData={routeData}
+                  scenario={selectedScenario}
+                  patientLocation={patientLocation}
+                  shareOverride={shareOverride}
+                  compact
+                />
+                <button
+                  type="button"
+                  onClick={onOpenReliability}
+                  className="mt-2 w-full min-h-[44px] text-xs font-semibold text-[#0B8A7E] underline"
+                >
+                  How reliable is this?
+                </button>
+              </>
             )}
           </div>
         )}
-      </div>
-    </div>
-  );
-}
-
-function MobileResultCard({
-  routeData,
-  onOpenReliability,
-}: {
-  routeData?: RouteResponse | null;
-  onOpenReliability: () => void;
-}) {
-  if (!routeData) return null;
-
-  const { status, normal, safe, added_minutes, blocked_on_normal, note } = routeData;
-
-  if (status === "cut_off") {
-    return (
-      <div className="space-y-3">
-        <div className="p-3.5 rounded-xl bg-[#FEF2F2] border border-[#EF4444]/40">
-          <div className="flex items-center gap-1.5 text-[#DC2626] font-bold text-xs uppercase tracking-wide">
-            <span className="material-symbols-outlined text-base">crisis_alert</span>
-            <span>No Flood-Safe Route</span>
-          </div>
-          <div className="text-2xl font-black text-[#991B1B] mt-1">Area Cut Off</div>
-          <p className="text-[#7F1D1D] text-xs mt-1 leading-relaxed font-medium">
-            {note}
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (status === "no_change") {
-    return (
-      <div className="space-y-3">
-        <div className="p-3.5 rounded-xl bg-[#F0FDF4] border border-[#22C55E]/40">
-          <div className="flex items-center gap-1.5 text-[#16A34A] font-bold text-xs uppercase tracking-wide">
-            <span className="material-symbols-outlined text-base">check_circle</span>
-            <span>Route Unaffected</span>
-          </div>
-          <div className="text-2xl font-black text-[#166534] mt-1">
-            {normal?.minutes.toFixed(0)} min
-          </div>
-          <p className="text-[#15803D] text-xs font-semibold mt-0.5">
-            Direct to {normal?.hospital}
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-2.5">
-      <div className="flex items-baseline justify-between">
-        <div>
-          <div className="text-4xl font-black text-[#111827] tracking-tight">
-            +{added_minutes?.toFixed(0) || "14"} min
-          </div>
-          <div className="text-sm font-bold text-[#0B8A7E] mt-0.5">
-            Go to {safe?.hospital}
-          </div>
-        </div>
-        <div className="text-right text-xs text-[#6B7280]">
-          <div>Normal: {normal?.minutes.toFixed(0)} min</div>
-          <div className="font-semibold text-[#0B8A7E]">Safe: {safe?.minutes.toFixed(0)} min</div>
-        </div>
-      </div>
-
-      {blocked_on_normal && blocked_on_normal.length > 0 && (
-        <div className="p-2.5 rounded-xl bg-[#FEF2F2] text-[#DC2626] border border-[#EF4444]/20 text-xs font-medium flex items-center gap-2">
-          <span className="material-symbols-outlined text-base shrink-0">warning</span>
-          <span className="truncate">
-            <strong>Avoid: </strong>
-            {blocked_on_normal.map((b) => b.name).join(", ")}
-          </span>
-        </div>
-      )}
-
-      {/* Maneuver & Route Step Navigation Waypoints */}
-      <div className="p-2 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB] text-[11px] space-y-1.5">
-        <div className="font-bold text-[#374151] flex items-center gap-1 text-[10px] uppercase tracking-wider">
-          <span className="material-symbols-outlined text-[14px] text-[#0B8A7E]">alt_route</span>
-          <span>Corridor Waypoints</span>
-        </div>
-        <div className="flex items-center gap-2 text-[#4B5563]">
-          <span className="w-4 h-4 rounded-full bg-[#1F2937] text-white flex items-center justify-center font-bold text-[9px] shrink-0">1</span>
-          <span className="truncate">Pickup Location → Avoid {blocked_on_normal?.[0]?.name || "waterlogged basin"}</span>
-        </div>
-        <div className="flex items-center gap-2 text-[#065F46] font-semibold">
-          <span className="w-4 h-4 rounded-full bg-[#0B8A7E] text-white flex items-center justify-center font-bold text-[9px] shrink-0">2</span>
-          <span className="truncate">Safe Elevated Bypass (+{added_minutes?.toFixed(0) || "14"} min)</span>
-        </div>
-        <div className="flex items-center gap-2 text-[#1E40AF] font-semibold">
-          <span className="w-4 h-4 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-[9px] shrink-0">3</span>
-          <span className="truncate">Arrive: {safe?.hospital || "Hospital"}</span>
-        </div>
-      </div>
-
-      <div className="flex justify-between items-center pt-2 border-t border-[#F3F4F6] text-xs">
-        <button
-          onClick={onOpenReliability}
-          className="text-[#0B8A7E] font-semibold underline underline-offset-2"
-        >
-          Why these roads? · Proof & Limits
-        </button>
       </div>
     </div>
   );

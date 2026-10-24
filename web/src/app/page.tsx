@@ -58,7 +58,7 @@ export default function Home() {
   }
 
   // Active state
-  const [selectedScenarioId, setSelectedScenarioId] = useState<string>("replay_2020_08_05");
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>("");
   const [shareOverride, setShareOverride] = useState<number | null>(null);
   const [selectedPresetId, setSelectedPresetId] = useState<string | null>("hindmata");
   const [patientLocation, setPatientLocation] = useState<{ lat: number; lon: number } | null>({
@@ -80,9 +80,16 @@ export default function Home() {
 
   // Initialize defaults once meta/scenarios load
   useEffect(() => {
-    if (scenariosData && scenariosData.replay_days.length > 0 && !selectedScenarioId) {
-      setSelectedScenarioId(scenariosData.replay_days[0].id);
-    }
+    if (!scenariosData || selectedScenarioId) return;
+    // Today's forecast first when it flags any roads; otherwise the first very heavy real day
+    const fc = scenariosData.forecast;
+    const days = scenariosData.replay_days;
+    const pick =
+      (fc && fc.flag_share > 0 ? fc : null) ??
+      days.find((d) => d.imd_category === "very_heavy") ??
+      days[0] ??
+      fc;
+    if (pick) setSelectedScenarioId(pick.id);
   }, [scenariosData, selectedScenarioId]);
 
   // Handle Preset Selection
@@ -203,6 +210,7 @@ export default function Home() {
               normalRoute={routeData?.normal}
               safeRoute={routeData?.safe}
               routeStatus={routeData?.status}
+              blockedRoads={routeData?.blocked_on_normal}
               patientLocation={patientLocation}
               onSelectLocation={handleSelectLocation}
               className="w-full h-full"
@@ -222,6 +230,7 @@ export default function Home() {
                 routeData={routeData}
                 isRoutingLoading={isRoutingLoading}
                 onOpenReliability={() => setIsReliabilityOpen(true)}
+                shareOverride={shareOverride}
               />
             </div>
           </main>

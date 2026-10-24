@@ -66,7 +66,8 @@ So the failure has a cause we can name, and a fix: bare-earth elevation and drai
 3. "A patient at Chembur Circle." → click the Chembur Circle preset. "Dashed blue is the normal route to K.J. Somaiya — it runs into roads likely to flood. Teal is the flood-safe route, along real streets: it goes to **Rajawadi Hospital** instead, about **3 minutes** longer." *(Read the numbers on screen; they are computed live.)*
 4. "Now Colaba Causeway." → click the preset. "No flood-safe route on the main road network — that is when a dispatcher sends a different resource."
    *(Optional, if asked: Bandra West shows "normal route not affected".)*
-5. "And 'How reliable is this?'" → open it. "The same evaluation you just saw, inside the product."
+5. "Now the dispatcher hands it over." → back to Chembur Circle, click **WhatsApp** (or **Copy**) under "Send to driver". "The driver gets the hospital, the minutes, the roads to avoid and a link. On the phone the link opens the route, and one button starts Google Maps navigation along *our* safe path." *(If a phone is on the same Wi-Fi and the app was opened at http://<laptop-ip>:3000, open the link on the phone.)*
+6. "And 'How reliable is this?'" → open it. "The same evaluation you just saw, inside the product."
 
 *If anything fails: "Let me show you the recording" → play `assets/demo_backup.mp4`, or go back to the map on this slide.*
 

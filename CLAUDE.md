@@ -24,9 +24,9 @@ FloodRoute is a hackathon submission for HackAMatch 1.0 (CityPulse: Predict. Exp
 
 ## Current status and fix backlog (updated 2026-10-24 — keep this section current)
 
-Final round: Saturday, 10 min presentation + 5 min Q&A, live demo optional. The core idea must not change. Deck, script and team checklist are in `presentation/` (`index.html`, `SCRIPT.md`, `TEAM_CHECKLIST.md`). The deck describes the app **after** the P0 fixes below; `TEAM_CHECKLIST.md` §3 lists which slide claims depend on which fix.
+Final round: 10 min presentation + 5 min Q&A, live demo optional. **The demo runs locally on the presenter's laptop; deployment is out of scope until after the final** (decided 2026-10-24). The agreed product definition, user, differentiation, UI changes and final plan are in `docs/FINAL_PROJECT.md`. Read it before any new work. The core idea must not change. Deck, script and team checklist are in `presentation/` (`index.html`, `SCRIPT.md`, `TEAM_CHECKLIST.md`). The deck describes the app **after** the P0 fixes below; `TEAM_CHECKLIST.md` §3 lists which slide claims depend on which fix.
 
-**What is real (in code on main; the live site updates once Render/Vercel redeploy):** flagged roads (same rule as routing: bridges excluded, no feature cap), routing (`floodroute/routing.py`), hospitals (`data/processed/hospitals.json`), destination marker + fit-to-route on the map. **Still fixture/hard-coded:** rain scenarios, validation numbers, EDA, city view.
+**What is real (in code on main; the live site updates once Render/Vercel redeploy):** flagged roads (same rule as routing: bridges excluded, no feature cap), routing (`floodroute/routing.py`), hospitals (`data/processed/hospitals.json`), destination marker + fit-to-route on the map. **Still fixture:** city view (Tier B, not in the final; next-steps slide only).
 
 **Product focus (agreed with the user 2026-10-24):** at most two differentiating features. (1) Headline: today's forecast by default → one answer card → "Send to driver" via WhatsApp (`wa.me` prefilled text) and SMS (`sms:` link), opening the phone view with the route; a person taps send (no paid WhatsApp/SMS APIs). (2) If time: "fix first" city view. No chat agent, no LLM in the core; an LLM may only rephrase/translate the briefing with a template fallback and a number check.
 
@@ -47,7 +47,12 @@ Final round: Saturday, 10 min presentation + 5 min Q&A, live demo optional. The 
 5. Honest data mode: fixture-backed endpoints show the fixture ribbon until replaced.
 6. ✅ DONE 2026-10-24 — Map UX: after a click, draw the normal route (dashed blue) and safe route (solid teal) from the patient pin along streets, fit bounds, and highlight the destination hospital.
 7. Backup demo recording at `assets/demo_backup.mp4`.
-8. Feature 1: today's forecast default + answer card + "Send to driver" (WhatsApp/SMS link) + phone view opened by the link.
+7b. Known doc mismatches to regenerate from scripts: `docs/METHOD_REPORT.md` (mean rank 52.2% / 7 of 14 vs recomputed 47.4% / 6 of 14; says routing to all 569 hospitals), `docs/DATA_STATEMENT.md` and `docs/SLIDES_OUTLINE.md` (7,305 rain days vs 7,670 in the archive; '+14 min' Hindmata example is fixture output).
+8. ✅ DONE 2026-10-24 — Feature 1: default = forecast if it flags roads, else first very-heavy real day; `DecisionCard` (send to / minutes / avoid); "Send to driver" (WhatsApp `wa.me`, SMS, copy) via `web/src/lib/dispatch.ts`; driver phone view `web/src/app/driver/page.tsx` with "Start navigation (Google Maps)" (plain directions URL, our safe route as waypoints).
+9. ✅ DONE 2026-10-24 — Real rain scenarios (`pipeline/03_fetch_rain.py`), real validation (`pipeline/05_validate.py`, AUC 0.463, CI 0.322–0.613, elevation-only 0.447, 1/13 in top 15%), real EDA (`pipeline/06_precompute.py`); `RealBackend` reads them; fake numbers removed from `ReliabilityModal` (incl. the fake fix-top-N simulator) and `/reliable` reuses it; `METHOD_REPORT.md`, `DATA_STATEMENT.md`, `SLIDES_OUTLINE.md` corrected.
+10. ✅ DONE 2026-10-24 — Map reading aids: route time bubbles, red "!" markers on flagged stretches of the normal route, rejected normal hospital greyed, other flagged roads faded when a route is shown.
+
+Phone demo: `web/.env.local` has `NEXT_PUBLIC_API_BASE=auto` (API = page host, port 8000). Run the API with `--host 0.0.0.0` and Next with `--hostname 0.0.0.0`, open the dashboard at http://<laptop-ip>:3000, and the driver links work on phones on the same Wi-Fi (Windows may ask to allow Python/Node through the firewall). The user records the backup video themselves; do not run tests unless asked (user preference 2026-10-24).
 
 Local run: `.claude/launch.json` has `api` (uvicorn on :8000) and `web` (Next.js on :3000); `web/.env.local` sets `NEXT_PUBLIC_API_BASE=http://localhost:8000` (git-ignored).
 

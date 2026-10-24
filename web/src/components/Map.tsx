@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { FlaggedGeoJSON, Hospital, RouteLeg, RouteStatus } from "../types/api";
+import { BlockedRoad, FlaggedGeoJSON, Hospital, RouteLeg, RouteStatus } from "../types/api";
 
 function escapeHtml(str: string): string {
   return str
@@ -20,6 +20,7 @@ interface MapProps {
   normalRoute?: RouteLeg | null;
   safeRoute?: RouteLeg | null;
   routeStatus?: RouteStatus;
+  blockedRoads?: BlockedRoad[];
   patientLocation?: { lat: number; lon: number } | null;
   onSelectLocation: (lat: number, lon: number) => void;
   className?: string;
@@ -32,6 +33,7 @@ export function Map({
   normalRoute,
   safeRoute,
   routeStatus,
+  blockedRoads,
   patientLocation,
   onSelectLocation,
   className = "",
@@ -45,6 +47,7 @@ export function Map({
   const hospitalMarkersRef = useRef<maplibregl.Marker[]>([]);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const destinationMarkerRef = useRef<maplibregl.Marker | null>(null);
+  const overlayMarkersRef = useRef<maplibregl.Marker[]>([]);
 
   const [isLocating, setIsLocating] = useState<boolean>(false);
   const [gpsError, setGpsError] = useState<string | null>(null);
@@ -377,6 +380,52 @@ export function Map({
         .addTo(map);
     }
 
+    // Google-Maps-style reading aids: route time bubbles, flooded stretches on the normal route,
+    // the rejected normal hospital, and fading of flagged roads that are not on the route.
+    overlayMarkersRef.current.forEach((m) => m.remove());
+    overlayMarkersRef.current = [];
+    const addMarker = (html: string, lat: number, lon: number, anchor: maplibregl.PositionAnchor = "bottom") => {
+      const el = document.createElement("div");
+      el.className = "pointer-events-none";
+      el.innerHTML = html;
+      overlayMarkersRef.current.push(new maplibregl.Marker({ element: el, anchor }).setLngLat([lon, lat]).addTo(map));
+    };
+    const pointAt = (leg: RouteLeg, frac: number) => leg.coords[Math.floor((leg.coords.length - 1) * frac)];
+    const nBlocked = (blockedRoads ?? []).length;
+    const sameRoute = routeStatus === "no_change";
+
+    if (normalRoute && normalRoute.coords.length > 1) {
+      const [la, lo] = pointAt(normalRoute, sameRoute ? 0.5 : 0.35);
+      const warn = nBlocked > 0 && !sameRoute
+        ? `<div class="text-[10px] font-semibold text-[#DC2626]">⚠ crosses ${nBlocked} road${nBlocked > 1 ? "s" : ""} likely to flood</div>` : "";
+      const title = sameRoute ? "Route (not affected)" : "Normal route";
+      addMarker(`<div class="px-2 py-1 rounded-lg bg-white border-2 ${sameRoute ? "border-[#0B8A7E]" : "border-dashed border-[#2563EB]"} shadow-md whitespace-nowrap">
+        <div class="text-[11px] font-bold ${sameRoute ? "text-[#0B8A7E]" : "text-[#1D4ED8]"}">${title} · ${Math.round(normalRoute.minutes)} min</div>
+        <div class="text-[10px] text-[#4B5563]">to ${escapeHtml(normalRoute.hospital)}</div>${warn}</div>`, la, lo);
+    }
+    if (safeRoute && safeRoute.coords.length > 1 && !sameRoute) {
+      const [la, lo] = pointAt(safeRoute, 0.65);
+      addMarker(`<div class="px-2 py-1 rounded-lg bg-[#0B8A7E] text-white shadow-md whitespace-nowrap">
+        <div class="text-[11px] font-bold">Flood-safe · ${Math.round(safeRoute.minutes)} min</div>
+        <div class="text-[10px] opacity-90">to ${escapeHtml(safeRoute.hospital)}</div></div>`, la, lo);
+    }
+    if (!sameRoute) {
+      (blockedRoads ?? []).forEach((b) => {
+        if (b.lat === undefined || b.lon === undefined) return;
+        addMarker(`<div class="w-6 h-6 rounded-full bg-[#DC2626] text-white border-2 border-white shadow-md flex items-center justify-center text-[12px] font-black" title="${escapeHtml(b.name)}">!</div>`, b.lat, b.lon, "center");
+      });
+    }
+    if (routeStatus === "ok" && normalRoute && safeRoute && normalRoute.hospital !== safeRoute.hospital
+        && normalRoute.hospital_lat !== undefined && normalRoute.hospital_lon !== undefined) {
+      addMarker(`<div class="flex flex-col items-center opacity-80">
+        <div class="px-2 py-0.5 mb-1 rounded-md bg-[#6B7280] text-white text-[10px] font-semibold whitespace-nowrap">Normal choice: ${escapeHtml(normalRoute.hospital)} · approach likely to flood</div>
+        <div class="w-6 h-6 rounded-full bg-white border-2 border-[#9CA3AF] flex items-center justify-center text-[#6B7280] font-bold text-[11px]">H</div></div>`,
+        normalRoute.hospital_lat, normalRoute.hospital_lon);
+    }
+    const focus = Boolean(normalRoute && normalRoute.coords.length > 1);
+    if (map.getLayer("flagged-roads-line")) map.setPaintProperty("flagged-roads-line", "line-opacity", focus ? 0.3 : 0.85);
+    if (map.getLayer("flagged-roads-halo")) map.setPaintProperty("flagged-roads-halo", "line-opacity", focus ? 0.04 : 0.15);
+
     // Zoom to show the whole trip: patient, both routes and the destination
     const pts: [number, number][] = [
       ...(normalRoute?.coords ?? []),
@@ -387,7 +436,7 @@ export function Map({
       pts.forEach(([lat, lon]) => bounds.extend([lon, lat]));
       map.fitBounds(bounds, { padding: { top: 90, bottom: 90, left: 60, right: 60 }, maxZoom: 15.5, duration: 800 });
     }
-  }, [normalRoute, safeRoute, routeStatus, mapLoaded]);
+  }, [normalRoute, safeRoute, routeStatus, blockedRoads, mapLoaded]);
 
   // Sync Patient Marker (Draggable & Clickable)
   useEffect(() => {

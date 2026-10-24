@@ -140,14 +140,17 @@ def find_routes(
         return outside
     normal_leg, normal_keys = _leg(graph, normal[1], normal[2], normal[0], origin, set())
 
-    blocked: Dict[str, float] = {}
+    blocked: Dict[str, Dict[str, Any]] = {}
     for key in normal_keys:
         if key in flagged:
             data = graph[key[0]][key[1]][key[2]]
             name = _road_name(data)
-            blocked[name] = max(blocked.get(name, 0.0), float(data.get("flood_score", 0.0)))
-    blocked_list = [{"name": n, "score": round(s, 2)}
-                    for n, s in sorted(blocked.items(), key=lambda x: -x[1])][:5]
+            score = float(data.get("flood_score", 0.0))
+            if name not in blocked or score > blocked[name]["score"]:
+                pts = _edge_coords(graph, *key)
+                mid = pts[len(pts) // 2]
+                blocked[name] = {"name": name, "score": round(score, 2), "lat": mid[0], "lon": mid[1]}
+    blocked_list = sorted(blocked.values(), key=lambda b: -b["score"])[:5]
 
     safe = _nearest_hospital_path(graph, source, hospital_by_node, flagged)
     if safe is None:
