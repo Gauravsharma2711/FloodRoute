@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloodRoute · HackAMatch 1.0 Final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#fff; --soft:#F6F8FA; --border:#E5E7EB; --text:#111827; --muted:#6B7280; --teal:#0B8A7E;
+          --teal-soft:#E6F6F4; --blue:#2563EB; --red:#DC2626; --red-soft:#FEF2F2; --amber:#F59E0B; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { height:100%; background:#0F172A; overflow:hidden; }
+  body { font-family:Inter,"Segoe UI",system-ui,Arial,sans-serif; color:var(--text); font-variant-numeric:tabular-nums; }
+  #stage { position:absolute; width:1280px; height:720px; left:50%; top:calc(50% - 26px); transform-origin:center; }
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; padding-bottom:20px; }
+  .flow .step p.small { font-size:16px; }
+  .slide { position:absolute; inset:0; background:var(--bg); padding:52px 68px 44px; display:none; flex-direction:column; overflow:hidden; border-radius:6px; }
+  .slide.active { display:flex; animation:fade .35s ease; }
+  @keyframes fade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  .kicker { font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; }
+  h1 { font-size:62px; font-weight:900; letter-spacing:-.03em; line-height:1.03; }
+  h2 { font-size:40px; font-weight:800; letter-spacing:-.02em; line-height:1.12; margin-bottom:26px; max-width:1100px; }
+  h3 { font-size:20px; font-weight:800; margin-bottom:6px; }
+  p, li { font-size:19px; line-height:1.5; color:#374151; }
+  .small { font-size:15px; } .xs { font-size:12px; color:var(--muted); }
+  .muted { color:var(--muted); }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .card { background:var(--soft); border:1px solid var(--border); border-radius:18px; padding:22px 24px; }
+  .card.white { background:#fff; } .card.teal { background:var(--teal-soft); border-color:#BFE7E2; }
+  .big { font-size:46px; font-weight:900; letter-spacing:-.02em; line-height:1; }
+  .teal { color:var(--teal); } .red { color:var(--red); } .blue { color:var(--blue); }
+  .chip { display:inline-block; font-size:12px; font-weight:800; padding:4px 11px; border-radius:999px; background:#fff; border:1px solid var(--border); color:#374151; letter-spacing:.04em; }
+  .chip.teal { background:var(--teal-soft); color:var(--teal); border-color:#BFE7E2; }
+  ul.clean { list-style:none; } ul.clean li { padding-left:24px; position:relative; margin-bottom:10px; }
+  ul.clean li::before { content:""; position:absolute; left:4px; top:11px; width:9px; height:9px; border-radius:50%; background:var(--teal); }
+  .shot { border-radius:14px; border:1px solid var(--border); box-shadow:0 12px 32px rgba(15,23,42,.12); display:block; }
+  .logo { display:inline-flex; align-items:center; gap:10px; font-weight:900; font-size:16px; }
+  .logo i { width:28px; height:28px; border-radius:8px; background:var(--teal); position:relative; display:inline-block; }
+  .logo i::after { content:"+"; position:absolute; inset:0; color:#fff; font-style:normal; font-weight:900; display:flex; align-items:center; justify-content:center; font-size:20px; }
+  .src { position:absolute; left:68px; right:68px; bottom:22px; font-size:11px; color:#9CA3AF; }
+  .flow { display:flex; align-items:stretch; gap:12px; }
+  .flow .step { flex:1; background:#fff; border:1.5px solid var(--border); border-radius:16px; padding:18px 18px; }
+  .flow .step b.n { display:inline-flex; width:28px; height:28px; border-radius:50%; background:var(--teal); color:#fff; align-items:center; justify-content:center; font-weight:900; margin-bottom:8px; }
+  .arrow { align-self:center; color:#9CA3AF; font-size:26px; font-weight:800; }
+  table { border-collapse:collapse; width:100%; }
+  th { text-align:left; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:10px 12px; border-bottom:2px solid var(--border); }
+  td { padding:12px; border-bottom:1px solid var(--border); font-size:17px; color:#1F2937; vertical-align:top; }
+  td b { color:var(--text); }
+  .title-bg { background:linear-gradient(135deg,#fff 0%,#F2FBFA 55%,#E3F5F2 100%); }
+  .bubble { background:#DCF8C6; border-radius:14px 14px 14px 4px; padding:14px 16px; font-size:14px; line-height:1.45; color:#111; box-shadow:0 6px 18px rgba(0,0,0,.08); white-space:pre-line; font-family:"Segoe UI",Inter,Arial,sans-serif; }
+  .demo-row { display:flex; gap:14px; align-items:center; padding:14px 18px; border-radius:14px; background:#fff; border:1.5px solid var(--border); margin-bottom:12px; }
+  .demo-row b.n { flex:0 0 34px; height:34px; border-radius:50%; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; }
+  /* navigation: buttons + arrow keys only */
+  #nav { position:fixed; right:50%; transform:translateX(50%); bottom:8px; display:flex; gap:8px; align-items:center; z-index:10; font:600 13px Inter,sans-serif; color:#94A3B8; }
+  #nav button { width:40px; height:40px; border-radius:10px; border:1px solid #334155; background:#1E293B; color:#E2E8F0; font-size:18px; cursor:pointer; }
+  #nav button:hover { background:#334155; }
+  #progress { position:fixed; left:0; top:0; height:3px; background:var(--teal); z-index:10; transition:width .25s; }
+  @media print {
+    @page { size:1280px 720px; margin:0; }
+    html, body { background:#fff; overflow:visible; height:auto; }
+    #stage { position:static; transform:none !important; width:1280px; height:auto; }
+    .slide { display:flex !important; position:relative; width:1280px; height:720px; page-break-after:always; border-radius:0; animation:none; }
+    #nav, #progress { display:none !important; }
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="stage">
+
+<!-- 1 · TITLE -->
+<section class="slide title-bg" data-title="Title">
+  <div class="logo"><i></i> FloodRoute <span class="chip" style="margin-left:6px">Mumbai</span></div>
+  <div style="display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; flex:1">
+    <div>
+      <div class="kicker">HackAMatch 1.0 · CityPulse: Predict. Explain. Act.</div>
+      <h1>When it pours in Mumbai: which hospital, and which road?</h1>
+      <p style="font-size:23px; margin-top:22px; max-width:560px">Flood-aware ambulance dispatch, built only on public data.</p>
+      <div style="margin-top:34px; display:flex; gap:10px; flex-wrap:wrap">
+        <span class="chip teal">100% public data</span><span class="chip">No paid APIs</span><span class="chip">Working prototype</span>
+      </div>
+    </div>
+    <img class="shot" src="{{IMG_DISPATCHER}}" alt="FloodRoute dispatcher view" style="width:100%">
+  </div>
+</section>
+
+<!-- 2 · PROBLEM -->
+<section class="slide" data-title="Problem">
+  <div class="kicker">The problem</div>
+  <h2>On a heavy-rain day, the ambulance is sent the way it goes on a dry day.</h2>
+  <div class="body">
+  <div class="grid2" style="gap:36px; align-items:start">
+    <ul class="clean">
+      <li><b>Who:</b> the ambulance dispatcher, with under a minute per call.</li>
+      <li><b>Today:</b> the nearest hospital, normal route; a flooded underpass is found on arrival.</li>
+      <li><b>Gap:</b> navigation apps react <i>after</i> a road is blocked. The dispatcher needs to know <i>before</i>.</li>
+    </ul>
+    <div class="grid2" style="gap:14px">
+      <div class="card white"><div class="big red">110</div><p class="small" style="margin-top:8px">heavy-rain days in Mumbai, 2005–2025</p></div>
+      <div class="card white"><div class="big">96%</div><p class="small" style="margin-top:8px">of them fall in June–September: predictable, plannable</p></div>
+      <div class="card white" style="grid-column:span 2"><div class="big" style="font-size:38px">336</div><p class="small" style="margin-top:8px">chronic waterlogging spots identified by BMC (2022)</p></div>
+    </div>
+  </div>
+  </div>
+  <div class="src">Heavy-rain days (≥ 64.5 mm, IMD) computed by us from Open-Meteo daily rainfall, central Mumbai. BMC figure: The Indian Express via Praja (2023).</div>
+</section>
+
+<!-- 3 · SOLUTION -->
+<section class="slide" data-title="Solution">
+  <div class="kicker">What FloodRoute does</div>
+  <h2>From a rain day to the driver's phone in four steps.</h2>
+  <div class="body">
+  <div class="flow" style="margin-bottom:26px">
+    <div class="step"><b class="n">1</b><h3>Pick the rain day</h3><p class="small">Tomorrow's forecast or a real heavy day. Roads likely to flood turn red.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b class="n">2</b><h3>Place the patient</h3><p class="small">Click the map or a known hotspot.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><b class="n">3</b><h3>Get the decision</h3><p class="small">Which hospital, how many minutes, which roads to avoid.</p></div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:#BFE7E2; background:var(--teal-soft)"><b class="n">4</b><h3>Send to driver</h3><p class="small">WhatsApp / SMS link → route on the driver's phone.</p></div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>Explains itself</h3><p class="small">Tap any red road: "3.8 m lower than the area around it".</p></div>
+    <div class="card"><h3>Real streets</h3><p class="small">Routes computed on Mumbai's road network to 35 major hospitals.</p></div>
+    <div class="card"><h3>Checks itself</h3><p class="small">Built-in "How reliable is this?" against reported flood spots.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 4 · DATA -->
+<section class="slide" data-title="Data">
+  <div class="kicker">Where the data comes from</div>
+  <h2>Five public sources. Every number traces back to one of them.</h2>
+  <div class="body">
+  <table>
+    <tr><th>Source</th><th>What we take from it</th><th>What we built</th></tr>
+    <tr><td><b>OpenStreetMap</b></td><td>Main roads, hospitals, rivers and creeks</td><td><b>9,746</b> road segments (1,552 km) · <b>611</b> hospital features → <b>35</b> major destinations</td></tr>
+    <tr><td><b>Copernicus DEM</b> (30 m)</td><td>Ground height</td><td>Height of every road and of the area around it · 470 bridges/flyovers kept dry</td></tr>
+    <tr><td><b>Open-Meteo</b></td><td>Daily rainfall + forecast</td><td><b>7,670</b> days (2005–2025) → the 10 heaviest real days + tomorrow</td></tr>
+    <tr><td><b>IMD</b></td><td>Rain categories (heavy, very heavy…)</td><td>How bad a day is → how many roads count as likely to flood</td></tr>
+    <tr><td><b>BMC / gauges / news</b></td><td>Reported waterlogging spots</td><td><b>14</b> sourced spots, used only to test the score</td></tr>
+  </table>
+  <div class="grid3" style="margin-top:22px">
+    <div class="card teal"><p class="small"><b>No keys, no paid APIs.</b> Free for anyone to rebuild.</p></div>
+    <div class="card teal"><p class="small"><b>Cached and reproducible:</b> one script per step.</p></div>
+    <div class="card teal"><p class="small"><b>Attributed:</b> © OpenStreetMap, Copernicus, Open-Meteo, IMD.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 5 · HOW IT DECIDES -->
+<section class="slide" data-title="How it works">
+  <div class="kicker">How it decides</div>
+  <h2>A transparent score, then a real route. No black box.</h2>
+  <div class="body">
+  <div class="flow" style="margin-bottom:24px">
+    <div class="step">
+      <h3>1 · Flood-prone score per road</h3>
+      <p class="small">Four signals from terrain:</p>
+      <p class="small" style="margin-top:6px">▸ lower than the area around it<br>▸ low height above sea level<br>▸ close to sea, creek or canal<br>▸ underpass</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <h3>2 · Rain day → blocked roads</h3>
+      <p class="small">The IMD category sets how many of the most flood-prone roads count as likely to flood.</p>
+      <p class="small" style="margin-top:8px"><b>Heavy</b> 8% · <b>Very heavy</b> 15% · <b>Extremely heavy</b> 25%</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <h3>3 · Two routes</h3>
+      <p class="small">Fastest path to the nearest major hospital on the full road network…</p>
+      <p class="small" style="margin-top:6px">…and again with the likely-to-flood roads removed.</p>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step" style="border-color:#BFE7E2; background:var(--teal-soft)">
+      <h3>4 · Decision</h3>
+      <p class="small">Same route → "not affected". Longer → "+N min", maybe a different hospital. No path → "cut off".</p>
+    </div>
+  </div>
+  <div class="card" style="padding:16px 22px"><p class="small"><b>Why a transparent score, not machine learning?</b> Flood reports exist for a handful of spots, not thousands. A score you can explain road by road is more honest and easier to trust in an emergency.</p></div>
+</div>
+</section>
+
+<!-- 6 · WHY DIFFERENT -->
+<section class="slide" data-title="Why different">
+  <div class="kicker">Why this is different</div>
+  <h2>In a flood, the hard decision is not the turn. It is the hospital.</h2>
+  <div class="body">
+  <div class="grid2" style="grid-template-columns:1.15fr .85fr; gap:30px; align-items:start">
+    <table>
+      <tr><th></th><th>Google Maps / Waze</th><th>FloodRoute</th></tr>
+      <tr><td><b>Question</b></td><td>How do I reach <i>X</i> fastest now?</td><td><b>Which hospital</b>, and which way, if it rains this hard?</td></tr>
+      <tr><td><b>Knows a road floods</b></td><td>After traffic stops or a report</td><td><b>Before</b>, from terrain + rain category</td></tr>
+      <tr><td><b>Destination</b></td><td>Chosen by the user</td><td><b>Chosen by the tool</b></td></tr>
+      <tr><td><b>Explains why</b></td><td>No</td><td>Every avoided road</td></tr>
+      <tr><td><b>Cost</b></td><td>Routing API is paid</td><td>Free, open data</td></tr>
+    </table>
+    <div>
+      <img class="shot" src="{{IMG_CARD}}" alt="Decision card: send to Shatabdi Hospital" style="width:100%; max-width:330px">
+      <p class="small" style="margin-top:12px"><b>Real example, BKC on a very heavy day:</b> the nearest hospital's approach is likely to flood, so FloodRoute sends the ambulance to <b>Shatabdi Hospital</b> instead.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 7 · HAND-OFF -->
+<section class="slide" data-title="Send to driver">
+  <div class="kicker">From the desk to the driver</div>
+  <h2>One tap sends the decision to the ambulance.</h2>
+  <div class="body">
+  <div style="display:grid; grid-template-columns:1fr 70px 300px; gap:18px; align-items:center; flex:1">
+    <div>
+      <div class="bubble">FloodRoute ambulance dispatch
+Rain scenario: 17 May 2021 (199.9 mm, very heavy)
+<b>GO TO: Shatabdi Hospital</b>
+Flood-safe route: about 10 min, 7.9 km
++8.0 min vs normal route (normal choice was Bhabha Hospital)
+<b>AVOID: Bandra Kurla Complex Road, Avenue 3</b>
+Route map: …/driver?lat=19.068&amp;lon=72.868…</div>
+      <ul class="clean" style="margin-top:22px">
+        <li>WhatsApp, SMS or copy: the dispatcher taps send.</li>
+        <li>The link opens the route on the driver's phone.</li>
+        <li><b>Start navigation</b> hands the flood-safe path to Google Maps for turn-by-turn.</li>
+      </ul>
+    </div>
+    <div class="arrow" style="font-size:40px; text-align:center">→</div>
+    <img class="shot" src="{{IMG_DRIVER}}" alt="Driver phone view" style="height:500px; width:auto; justify-self:center">
+  </div>
+</div>
+</section>
+
+<!-- 8 · LIVE DEMO -->
+<section class="slide" data-title="Live demo">
+  <div class="kicker">Live demo</div>
+  <h2>Let's see it run.</h2>
+  <div class="body">
+  <div class="grid2" style="grid-template-columns:1fr 1fr; gap:30px; align-items:start">
+    <div>
+      <div class="demo-row"><b class="n">1</b><div><b>Very heavy rain day</b><p class="small">17 May 2021 · 199.9 mm · roads likely to flood light up</p></div></div>
+      <div class="demo-row"><b class="n">2</b><div><b>Patient in BKC</b><p class="small">Normal: Bhabha Hospital → Flood-safe: Shatabdi, +8 min</p></div></div>
+      <div class="demo-row"><b class="n">3</b><div><b>Why this road?</b><p class="small">Tap a red road to see its reason</p></div></div>
+      <div class="demo-row"><b class="n">4</b><div><b>Send to driver</b><p class="small">WhatsApp → driver's phone → Google Maps</p></div></div>
+      <div class="demo-row"><b class="n">5</b><div><b>How reliable is this?</b><p class="small">Checked against reported flood spots</p></div></div>
+    </div>
+    <img class="shot" src="{{IMG_DISPATCHER}}" alt="Dispatcher view" style="width:100%">
+  </div>
+</div>
+</section>
+
+<!-- 9 · IMPACT & NEXT -->
+<section class="slide" data-title="Impact & next">
+  <div class="kicker">Who it helps · what's next</div>
+  <h2>A monsoon planning tool any city with open data can run.</h2>
+  <div class="body">
+  <div class="grid3" style="margin-bottom:24px">
+    <div class="card"><span class="chip teal">108 EMS DISPATCH</span><h3 style="margin-top:12px">Plan before the call</h3><p class="small">Check tomorrow's rain category; know which hospitals stay reachable.</p></div>
+    <div class="card"><span class="chip teal">AMBULANCE DRIVERS</span><h3 style="margin-top:12px">One clear instruction</h3><p class="small">Hospital, minutes, roads to avoid, and navigation on the phone.</p></div>
+    <div class="card"><span class="chip teal">BMC FLOOD CONTROL</span><h3 style="margin-top:12px">Fix what matters</h3><p class="small">Which roads, once drained, reopen the most ambulance trips.</p></div>
+  </div>
+  <div class="card white">
+    <h3>Roadmap</h3>
+    <div class="grid4" style="margin-top:10px">
+      <p class="small"><b>1.</b> Live forecast refresh every few hours</p>
+      <p class="small"><b>2.</b> "Fix-first" city view for BMC</p>
+      <p class="small"><b>3.</b> Hindi / Marathi driver messages</p>
+      <p class="small"><b>4.</b> Pilot with one 108 dispatch desk for a monsoon</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 10 · CLOSE -->
+<section class="slide title-bg" data-title="Thank you">
+  <div class="logo"><i></i> FloodRoute</div>
+  <div style="margin:auto 0; max-width:980px">
+    <div class="kicker">Thank you</div>
+    <h1 style="font-size:58px">Public data in. A hospital, a route and a reason out.</h1>
+    <div class="grid3" style="margin-top:40px">
+      <div class="card white"><h3 class="teal">Discover</h3><p class="small">9,746 roads scored for flood-proneness</p></div>
+      <div class="card white"><h3 class="teal">Explain</h3><p class="small">Every flagged road says why</p></div>
+      <div class="card white"><h3 class="teal">Act</h3><p class="small">A flood-safe hospital and route, sent to the driver</p></div>
+    </div>
+    <p class="muted" style="margin-top:30px">github.com/sujaljadhav14/FloodRoute · Questions welcome</p>
+  </div>
+</section>
+
+</div>
+
+<div id="nav">
+  <span id="count"></span>
+  <button id="prev" aria-label="Previous slide" title="Previous (←)">◀</button>
+  <button id="next" aria-label="Next slide" title="Next (→)">▶</button>
+  <button id="fs" aria-label="Full screen" title="Full screen (F)">⛶</button>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const stage = document.getElementById('stage');
+  const count = document.getElementById('count');
+  const bar = document.getElementById('progress');
+  let i = 0;
+  function fit() {
+    const s = Math.min(window.innerWidth / 1280, (window.innerHeight - 64) / 720) * 0.98;
+    stage.style.transform = `translate(-50%, -50%) scale(${s})`;
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((el, k) => el.classList.toggle('active', k === i));
+    count.textContent = `${i + 1} / ${slides.length}`;
+    bar.style.width = `${((i + 1) / slides.length) * 100}%`;
+  }
+  // Navigation: arrow keys and the on-screen buttons only (no click-to-advance)
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key.toLowerCase() === 'f') toggleFs();
+  });
+  function toggleFs() { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('next').onclick = () => show(i + 1);
+  document.getElementById('fs').onclick = toggleFs;
+  window.addEventListener('resize', fit);
+  fit(); show(0);
+</script>
+</body>
+</html>

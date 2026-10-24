@@ -21,6 +21,7 @@ interface MapProps {
   safeRoute?: RouteLeg | null;
   routeStatus?: RouteStatus;
   blockedRoads?: BlockedRoad[];
+  showComparison?: boolean; // dispatcher: normal-route bubble + rejected hospital; driver: only the safe route
   patientLocation?: { lat: number; lon: number } | null;
   onSelectLocation: (lat: number, lon: number) => void;
   className?: string;
@@ -34,6 +35,7 @@ export function Map({
   safeRoute,
   routeStatus,
   blockedRoads,
+  showComparison = true,
   patientLocation,
   onSelectLocation,
   className = "",
@@ -399,7 +401,7 @@ export function Map({
     const nBlocked = (blockedRoads ?? []).length;
     const sameRoute = routeStatus === "no_change";
 
-    if (normalRoute && normalRoute.coords.length > 1) {
+    if (normalRoute && normalRoute.coords.length > 1 && (showComparison || sameRoute)) {
       const [la, lo] = pointAt(normalRoute, sameRoute ? 0.5 : 0.35);
       const warn = nBlocked > 0 && !sameRoute
         ? `<div class="text-[10px] font-semibold text-[#DC2626]">⚠ crosses ${nBlocked} road${nBlocked > 1 ? "s" : ""} likely to flood</div>` : "";
@@ -420,7 +422,7 @@ export function Map({
         addMarker(`<div class="w-6 h-6 rounded-full bg-[#DC2626] text-white border-2 border-white shadow-md flex items-center justify-center text-[12px] font-black" title="${escapeHtml(b.name)}">!</div>`, b.lat, b.lon, "center");
       });
     }
-    if (routeStatus === "ok" && normalRoute && safeRoute && normalRoute.hospital !== safeRoute.hospital
+    if (showComparison && routeStatus === "ok" && normalRoute && safeRoute && normalRoute.hospital !== safeRoute.hospital
         && normalRoute.hospital_lat !== undefined && normalRoute.hospital_lon !== undefined) {
       addMarker(`<div class="flex flex-col items-center opacity-80">
         <div class="px-2 py-0.5 mb-1 rounded-md bg-[#6B7280] text-white text-[10px] font-semibold max-w-[220px] truncate">Normal choice: ${escapeHtml(normalRoute.hospital)} · approach likely to flood</div>
@@ -441,7 +443,7 @@ export function Map({
       pts.forEach(([lat, lon]) => bounds.extend([lon, lat]));
       map.fitBounds(bounds, { padding: { top: 100, bottom: 170, left: 70, right: 70 }, maxZoom: 15.5, duration: 800 });
     }
-  }, [normalRoute, safeRoute, routeStatus, blockedRoads, mapLoaded]);
+  }, [normalRoute, safeRoute, routeStatus, blockedRoads, showComparison, mapLoaded]);
 
   // Sync Patient Marker (Draggable & Clickable)
   useEffect(() => {

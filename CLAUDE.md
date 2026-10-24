@@ -24,6 +24,8 @@ FloodRoute is a hackathon submission for HackAMatch 1.0 (CityPulse: Predict. Exp
 
 ## Current status and fix backlog (updated 2026-10-24 — keep this section current)
 
+**Deck (2026-10-24):** `presentation/index.html` is built from `presentation/deck_template.html` by `presentation/build_deck.py`, with real screenshots from `web/scripts/capture-screens.mjs`; edit the template, not `index.html`. 10 slides max, minimal text, navigation by arrow keys / buttons only, no speaker-notes panel, no limitations slide (user decision); the transcript is written after the user approves the slides. Flow and number sources: `presentation/README.md`.
+
 Final round: 10 min presentation + 5 min Q&A, live demo optional. **The demo runs locally on the presenter's laptop; deployment is out of scope until after the final** (decided 2026-10-24). The agreed product definition, user, differentiation, UI changes and final plan are in `docs/FINAL_PROJECT.md`. Read it before any new work. The core idea must not change. Deck, script and team checklist are in `presentation/` (`index.html`, `SCRIPT.md`, `TEAM_CHECKLIST.md`). The deck describes the app **after** the P0 fixes below; `TEAM_CHECKLIST.md` §3 lists which slide claims depend on which fix.
 
 **What is real (in code on main; the live site updates once Render/Vercel redeploy):** flagged roads (same rule as routing: bridges excluded, no feature cap), routing (`floodroute/routing.py`), hospitals (`data/processed/hospitals.json`), destination marker + fit-to-route on the map. **Still fixture:** city view (Tier B, not in the final; next-steps slide only).

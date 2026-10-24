@@ -106,6 +106,10 @@ Open **http://localhost:3000**. Demo path: pick a *very heavy* day → click **B
 
 The hosted copies (Vercel + Render, links at the top) redeploy from `main`; the local run above is the reference demo.
 
+## Presentation
+
+The final deck is `presentation/index.html`: 10 slides, one offline file. Use ← → or the on-screen buttons, and F for full screen. Flow, timing, demo steps and the source of every number are in [presentation/README.md](presentation/README.md).
+
 ## Rebuild the data from scratch (optional)
 
 ```powershell
@@ -155,7 +159,7 @@ FloodRoute/
 - [docs/DATA_CONTRACT.md](docs/DATA_CONTRACT.md) — file formats and API endpoints
 - [docs/UI_SPEC.md](docs/UI_SPEC.md) — layout, colours, interactions, wording rules
 - [docs/JUDGING.md](docs/JUDGING.md) — rubric mapping, likely Q&A
-- [presentation/](presentation/) — HTML slide deck (`index.html`), speaker script, team checklist
+- [presentation/](presentation/) — final HTML slide deck (`index.html`), flow, timing and demo steps ([presentation/README.md](presentation/README.md))
 
 ## Limitations
 

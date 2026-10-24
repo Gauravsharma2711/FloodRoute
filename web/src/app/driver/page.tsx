@@ -69,6 +69,7 @@ function DriverView() {
             safeRoute={route?.safe}
             routeStatus={route?.status}
             blockedRoads={route?.blocked_on_normal}
+            showComparison={false}
             patientLocation={{ lat, lon }}
             onSelectLocation={() => undefined}
             className="w-full h-full"
