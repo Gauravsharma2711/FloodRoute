@@ -193,7 +193,7 @@ export function ReliabilityModal({
                 ["water", "#FFFBEB", "#92400E", "No drains, pumps or tide",
                   "Underground drainage, pump status and tide levels drive much of Mumbai's waterlogging but are not open data, so they are not modelled."],
                 ["tune", "#FFFBEB", "#92400E", "Two explicit assumptions",
-                  "(1) How many roads count as likely to flood for each rain category (you can change it with \"What if?\"). (2) The list of 28 major hospitals we route to (KEM and Cooper are not tagged as hospitals in OpenStreetMap)."],
+                  "(1) How many roads count as likely to flood for each rain category (you can change it with \"What if?\"). (2) The list of 35 major hospitals we route to (BMC municipal and large general hospitals; Breach Candy and GT Hospital are not mapped in OpenStreetMap)."],
                 ["route", "#F0F9FF", "#075985", "Main roads only, free-flow times",
                   "The road network has main roads only, so \"cut off\" means no flood-safe main-road route. Minutes are free-flow estimates from speed limits, without traffic."],
                 ["science", "#F0FDF4", "#065F46", "What data would make it a real predictor",

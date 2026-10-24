@@ -1,7 +1,7 @@
 """Build data/processed/hospitals.json from OpenStreetMap hospitals in the study bbox.
 
-Rule (transparent, stated in the UI and docs): every OSM feature tagged amenity=hospital
-with a name, except those explicitly tagged emergency=no. Of these, the ones whose
+Rule (transparent, stated in the UI and docs): every OSM feature tagged amenity=hospital,
+healthcare=hospital or building=hospital with a name, except those explicitly tagged emergency=no. Of these, the ones whose
 exact name is in config.yaml hospitals.destination_names (a team-curated ASSUMPTION: major
 general hospitals) are "ambulance destinations" used for routing. Each hospital is snapped to the
 nearest node of the largest strongly connected part of the road graph, so a route can
@@ -24,13 +24,14 @@ from floodroute.routing import routable_nodes, haversine_m
 
 
 def fetch_osm_hospitals(cache: Path, bbox: dict) -> list[dict]:
-    """Return raw Overpass elements for amenity=hospital in the bbox (cached on disk)."""
+    """Raw Overpass elements tagged amenity=hospital, or named healthcare=hospital / building=hospital
+    (some major hospitals, e.g. KEM and Cooper, are mapped only that way). Cached on disk."""
     if not cache.exists():
         s, w, n, e = bbox["south"], bbox["west"], bbox["north"], bbox["east"]
         query = f"""[out:json][timeout:60];
-(node["amenity"="hospital"]({s},{w},{n},{e});
- way["amenity"="hospital"]({s},{w},{n},{e});
- relation["amenity"="hospital"]({s},{w},{n},{e}););
+(nwr["amenity"="hospital"]({s},{w},{n},{e});
+ nwr["healthcare"="hospital"]["name"]({s},{w},{n},{e});
+ nwr["building"="hospital"]["name"]({s},{w},{n},{e}););
 out center tags;"""
         resp = requests.post(
             "https://overpass-api.de/api/interpreter",
@@ -47,7 +48,7 @@ out center tags;"""
 def main() -> None:
     root = get_project_root()
     cfg = load_config()
-    elements = fetch_osm_hospitals(root / "data" / "raw" / "hospitals_osm.json", cfg["bbox"])
+    elements = fetch_osm_hospitals(root / "data" / "raw" / "hospitals_osm_v2.json", cfg["bbox"])
 
     G = load_graph(root / "data" / "processed" / "graph.pkl")
     node_ids = np.array(routable_nodes(G))

@@ -72,10 +72,11 @@ routing:
 # Hospitals: OSM amenity=hospital with a name (pipeline/01b_build_hospitals.py).
 hospitals:
   require_name: true
-  # ASSUMPTION: ambulances are routed to the nearest of these major general hospitals (public + large
-  # private), matched by their exact OpenStreetMap name. Team-curated judgement, not an official list:
-  # shown in the app's Limits, and emergency availability must be confirmed with 108 EMS before real use.
-  # Not in OSM as amenity=hospital in the bbox (so not routable): KEM Hospital, Cooper Hospital.
+  # ASSUMPTION (rule): ambulances are routed to the nearest BMC municipal hospital (medical-college and
+  # peripheral hospitals) or large general / multispeciality hospital, matched by exact OpenStreetMap name.
+  # Specialist-only (cancer, maternity, infectious disease, eye), staff-only (railway, police, naval) and small
+  # nursing homes are excluded. Team judgement, not an official list: shown in the app's Limits; confirm
+  # casualty availability with 108 EMS before real use. Not mappable from OSM: Breach Candy, GT Hospital.
   destination_names:
     - "Sion Hospital"
     - "L.T.Muncipal Medical College and Sion Hospital"
@@ -104,3 +105,23 @@ hospitals:
     - "Gleneagles Hospital Super Speciality and Transplant Center"
     - "Wockhardt Hospitals, South Mumbai"
     - "Holy Spirit Hospital"
+    - "King Edward Memorial Hospital"
+    - "Dr. Cooper Hospital"
+    - "Shatabdi Hospital"
+    - "Prince Aly Khan Hospital"
+    - "Bhatia"
+    - "ESIC Model Hospital"
+    - "Godrej Memorial Hospital, Mumbai"
+
+# One-click demo locations (place centres picked by hand on the map; routes are computed live).
+presets:
+  - {id: bkc, name: "BKC (Bandra Kurla Complex)", lat: 19.0680, lon: 72.8680}
+  - {id: marol, name: "Marol (Andheri East)", lat: 19.1320, lon: 72.8820}
+  - {id: hindmata, name: "Hindmata Junction", lat: 19.0101, lon: 72.8421}
+  - {id: sion, name: "Sion / Gandhi Market", lat: 19.0349, lon: 72.8600}
+  - {id: milan_subway, name: "Milan Subway", lat: 19.0905, lon: 72.8426}
+  - {id: kurla, name: "Kurla (LBS Marg)", lat: 19.0680, lon: 72.8790}
+  - {id: colaba, name: "Colaba Causeway", lat: 18.9100, lon: 72.8250}
+  - {id: chembur, name: "Chembur Circle", lat: 19.0541, lon: 72.8946}
+  - {id: andheri, name: "Andheri West", lat: 19.1200, lon: 72.8350}
+  - {id: bandra, name: "Bandra West", lat: 19.0550, lon: 72.8300}

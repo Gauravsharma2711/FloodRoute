@@ -112,7 +112,7 @@ class RealBackend:
             "built_at": "2026-10-23T00:00:00Z",
             "road_nodes_count": 5041,
             "road_edges_count": 9746,
-            "hospitals_count": 569,
+            "hospitals_count": len(self._hospitals),
             "water_polygons_count": 583,
             "sources": [
                 "OpenStreetMap (ODbL, 2026-10-22)",
@@ -121,11 +121,8 @@ class RealBackend:
                 "BMC / Traffic Police Reported Flood Spots"
             ],
             "destination_hospitals_count": sum(1 for h in self._hospitals if h.get("ambulance_destination")),
-            # Preset places only (no precomputed results: the route is computed live)
-            "presets": [
-                {**p, "description": str(p.get("description", "")).split(" · Status")[0]}
-                for p in self._fixture.meta()["presets"]
-            ]
+            # Preset places from config.yaml (no precomputed results: the route is computed live)
+            "presets": self._cfg.get("presets", []),
         }
 
     def scenarios(self) -> Dict[str, Any]:

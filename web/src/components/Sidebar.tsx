@@ -65,10 +65,10 @@ export function Sidebar({
 
   const filteredPresets = presets.filter((p) => {
     if (presetCategory === "basins") {
-      return ["hindmata", "sion", "milan_subway", "kurla"].includes(p.id);
+      return ["bkc", "hindmata", "sion", "milan_subway", "kurla"].includes(p.id);
     }
     if (presetCategory === "corridors") {
-      return ["chembur", "colaba", "andheri", "bandra"].includes(p.id);
+      return ["marol", "chembur", "colaba", "andheri", "bandra"].includes(p.id);
     }
     return true;
   });

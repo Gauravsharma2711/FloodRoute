@@ -186,7 +186,7 @@
   <div class="loop" style="margin-bottom:22px">
     <div class="step"><b>1 · PICK A RAIN DAY</b><p class="small">A real past heavy-rain day (Open-Meteo) or tomorrow's forecast. The most flood-prone roads light up.</p></div>
     <div class="arrow">→</div>
-    <div class="step"><b>2 · SET THE PATIENT</b><p class="small">Click the map or pick a known hotspot. The app finds the nearest of <b>28 major hospitals</b> (from 539 in OpenStreetMap).</p></div>
+    <div class="step"><b>2 · SET THE PATIENT</b><p class="small">Click the map or pick a known hotspot. The app finds the nearest of <b>35 major hospitals</b> (from 576 in OpenStreetMap).</p></div>
     <div class="arrow">→</div>
     <div class="step"><b>3 · GET THE DECISION</b><p class="small">Normal route vs <b>flood-safe route drawn along real streets</b>: extra minutes, a different hospital, or "cut off" — then <b>send it to the driver</b> by WhatsApp or SMS.</p></div>
   </div>
@@ -195,7 +195,7 @@
     <div class="card"><span class="chip teal">EVIDENCE</span><h3 style="margin-top:10px">How reliable is this?</h3><p class="small">We test the score against publicly reported flood spots and show the result — including where it fails.</p></div>
     <div class="card"><span class="chip amber">HONEST BY DESIGN</span><h3 style="margin-top:10px">A planning tool, not a flood detector</h3><p class="small">It ranks roads by terrain. It does not know water is on a road right now, and says so on screen.</p></div>
   </div>
-  <div class="notes">The product is three steps. Pick a rain day — a real historical day or tomorrow's forecast — and the most flood-prone roads light up. Set the patient by clicking the map. FloodRoute finds the nearest of 28 major hospitals and draws two routes along real streets: the normal one and a flood-safe one that avoids the marked roads. You see the extra minutes, a different hospital, or "cut off". Every marked road explains itself, and there is a page that shows how reliable the score is. We are deliberate that this is a planning tool, not a live flood detector.</div>
+  <div class="notes">The product is three steps. Pick a rain day — a real historical day or tomorrow's forecast — and the most flood-prone roads light up. Set the patient by clicking the map. FloodRoute finds the nearest of 35 major hospitals and draws two routes along real streets: the normal one and a flood-safe one that avoids the marked roads. You see the extra minutes, a different hospital, or "cut off". Every marked road explains itself, and there is a page that shows how reliable the score is. We are deliberate that this is a planning tool, not a live flood detector.</div>
 </section>
 
 <!-- ======================= 4. DATA ======================= -->
@@ -204,7 +204,7 @@
   <h2>Four public sources. No keys, no paid APIs, every number reproducible.</h2>
   <table>
     <tr><th>Source</th><th>What we use</th><th>After cleaning</th><th>Licence / terms</th></tr>
-    <tr><td><b>OpenStreetMap</b> (via OSMnx)</td><td>Main road network, hospitals, waterways</td><td><b>5,041</b> junctions · <b>9,746</b> road segments · <b>1,552 km</b> · <b>539</b> named hospitals → <b>28</b> major destinations</td><td>ODbL, attributed</td></tr>
+    <tr><td><b>OpenStreetMap</b> (via OSMnx)</td><td>Main road network, hospitals, waterways</td><td><b>5,041</b> junctions · <b>9,746</b> road segments · <b>1,552 km</b> · <b>576</b> named hospitals → <b>35</b> major destinations</td><td>ODbL, attributed</td></tr>
     <tr><td><b>Copernicus DEM GLO-30</b></td><td>Height of every road (30 m grid)</td><td>Relative + absolute elevation per segment; <b>470</b> bridges/flyovers never flagged; <b>21</b> underpasses</td><td>Copernicus licence, attributed</td></tr>
     <tr><td><b>Open-Meteo</b> archive + forecast</td><td>Daily rainfall, central Mumbai</td><td><b>7,670</b> days (2005–2025), <b>0</b> missing · IMD categories</td><td>Free, non-commercial fair use</td></tr>
     <tr><td><b>BMC / news / flood-gauge reports</b></td><td>Reported waterlogging spots — <b>used only to test</b>, never to fit</td><td><b>14</b> spots with source links → <b>13</b> within 150 m of a road</td><td>Facts + URL only</td></tr>
@@ -214,7 +214,7 @@
     <div class="card"><h3>Bias we know about</h3><p class="small">Reported spots favour busy, visible junctions and South/Central Mumbai. The sample is small.</p></div>
     <div class="card"><h3>Reproducible</h3><p class="small">Downloads cached to disk; one command rebuilds the processed files; processed data is committed.</p></div>
   </div>
-  <div class="notes">Four public sources. OpenStreetMap gives us the road network — about five thousand junctions and nearly ten thousand road segments — and 539 named hospitals, of which we route to 28 major ones. Copernicus gives a 30-metre elevation model. Open-Meteo gives 21 years of daily rain with no gaps. And reported waterlogging spots from BMC, gauges and news — which we use only to test the score, never to tune it. The spot list is small and biased toward busy junctions, and we say that up front.</div>
+  <div class="notes">Four public sources. OpenStreetMap gives us the road network — about five thousand junctions and nearly ten thousand road segments — and 576 named hospitals, of which we route to 35 major ones. Copernicus gives a 30-metre elevation model. Open-Meteo gives 21 years of daily rain with no gaps. And reported waterlogging spots from BMC, gauges and news — which we use only to test the score, never to tune it. The spot list is small and biased toward busy junctions, and we say that up front.</div>
 </section>
 
 <!-- ======================= 5. ARCHITECTURE ======================= -->
@@ -417,7 +417,7 @@
       <div class="loop" style="flex-direction:column; gap:10px">
         <div class="step"><b>SIGNAL</b><p class="small">Pick a very heavy real rain day → the most flood-prone roads turn red across the city.</p></div>
         <div class="step"><b>EXPLANATION</b><p class="small">Tap a red road → "why is this road marked?" with its height and nearby water.</p></div>
-        <div class="step"><b>ACTION</b><p class="small">Chembur Circle → the normal route to K.J. Somaiya runs into likely-to-flood roads; the flood-safe route goes to Rajawadi Hospital, +3 min, along real streets.</p></div>
+        <div class="step"><b>ACTION</b><p class="small">BKC → the normal route to Bhabha Hospital, Kurla runs into Bandra Kurla Complex Road, likely to flood; the flood-safe route goes to Shatabdi Hospital, Govandi, +8 min, along real streets.</p></div>
         <div class="step"><b>EDGE CASE</b><p class="small">Colaba Causeway → "No flood-safe route on the main road network" — send a different resource.</p></div>
         <div class="step"><b>HAND-OFF</b><p class="small">"Send to driver" → WhatsApp / SMS with hospital, minutes, roads to avoid and a link; the driver's phone opens the route and starts Google Maps navigation along the safe path.</p></div>
         <div class="step"><b>PROOF</b><p class="small">"How reliable is this?" → the evaluation you just saw, inside the product.</p></div>
@@ -428,7 +428,7 @@
       <p class="xs" style="margin-top:6px">Real output: flood-proneness score of 9,746 road segments (yellow = most prone) with the reported spots used for testing.</p>
     </div>
   </div>
-  <div class="notes">[Switch to the browser.] Let me show you the live app. Step one, pick a very heavy rain day — the most flood-prone roads light up. Step two, tap a red road — it tells you why it is marked. Step three, a patient at Chembur Circle — the normal route to K.J. Somaiya runs into likely-to-flood roads, so the flood-safe route in teal goes to Rajawadi Hospital instead: three extra minutes, along real streets. Now Colaba Causeway — there is no flood-safe main-road route, the area may be cut off, which is when a dispatcher should send a different resource. Finally, "How reliable is this?" — the same evaluation, inside the product. [If the demo fails, show this map and the backup recording.]</div>
+  <div class="notes">[Switch to the browser.] Let me show you the live app. Step one, pick a very heavy rain day — the most flood-prone roads light up. Step two, tap a red road — it tells you why it is marked. Step three, a patient in BKC — the normal route to Bhabha Hospital in Kurla runs into Bandra Kurla Complex Road, likely to flood near the Mithi river, so the flood-safe route in teal goes to Shatabdi Hospital in Govandi instead: about eight extra minutes, along real streets. Now Colaba Causeway — there is no flood-safe main-road route, the area may be cut off, which is when a dispatcher should send a different resource. Finally, "How reliable is this?" — the same evaluation, inside the product. [If the demo fails, show this map and the backup recording.]</div>
 </section>
 
 <!-- ======================= 10. LIMITS ======================= -->
@@ -444,7 +444,7 @@
         <li>The <b>rain → roads share is an assumption</b>, adjustable and tested, not measured.</li>
         <li><b>30 m surface model</b> includes buildings and flyovers (the Gandhi Market miss).</li>
         <li><b>13 reported spots</b>, biased to busy roads → wide uncertainty.</li>
-        <li><b>28 destination hospitals</b> are our curated list of major hospitals (KEM and Cooper are missing in OSM); only main roads are modelled, so "cut off" means no safe <i>main-road</i> route.</li>
+        <li><b>35 destination hospitals</b> are our curated list of major hospitals (BMC municipal + large general hospitals; Breach Candy and GT are not mapped in OSM); only main roads are modelled, so "cut off" means no safe <i>main-road</i> route.</li>
       </ul>
     </div>
     <div class="card teal">

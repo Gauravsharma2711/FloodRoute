@@ -25,7 +25,7 @@ Status date: 2026-10-24. The demo runs **locally on the presenter's laptop** (ju
 |---|---|---|
 | Question answered | "How do I get to place X fastest *right now*?" | "**Which hospital** should this patient go to, and which way, **if it rains this hard**?" |
 | Knows a road is flooded… | after traffic stops or someone reports it (live data, needs reports) | **before**, from terrain: roads lower than the area around them, near water, underpasses, scaled to the rain category |
-| Destination | fixed by the user | **chosen by the tool**. Flooding can change *which* hospital is best (real example: Chembur Circle → K.J. Somaiya is the normal choice, but the flood-safe choice is **Rajawadi**, +3 min) |
+| Destination | fixed by the user | **chosen by the tool**. Flooding can change *which* hospital is best (real example: BKC → Bhabha Hospital, Kurla is the normal choice, but the flood-safe choice is **Shatabdi Hospital, Govandi**, +8 min) |
 | Explains itself | no | every avoided road says why ("3.8 m lower than its surroundings") and the app shows how reliable the score is |
 | Works the night before | no (no live data yet) | yes, from tomorrow's forecast |
 | Cost / openness | routing API is paid | free, open data, reproducible |
@@ -39,7 +39,7 @@ Status date: 2026-10-24. The demo runs **locally on the presenter's laptop** (ju
 
 ## 4. Final feature set (deliberately small)
 
-1. **Flood-aware hospital + route decision.** ✅ Real (routing on the OSM road graph, 28 major hospitals).
+1. **Flood-aware hospital + route decision.** ✅ Real (routing on the OSM road graph, 35 major hospitals).
 2. **"Send to driver".** WhatsApp (`wa.me` with prefilled text) and SMS (`sms:`) links that the dispatcher taps. The message carries the hospital, the extra minutes and the roads to avoid, plus a link that opens the phone view with the route. A person taps send; there are no paid messaging APIs.
 3. **Evidence built in.** "Why is this road marked?" plus "How reliable is this?" with the real validation numbers.
 
@@ -49,10 +49,10 @@ Not in the final: deployment, city view / fix-first (next-steps slide), chat or 
 
 Google Maps is easy to read because the **routes are the main thing on the map**, and each route carries its time in a bubble. In our current map the red roads everywhere compete with the routes. Changes:
 
-1. **Time bubbles on the routes.** On the dashed blue route: "Normal · 2 min · K.J. Somaiya · crosses 2 roads likely to flood". On the teal route: "Flood-safe · 5 min · Rajawadi".
+1. **Time bubbles on the routes.** On the dashed blue route: "Normal · 2 min · Bhabha Hospital · crosses roads likely to flood". On the teal route: "Flood-safe · 10 min · Shatabdi Hospital".
 2. **Focus mode after a route is shown.** Fade the red roads elsewhere (low opacity). Keep only the flagged stretches that sit **on the normal route** bright, each with a ⚠ marker, so it is obvious *why* we don't take it.
-3. **Clear start and end.** A "Patient" pin, "Go to: Rajawadi Hospital" at the destination, and the rejected normal hospital shown greyed out as "approach likely to flood".
-4. **The result card reads as a decision, in three lines:** **Send to Rajawadi Hospital** · +3 min vs normal route · Avoid: Sion–Panvel Highway. Under it, the **Send to driver** buttons.
+3. **Clear start and end.** A "Patient" pin, "Go to: Shatabdi Hospital" at the destination, and the rejected normal hospital shown greyed out as "approach likely to flood".
+4. **The result card reads as a decision, in three lines:** **Send to Shatabdi Hospital** · +8 min vs normal route · Avoid: Bandra Kurla Complex Road. Under it, the **Send to driver** buttons.
 5. **Less sidebar clutter.** A compact rain-day picker: "Today's forecast" first, historical days in a collapsed list.
 
 ## 6. Final plan (local demo), in order
@@ -63,7 +63,7 @@ Google Maps is easy to read because the **routes are the main thing on the map**
 | 2 | **Honest validation**: `pipeline/05_validate.py` → `validation_results.json`; reliability page reads it; delete hard-coded numbers | Integrity is the first tie-breaker | 45 min |
 | 3 | **UI clarity** (section 5, items 1–4) | Judges must understand the map in five seconds | 1.5 h |
 | 4 | **Send to driver** + phone view opened by the link | The differentiating workflow | 1–1.5 h |
-| 5 | **Docs regenerated from the scripts**: `METHOD_REPORT.md` and `DATA_STATEMENT.md` numbers (7,670 rain days; validation from step 2; routing to 28 major hospitals), README "run locally" | Submission package must match the code | 45 min |
+| 5 | **Docs regenerated from the scripts**: `METHOD_REPORT.md` and `DATA_STATEMENT.md` numbers (7,670 rain days; validation from step 2; routing to 35 major hospitals), README "run locally" | Submission package must match the code | 45 min |
 | 6 | **Deck + script refresh** with screenshots of the new UI; backup screen recording | Demo safety | 30 min |
 | 7 | **Rehearse** the 10-minute run on the presenting laptop (both servers running, opened 5 min before) | — | 30 min |
 

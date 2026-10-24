@@ -19,12 +19,12 @@ Our users are the **ambulance dispatcher** and the **city's flood-control team**
 Navigation apps react **after** a road is blocked. A dispatcher planning a trip needs to know **before**. And one number we computed ourselves: 96% of heavy-rain days since 2005 fall in June to September — so this is a predictable, seasonal problem worth planning for."
 
 ### Slide 3 — What FloodRoute does (1:10 – 1:50)
-"The product is three steps. **One**, pick a rain day — a real past heavy day or tomorrow's forecast — and the most flood-prone roads light up. **Two**, set the patient on the map; we find the nearest of 28 major hospitals, taken from 539 in OpenStreetMap. **Three**, we draw two routes along real streets: the normal route, and a flood-safe route that avoids marked roads — with the extra minutes, a different hospital, or 'cut off'.
+"The product is three steps. **One**, pick a rain day — a real past heavy day or tomorrow's forecast — and the most flood-prone roads light up. **Two**, set the patient on the map; we find the nearest of 35 major hospitals, taken from 576 in OpenStreetMap. **Three**, we draw two routes along real streets: the normal route, and a flood-safe route that avoids marked roads — with the extra minutes, a different hospital, or 'cut off'.
 
 Every red road explains why it is marked, and the app shows how reliable the score is. And we are clear: it is a **planning tool, not a live flood detector**."
 
 ### Slide 4 — Data (1:50 – 2:30)
-"Four public sources. OpenStreetMap: about 5,000 junctions and 9,746 road segments — 1,552 km of main roads — plus 539 named hospitals, of which we route to 28 major ones. Copernicus: a 30-metre elevation model; we never flag the 470 bridges and flyovers. Open-Meteo: 21 years of daily rain, 7,670 days, nothing missing. And 14 reported flood spots from BMC, flood gauges and news — used **only to test**, never to tune.
+"Four public sources. OpenStreetMap: about 5,000 junctions and 9,746 road segments — 1,552 km of main roads — plus 576 named hospitals, of which we route to 35 major ones. Copernicus: a 30-metre elevation model; we never flag the 470 bridges and flyovers. Open-Meteo: 21 years of daily rain, 7,670 days, nothing missing. And 14 reported flood spots from BMC, flood gauges and news — used **only to test**, never to tune.
 
 We are upfront about bias: reported spots favour busy, visible junctions, and the sample is small."
 
@@ -63,10 +63,11 @@ So the failure has a cause we can name, and a fix: bare-earth elevation and drai
 
 1. "Here is a very heavy real rain day." → click the rain card. "The most flood-prone roads light up across the city."
 2. "Why is this road red?" → click a red road. Read the reason out loud.
-3. "A patient at Chembur Circle." → click the Chembur Circle preset. "Dashed blue is the normal route to K.J. Somaiya — it runs into roads likely to flood. Teal is the flood-safe route, along real streets: it goes to **Rajawadi Hospital** instead, about **3 minutes** longer." *(Read the numbers on screen; they are computed live.)*
+3. "A patient in BKC." → click the **BKC (Bandra Kurla Complex)** preset. "Dashed blue is the normal route to Bhabha Hospital in Kurla — it crosses Bandra Kurla Complex Road, likely to flood near the Mithi river. Teal is the flood-safe route, along real streets: it goes to **Shatabdi Hospital in Govandi** instead, about **8 minutes** longer." *(Read the numbers on screen; they are computed live.)*
+   *(Backup example: **Marol (Andheri East)** — the normal route to SevenHills uses the Marol Maroshi Road underpass; the flood-safe route goes to Hiranandani, about 6 minutes longer. **Hindmata** now goes to KEM with a small detour.)*
 4. "Now Colaba Causeway." → click the preset. "No flood-safe route on the main road network — that is when a dispatcher sends a different resource."
    *(Optional, if asked: Bandra West shows "normal route not affected".)*
-5. "Now the dispatcher hands it over." → back to Chembur Circle, click **WhatsApp** (or **Copy**) under "Send to driver". "The driver gets the hospital, the minutes, the roads to avoid and a link. On the phone the link opens the route, and one button starts Google Maps navigation along *our* safe path." *(If a phone is on the same Wi-Fi and the app was opened at http://<laptop-ip>:3000, open the link on the phone.)*
+5. "Now the dispatcher hands it over." → back to BKC, click **WhatsApp** (or **Copy**) under "Send to driver". "The driver gets the hospital, the minutes, the roads to avoid and a link. On the phone the link opens the route, and one button starts Google Maps navigation along *our* safe path." *(If a phone is on the same Wi-Fi and the app was opened at http://<laptop-ip>:3000, open the link on the phone.)*
 6. "And 'How reliable is this?'" → open it. "The same evaluation you just saw, inside the product."
 
 *If anything fails: "Let me show you the recording" → play `assets/demo_backup.mp4`, or go back to the map on this slide.*

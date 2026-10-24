@@ -22,7 +22,7 @@ During the Indian summer monsoon (June–September), extreme downpours routinely
 From OpenStreetMap (via Overpass API), we extract the core drivable network filtered to `motorway`, `trunk`, `primary`, `secondary`, `tertiary`, and their directional connectors:
 - **5,041 road nodes** and **9,746 directed road edges**.
 - Strongly connected island city & suburban core (5,035 nodes in primary component).
-- **569 `amenity=hospital` features** (539 kept: named and not `emergency=no`; **28 major hospitals** used as ambulance destinations).
+- **611 hospital features** (`amenity`, `healthcare` or `building=hospital`; 576 kept: named and not `emergency=no`; **35 major hospitals** used as ambulance destinations).
 - **583 water features** including the Mithi River, Mahim Bay, and Arabian Sea coastline.
 
 ### 2.2 Elevation Sampling & Relative Depression
@@ -87,7 +87,7 @@ We benchmarked the model against **14 independently sourced, publicly documented
 
 For any patient coordinate:
 1. Snaps to the nearest road network node.
-2. Solves Dijkstra shortest path (free-flow travel time from OSM speeds) to the nearest of **28 major hospitals** (a curated list of exact OSM names in `config.yaml`, an explicit assumption) on the normal road graph.
+2. Solves Dijkstra shortest path (free-flow travel time from OSM speeds) to the nearest of **35 major hospitals** (a curated list of exact OSM names in `config.yaml`, an explicit assumption) on the normal road graph.
 3. Removes road segments exceeding the rain scenario's flood risk threshold $k$.
 4. Computes the flood-safe route. If no destination hospital is reachable, the status is **`cut_off`**: no flood-safe route on the main-road network (the graph holds main roads only, so this is conservative).
 5. Returns actionable detour metrics: added minutes, extra travel distance, and specific corridors to avoid.

@@ -26,13 +26,13 @@ FloodRoute is a decision-support map for ambulance dispatchers and the city floo
 |---|---|---|
 | 1 | Pick a rain day: one of the 10 heaviest real days 2005–2025 (Open-Meteo) or tomorrow's forecast | ✅ real data |
 | 2 | Map shows the roads most likely to flood for that rain category | ✅ real data |
-| 3 | Click the patient location → normal route vs flood-safe route along real streets to the nearest of 28 major hospitals: extra minutes, a different hospital, or "cut off" | ✅ real routing |
+| 3 | Click the patient location → normal route vs flood-safe route along real streets to the nearest of 35 major hospitals: extra minutes, a different hospital, or "cut off" | ✅ real routing |
 | 4 | Decision card: send to which hospital, minutes, roads to avoid | ✅ |
 | 5 | **Send to driver**: WhatsApp / SMS / copy a message with a link; the driver's phone view shows the route and starts Google Maps navigation along the flood-safe path | ✅ |
 | 6 | "How reliable is this?": score vs reported flood spots, elevation-only baseline, bootstrap interval, spot-by-spot hits and misses, sensitivity, 3 data findings, limits | ✅ real numbers |
 | 7 | City "fix-first" view | ❌ next step (not built) |
 
-**Real example (very heavy day):** a patient at Chembur Circle. The normal route to K.J. Somaiya Hospital crosses roads likely to flood; the flood-safe route goes to Rajawadi Hospital, about 2.9 minutes longer.
+**Real example (very heavy day):** a patient in BKC (Bandra Kurla Complex). The normal route to Bhabha Hospital, Kurla crosses Bandra Kurla Complex Road, which is likely to flood; the flood-safe route goes to Shatabdi Hospital, Govandi, about 8 minutes longer.
 
 **Results, reported as they are:** on 13 reported waterlogging spots the score's AUC is 0.46 (95% CI 0.32–0.61); the elevation-only baseline is 0.45 and random is 0.50. It ranks real local dips high (Churchgate, Sion flood gauges) and misses spots under flyovers and rail embankments (Gandhi Market, Milan Subway), because the 30 m elevation model is a surface model. Weights were fixed before this test and were not changed after it. Details: [docs/METHOD_REPORT.md](docs/METHOD_REPORT.md).
 
@@ -100,7 +100,7 @@ npm run build:css
 npm run dev -- --hostname 0.0.0.0
 ```
 
-Open **http://localhost:3000**. Demo path: pick a *very heavy* day → click **Chembur Circle** → read the decision card → **Send to driver** → **How reliable is this?**
+Open **http://localhost:3000**. Demo path: pick a *very heavy* day → click **BKC (Bandra Kurla Complex)** → read the decision card → **Send to driver** → **How reliable is this?**
 
 **On a phone (same Wi-Fi):** open the dashboard at `http://<laptop-ip>:3000` (the IP is printed by `ipconfig`). Driver links sent from there open on any phone on the same network. Windows may ask once to allow Python and Node through the firewall.
 
@@ -114,7 +114,7 @@ python pipeline/01_fetch_osm.py            # roads, hospitals, waterways (OSM, c
 python pipeline/02_fetch_elevation.py      # Copernicus elevation per road node
 python pipeline/04_score_roads.py          # flood-proneness score -> graph.pkl, edges_scored.parquet
 python pipeline/geocode_and_plot_spots.py  # geocode reported flood spots
-python pipeline/01b_build_hospitals.py     # OSM hospitals -> hospitals.json (28 destinations from config.yaml)
+python pipeline/01b_build_hospitals.py     # OSM hospitals -> hospitals.json (35 destinations from config.yaml)
 python pipeline/03_fetch_rain.py           # rain archive + forecast -> scenarios.json
 python pipeline/05_validate.py             # score vs reported spots -> validation_results.json
 python pipeline/06_precompute.py           # data findings -> eda_summary.json
@@ -164,7 +164,7 @@ FloodRoute/
 - The rain-to-flagged-roads mapping is an **assumption** (see `config.yaml`); the sensitivity chart shows how results change with it.
 - Reported flood spots are biased toward busy, visible roads and are few (13 usable); validation numbers carry wide uncertainty.
 - Routing uses free-flow travel times (OSM speed limits), no live traffic, on main roads only, so "cut off" means no flood-safe *main-road* route.
-- Ambulances are routed to the nearest of 28 major hospitals, a team-curated list in `config.yaml` (an assumption); KEM and Cooper are not tagged as hospitals in OSM. Bed and casualty availability are unknown.
+- Ambulances are routed to the nearest of 35 major hospitals, a team-curated list in `config.yaml` (an assumption); Breach Candy and GT Hospital are not mapped in OSM. Bed and casualty availability are unknown.
 - Replay rainfall comes from a weather reanalysis and can understate extreme point rainfall.
 - A prototype for decision support, not an official warning system.
 

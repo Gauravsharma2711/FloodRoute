@@ -110,6 +110,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-node-3135108218",
+  "name": "SAI HOSPITAL CHEMBUR",
+  "lat": 19.054395,
+  "lon": 72.891415,
+  "node": 2629741753,
+  "snap_m": 116.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-node-3204211842",
   "name": "jonsons diagnostics",
   "lat": 19.050148,
@@ -160,6 +170,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-node-3206039990",
+  "name": "pili matti",
+  "lat": 19.062652,
+  "lon": 72.929304,
+  "node": 1366795192,
+  "snap_m": 506.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-node-3213764477",
   "name": "sanjeevan hospital",
   "lat": 19.060871,
@@ -186,6 +206,26 @@
   "lon": 72.918542,
   "node": 13660755808,
   "snap_m": 132.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3221367196",
+  "name": "Bombay City Hospital",
+  "lat": 19.065545,
+  "lon": 72.920001,
+  "node": 12088863669,
+  "snap_m": 78.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-3224746097",
+  "name": "MEENAZ HOSPITAL",
+  "lat": 19.067207,
+  "lon": 72.920868,
+  "node": 12088863669,
+  "snap_m": 127.7,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -270,6 +310,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-node-3534557309",
+  "name": "marker hospital",
+  "lat": 19.053412,
+  "lon": 72.897771,
+  "node": 2629741747,
+  "snap_m": 79.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-node-3587131699",
   "name": "Anket Nursing Home",
   "lat": 19.130894,
@@ -337,7 +387,7 @@
   "node": 13901790649,
   "snap_m": 54.3,
   "emergency": null,
-  "ambulance_destination": false
+  "ambulance_destination": true
  },
  {
   "id": "osm-node-4216741290",
@@ -490,6 +540,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-node-6884803664",
+  "name": "Cama and Albles Hospital - Abdul Fazalbhoy Blood Bank",
+  "lat": 18.94208,
+  "lon": 72.832413,
+  "node": 11953569096,
+  "snap_m": 114.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-node-7042871859",
   "name": "Niramaya General Hospital",
   "lat": 19.050003,
@@ -626,6 +686,16 @@
   "lon": 72.898084,
   "node": 10061003741,
   "snap_m": 18.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7043146611",
+  "name": "Disha Polyclinic and Nursing Home",
+  "lat": 19.061025,
+  "lon": 72.899656,
+  "node": 13789652001,
+  "snap_m": 66.7,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -950,6 +1020,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-node-7045255055",
+  "name": "Mahavir Medical Research Centre",
+  "lat": 19.07393,
+  "lon": 72.832831,
+  "node": 13503549885,
+  "snap_m": 185.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-node-7045282445",
   "name": "Mahima Hospital and Polyclinic",
   "lat": 19.130595,
@@ -1016,6 +1096,16 @@
   "lon": 72.887006,
   "node": 12836695797,
   "snap_m": 42.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7047180160",
+  "name": "Kamran Nursing Home",
+  "lat": 19.060831,
+  "lon": 72.899732,
+  "node": 13789652001,
+  "snap_m": 50.0,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -1367,7 +1457,7 @@
   "node": 5637109060,
   "snap_m": 415.6,
   "emergency": true,
-  "ambulance_destination": false
+  "ambulance_destination": true
  },
  {
   "id": "osm-node-7050614446",
@@ -2306,6 +2396,16 @@
   "lon": 72.848917,
   "node": 10880826048,
   "snap_m": 220.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-node-7067138434",
+  "name": "Dattatreya Nursing Home",
+  "lat": 19.082187,
+  "lon": 72.850701,
+  "node": 4342420750,
+  "snap_m": 252.7,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -4660,6 +4760,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-113570526",
+  "name": "King Edward Memorial Hospital",
+  "lat": 19.001699,
+  "lon": 72.841831,
+  "node": 5921458177,
+  "snap_m": 151.3,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
   "id": "osm-way-113576203",
   "name": "Haffkine Institute For Training, Research & Testing",
   "lat": 19.002441,
@@ -4720,6 +4830,16 @@
   "ambulance_destination": true
  },
  {
+  "id": "osm-way-150487478",
+  "name": "K.J. Somaiya Hospital and Research Centre",
+  "lat": 19.047061,
+  "lon": 72.87479,
+  "node": 10738867823,
+  "snap_m": 345.1,
+  "emergency": true,
+  "ambulance_destination": true
+ },
+ {
   "id": "osm-way-150491113",
   "name": "sathya udaiyar",
   "lat": 19.131214,
@@ -4766,6 +4886,16 @@
   "lon": 72.858464,
   "node": 12406104883,
   "snap_m": 237.3,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-202565733",
+  "name": "Advanced Multispeciality Hospital",
+  "lat": 19.109616,
+  "lon": 72.837657,
+  "node": 864964244,
+  "snap_m": 52.0,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -4860,6 +4990,26 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-236376871",
+  "name": "Smt S R Mehta & Sir K P Cardiac Institute",
+  "lat": 19.032362,
+  "lon": 72.859526,
+  "node": 245662357,
+  "snap_m": 50.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-255362127",
+  "name": "Pali Hospital and Nursing Home",
+  "lat": 19.056875,
+  "lon": 72.829325,
+  "node": 10882727463,
+  "snap_m": 66.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-260786332",
   "name": "CritiCare Asia Hospital, Kurla",
   "lat": 19.076011,
@@ -4888,6 +5038,16 @@
   "snap_m": 84.8,
   "emergency": null,
   "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-297020054",
+  "name": "Bellvue Multi Speciality Hospital",
+  "lat": 19.12888,
+  "lon": 72.831804,
+  "node": 7157873784,
+  "snap_m": 109.6,
+  "emergency": null,
+  "ambulance_destination": false
  },
  {
   "id": "osm-way-315448033",
@@ -4920,12 +5080,42 @@
   "ambulance_destination": true
  },
  {
+  "id": "osm-way-353174274",
+  "name": "City Hospital and Research Centre",
+  "lat": 19.081041,
+  "lon": 72.881965,
+  "node": 6435423923,
+  "snap_m": 204.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-353181448",
   "name": "New Noor Hospital",
   "lat": 19.076208,
   "lon": 72.878003,
   "node": 1366009125,
   "snap_m": 52.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353199111",
+  "name": "Dispensary (Deonar West)",
+  "lat": 19.038104,
+  "lon": 72.925416,
+  "node": 7371054122,
+  "snap_m": 54.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353203499",
+  "name": "Jagjivan Ram Hospital",
+  "lat": 18.970469,
+  "lon": 72.824077,
+  "node": 13303028466,
+  "snap_m": 259.5,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -4940,12 +5130,42 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-353378756",
+  "name": "Station Medicare Centre",
+  "lat": 19.039446,
+  "lon": 72.864769,
+  "node": 10733085808,
+  "snap_m": 190.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-353378830",
   "name": "Sanjeevni hospital",
   "lat": 19.027796,
   "lon": 72.868293,
   "node": 13994815998,
   "snap_m": 191.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353423372",
+  "name": "Railway Health Unit",
+  "lat": 18.918183,
+  "lon": 72.825847,
+  "node": 245653413,
+  "snap_m": 74.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353756691",
+  "name": "surana hospital",
+  "lat": 19.053551,
+  "lon": 72.887022,
+  "node": 12836695797,
+  "snap_m": 44.1,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -4966,6 +5186,26 @@
   "lon": 72.835354,
   "node": 2258304349,
   "snap_m": 182.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-353997207",
+  "name": "Apran General Hospital",
+  "lat": 19.068706,
+  "lon": 72.878394,
+  "node": 1366009054,
+  "snap_m": 203.2,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-356173970",
+  "name": "HCG Hospital",
+  "lat": 18.923096,
+  "lon": 72.827604,
+  "node": 12299724446,
+  "snap_m": 86.1,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -5000,6 +5240,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-357112885",
+  "name": "Lion Tarachand Bapa Hospital",
+  "lat": 19.038314,
+  "lon": 72.8593,
+  "node": 1643134428,
+  "snap_m": 179.8,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-357360289",
   "name": "smriti narvekar",
   "lat": 19.031417,
@@ -5020,6 +5270,26 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-357472305",
+  "name": "PD Hinduja Hospital",
+  "lat": 19.067908,
+  "lon": 72.835392,
+  "node": 9979171957,
+  "snap_m": 189.6,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-360291673",
+  "name": "PD Hinduja Hospital",
+  "lat": 19.068505,
+  "lon": 72.835019,
+  "node": 2629418501,
+  "snap_m": 167.4,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-395048290",
   "name": "Thunga",
   "lat": 19.121112,
@@ -5037,7 +5307,7 @@
   "node": 13657812311,
   "snap_m": 203.3,
   "emergency": true,
-  "ambulance_destination": false
+  "ambulance_destination": true
  },
  {
   "id": "osm-way-430029987",
@@ -5077,6 +5347,16 @@
   "node": 3747300132,
   "snap_m": 401.5,
   "emergency": null,
+  "ambulance_destination": true
+ },
+ {
+  "id": "osm-way-568771385",
+  "name": "IIT Hospital",
+  "lat": 19.130819,
+  "lon": 72.914271,
+  "node": 1879817672,
+  "snap_m": 606.0,
+  "emergency": null,
   "ambulance_destination": false
  },
  {
@@ -5090,6 +5370,16 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-628785880",
+  "name": "ESIC Model Hospital",
+  "lat": 19.118946,
+  "lon": 72.867343,
+  "node": 623040192,
+  "snap_m": 170.0,
+  "emergency": null,
+  "ambulance_destination": true
+ },
+ {
   "id": "osm-way-665481038",
   "name": "K B Bhabha Municipal General Hospital",
   "lat": 19.057384,
@@ -5100,12 +5390,22 @@
   "ambulance_destination": true
  },
  {
-  "id": "osm-way-723323008",
-  "name": "IIT Hospital",
-  "lat": 19.130755,
-  "lon": 72.91424,
-  "node": 1879817672,
-  "snap_m": 605.4,
+  "id": "osm-way-754881066",
+  "name": "Sanjeevanee Hospital",
+  "lat": 19.012976,
+  "lon": 72.846775,
+  "node": 1179261850,
+  "snap_m": 225.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-774171686",
+  "name": "Brihanmumbai Municipal Corporation Hospital",
+  "lat": 19.085822,
+  "lon": 72.88113,
+  "node": 1366028058,
+  "snap_m": 36.9,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -5120,12 +5420,32 @@
   "ambulance_destination": true
  },
  {
+  "id": "osm-way-820944098",
+  "name": "Agashe Hospital",
+  "lat": 19.08063,
+  "lon": 72.880315,
+  "node": 2622177294,
+  "snap_m": 77.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-820951209",
   "name": "School of Medical Assistants",
   "lat": 18.899433,
   "lon": 72.813903,
   "node": 459482449,
   "snap_m": 37.9,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-930878323",
+  "name": "BARC Hospital Annex",
+  "lat": 19.043268,
+  "lon": 72.914375,
+  "node": 245663765,
+  "snap_m": 254.1,
   "emergency": null,
   "ambulance_destination": false
  },
@@ -5148,16 +5468,6 @@
   "snap_m": 150.3,
   "emergency": null,
   "ambulance_destination": false
- },
- {
-  "id": "osm-way-1052052198",
-  "name": "K.J. Somaiya Hospital and Research Centre",
-  "lat": 19.047085,
-  "lon": 72.874927,
-  "node": 10738867823,
-  "snap_m": 330.9,
-  "emergency": true,
-  "ambulance_destination": true
  },
  {
   "id": "osm-way-1120060026",
@@ -5188,6 +5498,16 @@
   "snap_m": 366.6,
   "emergency": null,
   "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1126013369",
+  "name": "Dr. Cooper Hospital",
+  "lat": 19.10776,
+  "lon": 72.835756,
+  "node": 864905398,
+  "snap_m": 130.4,
+  "emergency": null,
+  "ambulance_destination": true
  },
  {
   "id": "osm-way-1126997792",
@@ -5310,6 +5630,26 @@
   "ambulance_destination": false
  },
  {
+  "id": "osm-way-1393438370",
+  "name": "Jeejeebhoy Byramji Sanatorium",
+  "lat": 19.04761,
+  "lon": 72.820908,
+  "node": 12974666366,
+  "snap_m": 160.7,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-way-1409686430",
+  "name": "R A Podar Ayurvedic Medical College",
+  "lat": 19.002518,
+  "lon": 72.816675,
+  "node": 10277780850,
+  "snap_m": 152.0,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
   "id": "osm-way-1410330978",
   "name": "Asian",
   "lat": 19.06525,
@@ -5387,6 +5727,36 @@
   "node": 1936355375,
   "snap_m": 142.4,
   "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-relation-5269703",
+  "name": "Kohinoor Hopsital",
+  "lat": 19.076065,
+  "lon": 72.886184,
+  "node": 1366027983,
+  "snap_m": 146.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-relation-5273614",
+  "name": "BARC Hospital",
+  "lat": 19.042583,
+  "lon": 72.914482,
+  "node": 7361391772,
+  "snap_m": 270.1,
+  "emergency": null,
+  "ambulance_destination": false
+ },
+ {
+  "id": "osm-relation-10727215",
+  "name": "J J Hospital",
+  "lat": 18.962997,
+  "lon": 72.833563,
+  "node": 245656521,
+  "snap_m": 128.9,
+  "emergency": true,
   "ambulance_destination": false
  }
 ]
