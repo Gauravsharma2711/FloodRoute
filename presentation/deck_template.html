@@ -50,8 +50,8 @@
   td { padding:12px; border-bottom:1px solid var(--border); font-size:17px; color:#1F2937; vertical-align:top; }
   td b { color:var(--text); }
   .title-bg { background:linear-gradient(135deg,#fff 0%,#F2FBFA 55%,#E3F5F2 100%); }
-  .bubble { background:#DCF8C6; border-radius:14px 14px 14px 4px; padding:14px 16px; font-size:14px; line-height:1.45; color:#111; box-shadow:0 6px 18px rgba(0,0,0,.08); white-space:pre-line; font-family:"Segoe UI",Inter,Arial,sans-serif; }
-  .demo-row { display:flex; gap:14px; align-items:center; padding:14px 18px; border-radius:14px; background:#fff; border:1.5px solid var(--border); margin-bottom:12px; }
+  .bubble { background:#DCF8C6; border-radius:14px 14px 14px 4px; padding:16px 18px; font-size:16px; line-height:1.45; color:#111; box-shadow:0 6px 18px rgba(0,0,0,.08); white-space:pre-line; font-family:"Segoe UI",Inter,Arial,sans-serif; }
+  .demo-row { display:flex; gap:12px; align-items:center; padding:10px 14px; border-radius:14px; background:#fff; border:1.5px solid var(--border); margin-bottom:9px; }
   .demo-row b.n { flex:0 0 34px; height:34px; border-radius:50%; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:900; }
   /* navigation: buttons + arrow keys only */
   #nav { position:fixed; right:50%; transform:translateX(50%); bottom:8px; display:flex; gap:8px; align-items:center; z-index:10; font:600 13px Inter,sans-serif; color:#94A3B8; }
@@ -79,10 +79,10 @@
 <!-- 1 · TITLE -->
 <section class="slide title-bg" data-title="Title">
   <div class="logo"><i></i> FloodRoute <span class="chip" style="margin-left:6px">Mumbai</span></div>
-  <div style="display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; flex:1">
+  <div style="display:grid; grid-template-columns:.82fr 1.18fr; gap:34px; align-items:center; flex:1">
     <div>
       <div class="kicker">HackAMatch 1.0 · CityPulse: Predict. Explain. Act.</div>
-      <h1>When it pours in Mumbai: which hospital, and which road?</h1>
+      <h1 style="font-size:52px">When it pours in Mumbai: which hospital, and which road?</h1>
       <p style="font-size:23px; margin-top:22px; max-width:560px">Can the ambulance get through when Mumbai floods? Flood-aware ambulance dispatch, built only on public data.</p>
       <div style="margin-top:34px; display:flex; gap:10px; flex-wrap:wrap">
         <span class="chip teal">100% public data</span><span class="chip">No paid APIs</span><span class="chip">Working prototype</span>
@@ -194,8 +194,8 @@
   <div class="kicker">Why this is different</div>
   <h2>In a flood, the hard decision is not the turn. It is the hospital.</h2>
   <div class="body">
-  <div class="grid2" style="grid-template-columns:1.15fr .85fr; gap:30px; align-items:start">
-    <table>
+  <div class="grid2" style="grid-template-columns:1.05fr .95fr; gap:30px; align-items:center">
+    <div><table>
       <tr><th></th><th>Google Maps / Waze</th><th>FloodRoute</th></tr>
       <tr><td><b>Question</b></td><td>How do I reach <i>X</i> fastest now?</td><td><b>Which hospital</b>, and which way, if it rains this hard?</td></tr>
       <tr><td><b>Knows a road floods</b></td><td>After traffic stops or a report</td><td><b>Before</b>, from terrain + rain category</td></tr>
@@ -204,9 +204,9 @@
       <tr><td><b>Explains why</b></td><td>No</td><td>Every avoided road</td></tr>
       <tr><td><b>Cost</b></td><td>Routing API is paid</td><td>Free, open data</td></tr>
     </table>
+    <p class="small" style="margin-top:14px"><b>Real example, BKC on a very heavy day:</b> the nearest hospital's approach is likely to flood, so FloodRoute sends the ambulance to <b>Shatabdi Hospital</b> instead.</p></div>
     <div>
-      <img class="shot" src="{{IMG_CARD}}" alt="Decision card: send to Shatabdi Hospital" style="width:100%; max-width:330px">
-      <p class="small" style="margin-top:12px"><b>Real example, BKC on a very heavy day:</b> the nearest hospital's approach is likely to flood, so FloodRoute sends the ambulance to <b>Shatabdi Hospital</b> instead.</p>
+      <img class="shot" src="{{IMG_CARD}}" alt="Decision card: send to Shatabdi Hospital" style="width:100%; max-width:420px">
     </div>
   </div>
 </div>
@@ -217,7 +217,7 @@
   <div class="kicker">From the desk to the driver</div>
   <h2>One tap sends the decision to the ambulance.</h2>
   <div class="body">
-  <div style="display:grid; grid-template-columns:1fr 70px 300px; gap:18px; align-items:center; flex:1">
+  <div style="display:grid; grid-template-columns:1fr 50px 300px; gap:16px; align-items:center; flex:1">
     <div>
       <div class="bubble">FloodRoute ambulance dispatch
 Rain scenario: 17 May 2021 (199.9 mm, very heavy)
@@ -233,7 +233,7 @@ Route map: …/driver?lat=19.068&amp;lon=72.868…</div>
       </ul>
     </div>
     <div class="arrow" style="font-size:40px; text-align:center">→</div>
-    <img class="shot" src="{{IMG_DRIVER}}" alt="Driver phone view" style="height:500px; width:auto; justify-self:center">
+    <img class="shot" src="{{IMG_DRIVER}}" alt="Driver phone view" style="height:540px; width:auto; justify-self:center">
   </div>
 </div>
 </section>
@@ -243,7 +243,7 @@ Route map: …/driver?lat=19.068&amp;lon=72.868…</div>
   <div class="kicker">Live demo</div>
   <h2>Let's see it run.</h2>
   <div class="body">
-  <div class="grid2" style="grid-template-columns:1fr 1fr; gap:30px; align-items:start">
+  <div class="grid2" style="grid-template-columns:.62fr 1.38fr; gap:24px; align-items:center">
     <div>
       <div class="demo-row"><b class="n">1</b><div><b>Very heavy rain day</b><p class="small">17 May 2021 · 199.9 mm · roads likely to flood light up</p></div></div>
       <div class="demo-row"><b class="n">2</b><div><b>Patient in BKC</b><p class="small">Normal: Bhabha Hospital → Flood-safe: Shatabdi, +8 min</p></div></div>
@@ -251,7 +251,7 @@ Route map: …/driver?lat=19.068&amp;lon=72.868…</div>
       <div class="demo-row"><b class="n">4</b><div><b>Send to driver</b><p class="small">WhatsApp → driver's phone → Google Maps</p></div></div>
       <div class="demo-row"><b class="n">5</b><div><b>How reliable is this?</b><p class="small">Checked against reported flood spots</p></div></div>
     </div>
-    <img class="shot" src="{{IMG_DISPATCHER}}" alt="Dispatcher view" style="width:100%">
+    <img class="shot" src="{{IMG_MAP}}" alt="BKC: normal route to Bhabha vs flood-safe route to Shatabdi" style="width:100%">
   </div>
 </div>
 </section>

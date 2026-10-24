@@ -12,16 +12,20 @@ from PIL import Image
 HERE = Path(__file__).resolve().parent
 SHOTS = HERE / "screens"
 
-# placeholder -> (file, max width in px, jpeg quality)
+# placeholder -> (file, max width in px, jpeg quality, crop as fractions (x0, y0, x1, y1) or None)
 IMAGES = {
-    "{{IMG_DISPATCHER}}": ("dispatcher_bkc.png", 1600, 82),
-    "{{IMG_CARD}}": ("decision_card.png", 900, 90),
-    "{{IMG_DRIVER}}": ("driver_phone.png", 700, 85),
+    "{{IMG_DISPATCHER}}": ("dispatcher_bkc.png", 2160, 90, None),
+    "{{IMG_MAP}}": ("dispatcher_bkc.png", 2000, 90, (0.25, 0.10, 0.99, 0.92)),  # zoom on the routes
+    "{{IMG_CARD}}": ("decision_card.png", 960, 92, None),
+    "{{IMG_DRIVER}}": ("driver_phone.png", 780, 90, None),
 }
 
 
-def data_uri(name: str, max_w: int, quality: int) -> str:
+def data_uri(name: str, max_w: int, quality: int, crop=None) -> str:
     im = Image.open(SHOTS / name).convert("RGB")
+    if crop:
+        w, h = im.size
+        im = im.crop((int(crop[0] * w), int(crop[1] * h), int(crop[2] * w), int(crop[3] * h)))
     if im.width > max_w:
         im = im.resize((max_w, round(im.height * max_w / im.width)), Image.LANCZOS)
     buf = io.BytesIO()
@@ -31,8 +35,8 @@ def data_uri(name: str, max_w: int, quality: int) -> str:
 
 def main() -> None:
     html = (HERE / "deck_template.html").read_text(encoding="utf-8")
-    for key, (name, max_w, q) in IMAGES.items():
-        html = html.replace(key, data_uri(name, max_w, q))
+    for key, (name, max_w, q, crop) in IMAGES.items():
+        html = html.replace(key, data_uri(name, max_w, q, crop))
     # drop the "this is the template" warning from the built deck
     start = html.find("<!-- TEMPLATE-WARNING")
     end = html.find("</script>", start) + len("</script>\n")
