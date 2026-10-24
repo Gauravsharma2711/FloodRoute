@@ -39,20 +39,20 @@ export function DecisionCard({ routeData, scenario, patientLocation, shareOverri
   const sendButtons = patientLocation && (
     <div className="pt-3 mt-3 border-t border-[#E5E7EB]">
       <div className="text-[11px] font-semibold text-[#6B7280] mb-1.5">Send to driver</div>
-      <div className="grid grid-cols-3 gap-1.5">
+      <div className="grid gap-1.5 min-w-0" style={{ gridTemplateColumns: "1.35fr 1fr 1fr" }}>
         <a
           href={whatsappUrl(message)}
           target="_blank"
           rel="noopener noreferrer"
-          className="h-9 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white text-xs font-semibold flex items-center justify-center gap-1"
+          className="h-10 min-w-0 px-1 rounded-lg bg-[#16A34A] hover:bg-[#15803D] text-white text-[12px] font-semibold flex items-center justify-center gap-1 whitespace-nowrap"
         >
-          <span className="material-symbols-outlined text-[16px]">chat</span>WhatsApp
+          <span className="material-symbols-outlined text-[15px]">chat</span>WhatsApp
         </a>
         <a
           href={smsUrl(message)}
-          className="h-9 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold flex items-center justify-center gap-1"
+          className="h-10 min-w-0 px-1 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[12px] font-semibold flex items-center justify-center gap-1 whitespace-nowrap"
         >
-          <span className="material-symbols-outlined text-[16px]">sms</span>SMS
+          <span className="material-symbols-outlined text-[15px]">sms</span>SMS
         </a>
         <button
           type="button"
@@ -62,9 +62,9 @@ export function DecisionCard({ routeData, scenario, patientLocation, shareOverri
               setTimeout(() => setCopied(false), 1500);
             });
           }}
-          className="h-9 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] text-[#111827] text-xs font-semibold flex items-center justify-center gap-1"
+          className="h-10 min-w-0 px-1 rounded-lg bg-[#F3F4F6] hover:bg-[#E5E7EB] text-[#111827] text-[12px] font-semibold flex items-center justify-center gap-1 whitespace-nowrap"
         >
-          <span className="material-symbols-outlined text-[16px]">{copied ? "check" : "content_copy"}</span>
+          <span className="material-symbols-outlined text-[15px]">{copied ? "check" : "content_copy"}</span>
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
@@ -108,15 +108,17 @@ export function DecisionCard({ routeData, scenario, patientLocation, shareOverri
       </div>
 
       {/* Line 2: the cost */}
-      <div className="mt-2 flex items-baseline gap-2">
+      <div className="mt-2 flex items-baseline gap-2 whitespace-nowrap">
         <span className="text-2xl font-black text-[#111827] tabular-nums">{Math.round((safe ?? normal)!.minutes)} min</span>
         <span className="text-[12px] text-[#6B7280]">· {(safe ?? normal)!.km} km</span>
+      </div>
+      <div className="mt-1.5">
         {status === "ok" ? (
-          <span className="ml-auto px-2 py-0.5 rounded-full bg-[#FEF3C7] text-[#92400E] font-bold border border-[#F59E0B]/30">
+          <span className="inline-block px-2 py-0.5 rounded-full bg-[#FEF3C7] text-[#92400E] font-bold border border-[#F59E0B]/30">
             +{(added_minutes ?? 0).toFixed(1)} min vs normal
           </span>
         ) : (
-          <span className="ml-auto px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#166534] font-bold border border-[#22C55E]/30">
+          <span className="inline-block px-2 py-0.5 rounded-full bg-[#DCFCE7] text-[#166534] font-bold border border-[#22C55E]/30">
             Normal route not affected
           </span>
         )}

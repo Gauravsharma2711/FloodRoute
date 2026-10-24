@@ -302,7 +302,12 @@ export function Map({
 
     mapRef.current = map;
 
+    // Keep the canvas in step with its box (panels and bottom sheets change the height after load)
+    const resizeObserver = new ResizeObserver(() => map.resize());
+    if (mapContainerRef.current) resizeObserver.observe(mapContainerRef.current);
+
     return () => {
+      resizeObserver.disconnect();
       map.remove();
       mapRef.current = null;
       setMapLoaded(false);
@@ -373,7 +378,7 @@ export function Map({
       const el = document.createElement("div");
       el.className = "flex flex-col items-center pointer-events-none";
       el.innerHTML = `
-        <div class="px-2 py-1 mb-1 rounded-md bg-[#0B8A7E] text-white text-[11px] font-semibold shadow-md whitespace-nowrap">Go to: ${escapeHtml(dest.hospital)}</div>
+        <div class="px-2 py-1 mb-1 rounded-md bg-[#0B8A7E] text-white text-[11px] font-semibold shadow-md max-w-[220px] truncate">Go to: ${escapeHtml(dest.hospital)}</div>
         <div class="w-8 h-8 rounded-full bg-white border-[3px] border-[#0B8A7E] shadow-lg flex items-center justify-center text-[#0B8A7E] font-extrabold text-[13px]">H</div>`;
       destinationMarkerRef.current = new maplibregl.Marker({ element: el, anchor: "bottom" })
         .setLngLat([dest.hospital_lon, dest.hospital_lat])
@@ -401,13 +406,13 @@ export function Map({
       const title = sameRoute ? "Route (not affected)" : "Normal route";
       addMarker(`<div class="px-2 py-1 rounded-lg bg-white border-2 ${sameRoute ? "border-[#0B8A7E]" : "border-dashed border-[#2563EB]"} shadow-md whitespace-nowrap">
         <div class="text-[11px] font-bold ${sameRoute ? "text-[#0B8A7E]" : "text-[#1D4ED8]"}">${title} · ${Math.round(normalRoute.minutes)} min</div>
-        <div class="text-[10px] text-[#4B5563]">to ${escapeHtml(normalRoute.hospital)}</div>${warn}</div>`, la, lo);
+        <div class="text-[10px] text-[#4B5563] max-w-[190px] truncate">to ${escapeHtml(normalRoute.hospital)}</div>${warn}</div>`, la, lo);
     }
     if (safeRoute && safeRoute.coords.length > 1 && !sameRoute) {
       const [la, lo] = pointAt(safeRoute, 0.65);
       addMarker(`<div class="px-2 py-1 rounded-lg bg-[#0B8A7E] text-white shadow-md whitespace-nowrap">
         <div class="text-[11px] font-bold">Flood-safe · ${Math.round(safeRoute.minutes)} min</div>
-        <div class="text-[10px] opacity-90">to ${escapeHtml(safeRoute.hospital)}</div></div>`, la, lo);
+        <div class="text-[10px] opacity-90 max-w-[190px] truncate">to ${escapeHtml(safeRoute.hospital)}</div></div>`, la, lo);
     }
     if (!sameRoute) {
       (blockedRoads ?? []).forEach((b) => {
@@ -418,7 +423,7 @@ export function Map({
     if (routeStatus === "ok" && normalRoute && safeRoute && normalRoute.hospital !== safeRoute.hospital
         && normalRoute.hospital_lat !== undefined && normalRoute.hospital_lon !== undefined) {
       addMarker(`<div class="flex flex-col items-center opacity-80">
-        <div class="px-2 py-0.5 mb-1 rounded-md bg-[#6B7280] text-white text-[10px] font-semibold whitespace-nowrap">Normal choice: ${escapeHtml(normalRoute.hospital)} · approach likely to flood</div>
+        <div class="px-2 py-0.5 mb-1 rounded-md bg-[#6B7280] text-white text-[10px] font-semibold max-w-[220px] truncate">Normal choice: ${escapeHtml(normalRoute.hospital)} · approach likely to flood</div>
         <div class="w-6 h-6 rounded-full bg-white border-2 border-[#9CA3AF] flex items-center justify-center text-[#6B7280] font-bold text-[11px]">H</div></div>`,
         normalRoute.hospital_lat, normalRoute.hospital_lon);
     }
@@ -434,7 +439,7 @@ export function Map({
     if (pts.length > 1) {
       const bounds = new maplibregl.LngLatBounds();
       pts.forEach(([lat, lon]) => bounds.extend([lon, lat]));
-      map.fitBounds(bounds, { padding: { top: 90, bottom: 90, left: 60, right: 60 }, maxZoom: 15.5, duration: 800 });
+      map.fitBounds(bounds, { padding: { top: 100, bottom: 170, left: 70, right: 70 }, maxZoom: 15.5, duration: 800 });
     }
   }, [normalRoute, safeRoute, routeStatus, blockedRoads, mapLoaded]);
 

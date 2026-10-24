@@ -104,6 +104,7 @@ pytest -q                                                # tiny smoke tests only
 - Every pipeline script: idempotent, caches downloads in `data/raw/`, prints a short summary (counts, min/median/max) when done.
 - API performance: load the graph once at startup (module-level / lifespan), `lru_cache` flagged GeoJSON per (scenario, share), never recompute scores in the API; send flagged edges only (not the whole network).
 - Frontend: TypeScript, Tailwind, MapLibre GL JS with a free CARTO Positron (light) basemap (keep the attribution); one typed API client in `web/lib/api.ts` mirroring docs/DATA_CONTRACT.md; mobile-first responsive layout (driver view at 390 px, dispatcher view at 1366 px); no keys, no analytics.
+- **Styles:** `web/src/app/layout.tsx` imports a pre-built `output.css`. After adding new Tailwind classes run `npm run build:css` in `web/` (`npm run build` does it automatically; `npm run dev` does not), otherwise new classes silently do nothing. Commit the regenerated `output.css`.
 - Keep `data/processed/` small (target < 50 MB total, no single file > 50 MB) because it is committed to GitHub.
 - Tests: only smoke tests (route exists on a toy graph, flagging picks the top share, config loads). Do not spend time on more.
 

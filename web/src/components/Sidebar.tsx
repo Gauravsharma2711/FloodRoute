@@ -37,6 +37,7 @@ export function Sidebar({
   onChangeShareOverride,
 }: SidebarProps) {
   const [showWhatIf, setShowWhatIf] = useState(false);
+  const [showAllDays, setShowAllDays] = useState(false);
   const [presetCategory, setPresetCategory] = useState<"all" | "basins" | "corridors">("all");
 
   const selectedScenario =
@@ -88,7 +89,10 @@ export function Sidebar({
           </div>
 
           <div className="flex flex-col gap-2">
-            {scenarios.map((sc) => {
+            {(showAllDays
+              ? scenarios
+              : scenarios.filter((sc, i) => i < 4 || sc.id === selectedScenarioId)
+            ).map((sc) => {
               const isSelected = sc.id === selectedScenarioId;
               const rainPct = Math.min(100, Math.round((sc.rain_mm / 250) * 100));
               return (
@@ -138,6 +142,16 @@ export function Sidebar({
               );
             })}
           </div>
+
+          {scenarios.length > 4 && (
+            <button
+              type="button"
+              onClick={() => setShowAllDays(!showAllDays)}
+              className="mt-2 w-full text-xs font-semibold text-[#0B8A7E] hover:underline"
+            >
+              {showAllDays ? "Show fewer days" : `Show all ${scenarios.length} rain days`}
+            </button>
+          )}
 
           {/* Assumption Note & What-if expander */}
           <div className="mt-2.5 pt-2 border-t border-[#F3F4F6]">
